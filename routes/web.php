@@ -38,6 +38,9 @@ Route:: group(['middleware' => ['auth', 'admin']], function(){
     Route:: put('/edit_kategori/{id}', [KategoriController::class, 'editkategori']);
 
     Route:: get('/sub_kategori-admin', [KategoriController::class, 'subkategori']);
+    Route:: Post('/tambah_subkategori', [KategoriController::class, 'tambahsubkategori']);
+    Route:: delete('/hapus_subkategori/{id}', [KategoriController::class, 'hapussubkategori']);
+    Route:: put('/edit_subkategori/{id}', [KategoriController::class, 'editsubkategori']);
 
 });
 
@@ -51,4 +54,6 @@ Route:: group(['middleware' => ['auth', 'pelanggan']], function(){
 
 Route:: get('/home', [FrontendController::class, 'home']);
 Route:: get('/detail-produk', [FrontendController::class, 'detailproduk']);
+Route:: get('/keranjang', [FrontendController::class, 'keranjang']);
+Route:: get('/konfirmasi-bayar', [FrontendController::class, 'konfirmasibayar']);
 

@@ -10,23 +10,31 @@
                 <div class="flex items-center justify-between border-b border-solid shrink-0 border-slate-100 rounded-t-xl">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Edit Data Kategori</h3>
                 </div>
-                <form class="space-y-6" action="/edit_kategori/{{$item->id}}" method="POST" enctype="multipart/form-data">
+                <form class="space-y-6" action="/edit_subkategori/{{$item->id}}" method="POST" >
                     @csrf
                     @method('PUT')
                     <div>
-                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-start">Nama kategori</label>
-                        <input type="text" name="kategori" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" value="{{$item->kategori}}" required>
-                    </div>
-                    {{--  <div>
-                        <label for="slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-start">Slug</label>
-                        <input type="text" name="slug" id="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" value="{{$item->slug}}"  required>
-                    </div>  --}}
-                    <input type="hidden" name="oldicon" value="{{$item->icon}}">
-                    <div>
-                        <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white text-start" for="icon">Icon</label>
-                        <input class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"  name="icon" id="icon" type="file">
+                        <label for="kategori"
+                                            class="block mb-2 text-sm font-medium text-gray-900 text-start dark:text-white">Nama
+                                            kategori</label>
 
+
+                                        <select id="kategori" name="kategori_id"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            <option selected value="{{$item->kategori->kategori}}">{{$item->kategori->kategori}}</option>
+                                            @foreach ($kategori as $data)
+
+                                            <option value="{{$data->id}}">{{$data->kategori}}</option>
+                                            @endforeach
+
+                                        </select>
                     </div>
+                    <div>
+                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white text-start">Nama Sub kategori</label>
+                        <input type="text" name="subkategori" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" value="{{$item->subkategori}}" required>
+                    </div>
+
+
 
                     <div class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
 

@@ -21,7 +21,7 @@ class KategoriController extends Controller
 
         $data = $this->validate($request, [
             'kategori' => 'required',
-            'slug' => 'required',
+
             'icon' => 'required|file|max:800'
         ]);
 
@@ -33,7 +33,7 @@ class KategoriController extends Controller
         }
         Kategori::create([
             'kategori' => $data['kategori'],
-            'slug' => $data['slug'],
+
             'icon' => $data['icon']
 
         ]);
@@ -54,7 +54,7 @@ class KategoriController extends Controller
     public function editkategori($id, Request $request){
         $data = $this->validate($request, [
             'kategori' => 'required',
-            'slug' => 'required',
+
             'icon' => 'required|file|max:800'
         ]);
         $update = Kategori::Find($id);
@@ -70,9 +70,48 @@ class KategoriController extends Controller
     }
 
     public function subkategori(){
-        $subkategori = Subkategori::all();
+        $kategori = Kategori::all();
+        $subkategori = Subkategori::with('kategori')->get();
+
         return view('admin.kategori.subkategori', [
-            'subkategori' => $subkategori
+            'subkategori' => $subkategori,
+            'kategori' => $kategori,
         ]);
+    }
+
+    public function tambahsubkategori(Request $request){
+
+        $data = $this->validate($request, [
+            'kategori_id' => 'required',
+            'subkategori' => 'required'
+        ]);
+
+        Subkategori::create([
+            'kategori_id' => $data['kategori_id'],
+            'subkategori' => $data['subkategori']
+        ]);
+        return back()->with('success', 'Berhasil Menambah Sub Kategori!' );
+
+    }
+
+    public function hapussubkategori($id){
+        $data = Subkategori::FindOrfail($id);
+        $data->delete();
+
+        return redirect('/sub_kategori-admin')->with('success', 'Berhasil Menghapus Sub Kategori!');
+    }
+
+    public function editsubkategori(Request $request, $id){
+
+        $data = $this->validate($request,[
+            'kategori_id' => 'required',
+            'subkategori' => 'required'
+
+        ]);
+        
+        $update = Subkategori::Find($id);
+        $update->update($data);
+
+        return redirect('/sub_kategori-admin')->with('success', 'Berhasil Mengedit Sub Kategori!');
     }
 }

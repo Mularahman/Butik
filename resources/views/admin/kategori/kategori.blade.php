@@ -16,7 +16,7 @@
         </ol>
         <h6 class="mb-0 font-bold capitalize">Kategori</h6>
     </nav>
-   
+
 @endsection
 @section('content')
     <div class="w-full px-6 py-6 mx-auto">
@@ -47,10 +47,7 @@
                         <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama kategori</label>
                         <input type="text" name="kategori" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
                     </div>
-                    <div>
-                        <label for="slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug</label>
-                        <input type="text" name="slug" id="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
-                    </div>
+
                     <div>
                         <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white" for="icon">Icon</label>
                         <input class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"  name="icon" id="icon" type="file">
@@ -136,7 +133,7 @@
                     <div class="flex-auto p-6 px-0 pb-2">
                         <div class="overflow-x-auto">
 
-                            <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                            <table id="dataTable" class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
                                 <thead class="align-bottom">
                                     <tr>
                                         <th
@@ -148,9 +145,9 @@
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Kategori</th>
-                                        <th
+                                        {{--  <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Slug</th>
+                                            Slug</th>  --}}
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Action</th>
@@ -184,10 +181,10 @@
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
                                             <span class="font-semibold leading-tight text-xs"> {{$item->kategori}} </span>
                                         </td>
-                                        <td
+                                        {{--  <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
                                             <span class="font-semibold leading-tight text-xs"> {{$item->slug}} </span>
-                                        </td>
+                                        </td>  --}}
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
 
@@ -245,4 +242,5 @@
             </div>
         </div>
     </div>
+
 @endsection

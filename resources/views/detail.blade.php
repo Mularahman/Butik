@@ -62,7 +62,9 @@
             <div class="px-10">
                 <h4>Baju Batik</h4>
 
-                    <h5 class="font-bold text-lg relative z-10 text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp. 350.000</h5>
+                <h5
+                    class="font-bold text-lg relative z-10 text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">
+                    Rp. 350.000</h5>
 
                 <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2">
                     <div>
@@ -119,14 +121,16 @@
                             <tr>
                                 <td colspan="2">
                                     <label for="countries"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Atur Jumlah</label>
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Atur
+                                        Jumlah</label>
 
                                 </td>
                                 <td> <input type="number" class="rounded-lg w-16"></td>
                             <tr>
-                                <td colspan="3" >
-                                    <button type="submit"
-                                    class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-44 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">+ Keranjang</button>
+                                <td colspan="3">
+                                    <a href="/keranjang" type="submit"
+                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-44 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">+
+                                        Keranjang</a>
 
                                 </td>
 
@@ -145,7 +149,8 @@
                 <h5>Deskripsi</h5>
                 <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
 
-                    <p class="justify-center text-justify">Baju batik kami dibuat menggunakan bahan premium dengan dipadukan jahitan berkualitas membuat baju batik ini menjadi produk yang nyaman dipakai</p>
+                    <p class="justify-center text-justify">Baju batik kami dibuat menggunakan bahan premium dengan dipadukan
+                        jahitan berkualitas membuat baju batik ini menjadi produk yang nyaman dipakai</p>
                 </div>
             </div>
         </div>
@@ -155,13 +160,45 @@
         <div class="container">
             <div class="px-8">
                 <h5>Ulasan</h5>
-                <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <div class="flex flex-col items-start px-8 ">
-                        <img class="h-20 w-20 mt-4 rounded-lg justify-center rounded-circle  items-center"
-                            src="/frontend/img/model1.png" alt="">
-                            <span class="pt-4">*****</span>
-                        <span class=" text-sm font-bold font-italic">1 minggu yang lalu</span>
-                        <p>" Kualitas produk Bagus "</p>
+                <div
+                    class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+
+                    <div
+                        class="border border-gray-200  shadow-sm dark:border-gray-700 ">
+                        <figure
+                            class="flex flex-col items-center justify-center p-8 text-center ">
+
+                            <figcaption class="flex items-center justify-center space-x-3">
+                                <img class="rounded-full w-9 h-9"
+                                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
+                                    alt="profile picture">
+                                <div class="space-y-0.5 font-medium dark:text-white text-left">
+                                    <div class="font-bold">Bonnie Green</div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">"Produk berkualitas"</div>
+                                </div>
+                            </figcaption>
+                        </figure>
+
+                    </div>
+                    <div
+                        class="border border-gray-200  shadow-sm dark:border-gray-700 ">
+                        <figure
+                            class="flex flex-col items-center justify-center p-8 text-center ">
+
+                            <figcaption class="flex items-center justify-center space-x-3">
+                                <img class="rounded-full w-9 h-9"
+                                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
+                                    alt="profile picture">
+                                <div class="space-y-0.5 font-medium dark:text-white text-left">
+                                    <div class="font-bold">Bonnie Green</div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">"Produk berkualitas"</div>
+                                </div>
+                            </figcaption>
+                        </figure>
+
+                    </div>
+
+
                 </div>
             </div>
         </div>

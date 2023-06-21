@@ -13,5 +13,13 @@ class FrontendController extends Controller
     public function detailproduk(){
         return view('detail');
     }
-    
+
+    public function keranjang(){
+        return view('keranjang');
+    }
+
+    public function konfirmasibayar(){
+        return view('konfirmasibayar');
+    }
+
 }
