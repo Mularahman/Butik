@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Kategori
+    Kota
 @endsection
 @section('breadcrum')
 
@@ -12,9 +12,9 @@
                 <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
             </li>
             <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
-                aria-current="page">Kategori</li>
+                aria-current="page">Wilayah</li>
         </ol>
-        <h6 class="mb-0 font-bold capitalize">Kategori</h6>
+        <h6 class="mb-0 font-bold capitalize">Kota</h6>
     </nav>
 
 @endsection
@@ -39,19 +39,30 @@
             </button>
             <div class="px-6 py-6 lg:px-8">
                 <div class="flex items-center justify-between border-b border-solid shrink-0 border-slate-100 rounded-t-xl">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Data Kategori</h3>
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Data Kabupaten / Kota</h3>
                 </div>
-                <form class="space-y-6" action="/tambah_kategori" method="POST" enctype="multipart/form-data">
+                <form class="space-y-6" action="/tambah_kota" method="POST" >
                     @csrf
+
                     <div>
-                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama kategori</label>
-                        <input type="text" name="kategori" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+                        <label for="kategori"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
+
+
+                        <select id="provinsi" name="provinsi_id"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>Pilih provinsi</option>
+                            @foreach ($provinsi as $data)
+
+                            <option value="{{$data->id}}">{{$data->provinsi}}</option>
+                            @endforeach
+
+                        </select>
+
                     </div>
-
                     <div>
-                        <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white" for="icon">Icon</label>
-                        <input class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"  name="icon" id="icon" type="file">
-
+                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kabupaten / Kota</label>
+                        <input type="text" name="kota" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
                     </div>
 
                     <div class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
@@ -75,17 +86,6 @@
                     <div class="border-black/12.5  mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
                         <div class="">
 
-                            {{--  <div id="alert-3" class="flex p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-                                <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-                                <span class="sr-only">Info</span>
-                                <div class="ml-3 text-sm font-medium">
-                                    {{session('success')}}
-                                </div>
-                                <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-3" aria-label="Close">
-                                  <span class="sr-only">Close</span>
-                                  <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                </button>
-                              </div>  --}}
 
 
                         </div>
@@ -93,8 +93,8 @@
                             <div class="flex-none w-7/12 max-w-full px-3 mt-0 lg:w-1/2 lg:flex-none">
                                 <h6
                                     class="pt-3 font-bold tracking-normal text-left uppercase align-middle bg-transparent  text-xxs whitespace-nowrap text-slate-400 opacity-70">
-                                    Data Kategori <span
-                                        class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$kategori->count()}}</span>
+                                    Data Kota <span
+                                        class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$kota->count()}}</span>
                                 </h6>
 
                             </div>
@@ -131,20 +131,20 @@
                         </div>
                     </div>
                     <div class="flex-auto p-6 px-0 pb-2">
-                        <div class="overflow-x-auto table-responsive">
+                        <div class="overflow-x-auto">
 
-                            <table id="dataTable" datatable id="datatable-search" class="table table-flush items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                            <table id="dataTable" class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
                                 <thead class="align-bottom">
                                     <tr>
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             No</th>
+
                                         <th
-                                            class="px-6 py-3 pl-2 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Icon</th>
+                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">Provinsi</th>
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Kategori</th>
+                                            Kabupaten / Kota</th>
                                         {{--  <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Slug</th>  --}}
@@ -154,7 +154,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($kategori as $item)
+                                    @foreach ($kota as $item)
                                     <tr>
 
 
@@ -166,20 +166,14 @@
 
                                             </div>
                                         </td>
-                                        <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                            <div class="mt-2 avatar-group">
-                                                <div>
 
-                                                    <img src=" {{ asset('storage/' . $item->icon) }}"
-                                                        class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                        alt="atlassian" />
-                                                </div>
-
-                                            </div>
+                                        <td
+                                            class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
+                                            <span class="font-semibold leading-tight text-xs"> {{$item->provinsi->provinsi}} </span>
                                         </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            <span class="font-semibold leading-tight text-xs"> {{$item->kategori}} </span>
+                                            <span class="font-semibold leading-tight text-xs"> {{$item->kota}} </span>
                                         </td>
                                         {{--  <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
@@ -199,7 +193,7 @@
                                                 </svg>
                                             </button>
                                             <div id="popup-modal{{$item->id}}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                @include('admin.kategori.hapuskategori')
+                                                @include('admin.wilayah.kota.hapuskota')
                                             </div>
 
                                             <div id="delete" role="tooltip"
@@ -218,7 +212,7 @@
                                                   </svg>
                                             </button>
                                             <div id="edit{{$item->id}}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                @include('admin.kategori.editkategori')
+                                                @include('admin.wilayah.kota.editkota')
                                             </div>
 
                                             <div id="edit" role="tooltip"

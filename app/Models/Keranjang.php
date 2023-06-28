@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subkategori extends Model
+class Keranjang extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-
-    public function kategori(){
-        return $this->belongsTo(Kategori::class);
-    }
+    
     public function produk(){
-        return $this->hasMany(Produk::class);
+        return $this->hasOne( Produk::class, 'id', 'produk_id' );
+    }
+
+    public function user(){
+        return $this->belongsTo( User::class, 'users_id', 'id');
     }
 }

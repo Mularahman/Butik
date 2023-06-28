@@ -26,7 +26,7 @@
                                     penting.
                                 </p>
 
-                                <a href="" type="button"
+                                <a href="#produk" type="button"
                                     class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-40 rounded-3.5xl mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-5 py-3 text-center align-middle font-bold uppercase transition-all text-white">Pesan
                                     Sekarang</a>
 
@@ -65,7 +65,7 @@
                             penting.
                         </p>
 
-                        <a href="" type="button"
+                        <a href="#produk" type="button"
                             class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-40 rounded-3.5xl mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-5 py-3 text-center align-middle font-bold uppercase transition-all text-white">Pesan
                             Sekarang</a>
 
@@ -217,8 +217,8 @@
     </div>
 
 </section>
-<section class="mt-8 mb-8">
-    <h4 class="text-center">Menjual Berbagai Macam Produk</h4>
+<section class="mt-8 mb-8"  id="produk">
+    <h4 class="text-center" >Menjual Berbagai Macam Produk</h4>
     <hr
         class="h-px
         mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent">
@@ -230,143 +230,44 @@
                 <div class="flex-auto p-4">
                     <div
                         class="flex-wrap justify-center -mx-3 grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-4 ">
+                        @foreach ($produk as $item)
+
+
                         <div class=" px-3 py-3">
                             <img class="h-56 w-full rounded-lg justify-center align-middle items-center"
-                                src="/frontend/img/model1.png" alt="">
+                                src="{{ asset('storage/' . $item->thumbnail) }}" alt="">
                                 <div class=" mt-4 mb-4 ">
-                            <span class="">Baju Batik Kombinasi</span> <br>
+                            <span class="">{{$item->namaproduk}}</span> <br>
                             <span
                                 class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
-                                350.000</span>
+                                {{$item->hargaproduk}}</span>
                                 </div>
                                 <div class="flex mt-4 mb-4 space-x-3 md:mt-6">
-                                    <a href="/detail-produk"
-                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-28 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">Beli</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">+
-                                        Keranjang</a>
-                                </div>
-                        </div>
-                        <div class=" px-3 py-3">
-                            <img class="h-56 w-full rounded-lg justify-center align-middle items-center"
-                                src="/frontend/img/model2.jpg" alt="">
-                                <div class=" mt-4 mb-4 ">
-                            <span class="">Baju Batik Kombinasi</span> <br>
-                            <span
-                                class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
-                                350.000</span>
-                                </div>
-                                <div class="flex mt-4 mb-4 space-x-3 md:mt-6">
-                                    <a href="/detail-produk"
-                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-28 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">Beli</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">+
-                                        Keranjang</a>
-                                </div>
-                        </div>
-                        <div class=" px-3 py-3">
-                            <img class="h-56 w-full rounded-lg justify-center align-middle items-center"
-                                src="/frontend/img/model3.png" alt="">
-                                <div class=" mt-4 mb-4 ">
-                            <span class="">Baju Batik Kombinasi</span> <br>
-                            <span
-                                class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
-                                350.000</span>
-                                </div>
-                                <div class="flex mt-4 mb-4 space-x-3 md:mt-6">
-                                    <a href="/detail-produk"
-                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-28 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">Beli</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">+
-                                        Keranjang</a>
-                                </div>
-                        </div>
-                        <div class=" px-3 py-3">
-                            <img class="h-56 w-full rounded-lg justify-center align-middle items-center"
-                                src="/frontend/img/model4.jpg" alt="">
-                                <div class=" mt-4 mb-4 ">
-                            <span class="">Baju Batik Kombinasi</span> <br>
-                            <span
-                                class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
-                                350.000</span>
-                                </div>
-                                <div class="flex mt-4 mb-4 space-x-3 md:mt-6">
-                                    <a href="/detail-produk"
-                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-28 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">Beli</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">+
-                                        Keranjang</a>
-                                </div>
-                        </div>
-                        <div class=" px-3 py-3">
-                            <img class="h-56 w-full rounded-lg justify-center align-middle items-center"
-                                src="/frontend/img/model3.png" alt="">
-                                <div class=" mt-4 mb-4 ">
-                            <span class="">Baju Batik Kombinasi</span> <br>
-                            <span
-                                class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
-                                350.000</span>
-                                </div>
-                                <div class="flex mt-4 mb-4 space-x-3 md:mt-6">
-                                    <a href="/detail-produk"
-                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-28 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">Beli</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">+
-                                        Keranjang</a>
-                                </div>
-                        </div>
-                        <div class=" px-3 py-3">
-                            <img class="h-56 w-full rounded-lg justify-center align-middle items-center"
-                                src="/frontend/img/model1.png" alt="">
-                                <div class=" mt-4 mb-4 ">
-                            <span class="">Baju Batik Kombinasi</span> <br>
-                            <span
-                                class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
-                                350.000</span>
-                                </div>
-                                <div class="flex mt-4 mb-4 space-x-3 md:mt-6">
-                                    <a href="/detail-produk"
-                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-28 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">Beli</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">+
-                                        Keranjang</a>
-                                </div>
-                        </div>
-                        <div class=" px-3 py-3">
-                            <img class="h-56 w-full rounded-lg justify-center align-middle items-center"
-                                src="/frontend/img/model2.jpg" alt="">
-                                <div class=" mt-4 mb-4 ">
-                            <span class="">Baju Batik Kombinasi</span> <br>
-                            <span
-                                class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
-                                350.000</span>
-                                </div>
-                                <div class="flex mt-4 mb-4 space-x-3 md:mt-6">
-                                    <a href="/detail-produk"
-                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-28 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">Beli</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">+
-                                        Keranjang</a>
-                                </div>
-                        </div>
-                        <div class=" px-3 py-3">
-                            <img class="h-56 w-full rounded-lg justify-center align-middle items-center"
-                                src="/frontend/img/model4.jpg" alt="">
-                                <div class=" mt-4 mb-4 ">
-                            <span class="">Baju Batik Kombinasi</span> <br>
-                            <span
-                                class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
-                                350.000</span>
-                                </div>
-                                <div class="flex mt-4 mb-4 space-x-3 md:mt-6">
-                                    <a href="/detail-produk"
-                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-28 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">Beli</a>
-                                    <a href="#"
-                                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">+
-                                        Keranjang</a>
+                                    <a href="/detail-produk/{{$item->id}}"
+                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-28 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill me-2" viewBox="0 0 16 16">
+  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+</svg>Detail</a>
+                                        <form class="" action="/produk_cart" method="POST" >
+                                            @csrf
+
+
+                                                <button type="submit" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill me-2" viewBox="0 0 16 16">
+                                                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+                                                      </svg> Keranjang
+                                                </button>
+
+
+
+
+                                            </form>
+
+
                                 </div>
                         </div>
 
+                        @endforeach
                     </div>
 
 

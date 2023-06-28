@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subkategori extends Model
+class Kecamatan extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-
-    public function kategori(){
-        return $this->belongsTo(Kategori::class);
+    public function provinsi(){
+        return $this->belongsTo(Provinsi::class);
     }
-    public function produk(){
-        return $this->hasMany(Produk::class);
+    public function kota(){
+        return $this->belongsTo(Kota::class);
     }
 }

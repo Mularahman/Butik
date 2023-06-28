@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Kategori
+    Slider
 @endsection
 @section('breadcrum')
 
@@ -12,9 +12,9 @@
                 <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
             </li>
             <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
-                aria-current="page">Kategori</li>
+                aria-current="page">Slider</li>
         </ol>
-        <h6 class="mb-0 font-bold capitalize">Kategori</h6>
+        <h6 class="mb-0 font-bold capitalize">Slider</h6>
     </nav>
 
 @endsection
@@ -39,18 +39,36 @@
             </button>
             <div class="px-6 py-6 lg:px-8">
                 <div class="flex items-center justify-between border-b border-solid shrink-0 border-slate-100 rounded-t-xl">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Data Kategori</h3>
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Tambah Data Slider</h3>
                 </div>
-                <form class="space-y-6" action="/tambah_kategori" method="POST" enctype="multipart/form-data">
+                <form class="space-y-6" action="/tambah_slider" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div>
-                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama kategori</label>
-                        <input type="text" name="kategori" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
-                    </div>
 
                     <div>
-                        <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white" for="icon">Icon</label>
-                        <input class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"  name="icon" id="icon" type="file">
+                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul</label>
+                        <input type="text" name="judul" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+                    </div>
+                    <div>
+                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
+                        <input type="text" name="deskripsi" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+                    </div>
+                    <div>
+                        <label for="kategori" class="block mb-2 text-start text-sm font-medium text-gray-900 dark:text-white">Status</label>
+
+                        <select id="provinsi" name="status"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="" selected>--- Pilih Kembali Status ---</option>
+
+
+                            <option value=1>Aktif</option>
+                            <option value=2>Tidak Aktif</option>
+
+
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white" for="icon">Image</label>
+                        <input class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"  name="image" id="icon" type="file">
 
                     </div>
 
@@ -93,8 +111,8 @@
                             <div class="flex-none w-7/12 max-w-full px-3 mt-0 lg:w-1/2 lg:flex-none">
                                 <h6
                                     class="pt-3 font-bold tracking-normal text-left uppercase align-middle bg-transparent  text-xxs whitespace-nowrap text-slate-400 opacity-70">
-                                    Data Kategori <span
-                                        class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$kategori->count()}}</span>
+                                    Data Slider <span
+                                        class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$slider->count()}}</span>
                                 </h6>
 
                             </div>
@@ -131,9 +149,9 @@
                         </div>
                     </div>
                     <div class="flex-auto p-6 px-0 pb-2">
-                        <div class="overflow-x-auto table-responsive">
+                        <div class="overflow-x-auto">
 
-                            <table id="dataTable" datatable id="datatable-search" class="table table-flush items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                            <table id="dataTable" class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
                                 <thead class="align-bottom">
                                     <tr>
                                         <th
@@ -141,10 +159,16 @@
                                             No</th>
                                         <th
                                             class="px-6 py-3 pl-2 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Icon</th>
+                                            Image</th>
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Kategori</th>
+                                            Judul</th>
+                                        <th
+                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                            Deskripsi</th>
+                                        <th
+                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                            Status</th>
                                         {{--  <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Slug</th>  --}}
@@ -154,7 +178,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($kategori as $item)
+                                    @foreach ($slider as $item)
                                     <tr>
 
 
@@ -170,7 +194,7 @@
                                             <div class="mt-2 avatar-group">
                                                 <div>
 
-                                                    <img src=" {{ asset('storage/' . $item->icon) }}"
+                                                    <img src=" {{ asset('storage/' . $item->image) }}"
                                                         class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
                                                         alt="atlassian" />
                                                 </div>
@@ -179,7 +203,22 @@
                                         </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            <span class="font-semibold leading-tight text-xs"> {{$item->kategori}} </span>
+                                            <span class="font-semibold leading-tight text-xs"> {{$item->judul}} </span>
+                                        </td>
+                                        <td
+                                            class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
+                                            <span class="font-semibold leading-tight text-xs"> {{$item->deskripsi}} </span>
+                                        </td>
+                                        <td
+                                            class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
+                                            @if ($item->status == 1)
+
+                                            <span class="bg-blue-100 text-blue-800 text-xs tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300"> Aktif
+                                            </span>
+                                            @else
+                                            <span class="bg-red-100 text-red-800 text-xs tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-red-900 dark:text-red-300"> Tidak Aktif
+                                            </span>
+                                                @endif
                                         </td>
                                         {{--  <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
@@ -199,7 +238,7 @@
                                                 </svg>
                                             </button>
                                             <div id="popup-modal{{$item->id}}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                @include('admin.kategori.hapuskategori')
+                                                @include('admin.slider.hapusslider')
                                             </div>
 
                                             <div id="delete" role="tooltip"
@@ -218,7 +257,7 @@
                                                   </svg>
                                             </button>
                                             <div id="edit{{$item->id}}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                @include('admin.kategori.editkategori')
+                                                @include('admin.slider.editslider')
                                             </div>
 
                                             <div id="edit" role="tooltip"

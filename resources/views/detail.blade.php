@@ -3,6 +3,9 @@
     Detail Produk
 @endsection
 @section('content')
+@foreach ($produk as $item)
+
+
     <section class="mt-32">
         <div class="container">
 
@@ -23,7 +26,7 @@
                             <div
                                 class="relative flex-auto mx-2 flex-col min-w-0 mb-6 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                                 <img class="h-[432px] w-full rounded-lg justify-center align-middle items-center"
-                                    src="/frontend/img/model1.png" alt="">
+                                    src=" {{ asset('storage/' . $item->thumbnail) }}" alt="">
                             </div>
                         </div>
                     </div>
@@ -34,17 +37,17 @@
                             <div
                                 class="relative w-28  md:w-40 lg:w-44 cursor-pointer mx-1 lg:mx-8 flex-col min-w-0 mb-6 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                                 <img class="h-32 w-full rounded-lg justify-center align-middle items-center"
-                                    src="/frontend/img/model1.png" alt="">
+                                    src=" {{ asset('storage/' . $item->galeri) }}" alt="">
                             </div>
                             <div
                                 class="relative w-28 md:w-40 lg:w-44  cursor-pointer mx-1 lg:mx-8 flex-col min-w-0 mb-6 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                                 <img class="h-32 w-full rounded-lg justify-center align-middle items-center"
-                                    src="/frontend/img/model1.png" alt="">
+                                    src=" {{ asset('storage/' . $item->galeri) }}" alt="">
                             </div>
                             <div
                                 class="relative w-28 md:w-40 lg:w-44 cursor-pointer mx-1  lg:mx-8 flex-col min-w-0 mb-6 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                                 <img class="h-32 w-full rounded-lg justify-center align-middle items-center"
-                                    src="/frontend/img/model1.png" alt="">
+                                    src=" {{ asset('storage/' . $item->galeri) }}" alt="">
                             </div>
 
 
@@ -60,22 +63,22 @@
     <section class=" mb-8">
         <div class="container px-4">
             <div class="px-10">
-                <h4>Baju Batik</h4>
+                <h4>{{$item->namaproduk}}</h4>
 
                 <h5
                     class="font-bold text-lg relative z-10 text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">
-                    Rp. 350.000</h5>
+                    Rp. {{$item->hargaproduk}}</h5>
 
                 <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2">
                     <div>
                         <table>
                             <tr>
                                 <td colspan="2">Berat </td>
-                                <td>: 500 Gram</td>
+                                <td>: {{$item->beratproduk}} Gram</td>
                             </tr>
                             <tr>
                                 <td colspan="2">Stok </td>
-                                <td>: 5</td>
+                                <td>: {{$item->stokproduk}}</td>
                             </tr>
 
                         </table>
@@ -128,9 +131,21 @@
                                 <td> <input type="number" class="rounded-lg w-16"></td>
                             <tr>
                                 <td colspan="3">
-                                    <a href="/keranjang" type="submit"
-                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-44 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">+
-                                        Keranjang</a>
+                                    <form class="" action="/produk_cart_add" method="POST" >
+                                        @csrf
+
+
+                                            <button type="submit" class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-44 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill me-2" viewBox="0 0 16 16">
+                                                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+                                                  </svg> Keranjang
+                                            </button>
+
+
+
+
+                                        </form>
+
 
                                 </td>
 
@@ -147,10 +162,9 @@
         <div class="container">
             <div class="px-8">
                 <h5>Deskripsi</h5>
+                <p class="font-bold">{{$item->deskripsishort}}</p>
                 <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
-
-                    <p class="justify-center text-justify">Baju batik kami dibuat menggunakan bahan premium dengan dipadukan
-                        jahitan berkualitas membuat baju batik ini menjadi produk yang nyaman dipakai</p>
+                    <p class="justify-center text-justify">{{$item->deskripsiproduk}}</p>
                 </div>
             </div>
         </div>
@@ -159,17 +173,19 @@
     <section>
         <div class="container">
             <div class="px-8">
-                <h5>Ulasan</h5>
-                <div
-                    class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <h5>Ulasan Pelanggan (2)</h5>
+                <div class="grid gird-cols-2 gap-4">
+                    <div>
+
+
 
                     <div
-                        class="border border-gray-200  shadow-sm dark:border-gray-700 ">
+                        class=" ">
                         <figure
-                            class="flex flex-col items-center justify-center p-8 text-center ">
+                            class="flex flex-col items-start justify-center p-8 text-center ">
 
                             <figcaption class="flex items-center justify-center space-x-3">
-                                <img class="rounded-full w-9 h-9"
+                                <img class="rounded-full w-14 h-14"
                                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
                                     alt="profile picture">
                                 <div class="space-y-0.5 font-medium dark:text-white text-left">
@@ -181,12 +197,12 @@
 
                     </div>
                     <div
-                        class="border border-gray-200  shadow-sm dark:border-gray-700 ">
+                        class=" ">
                         <figure
-                            class="flex flex-col items-center justify-center p-8 text-center ">
+                            class="flex flex-col items-start justify-center p-8 text-center ">
 
                             <figcaption class="flex items-center justify-center space-x-3">
-                                <img class="rounded-full w-9 h-9"
+                                <img class="rounded-full w-14 h-14"
                                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
                                     alt="profile picture">
                                 <div class="space-y-0.5 font-medium dark:text-white text-left">
@@ -199,8 +215,11 @@
                     </div>
 
 
-                </div>
+
+            </div>
+        </div>
             </div>
         </div>
     </section>
+    @endforeach
 @endsection

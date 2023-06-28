@@ -131,9 +131,9 @@
                         </div>
                     </div>
                     <div class="flex-auto p-6 px-0 pb-2">
-                        <div class="overflow-x-auto table-responsive">
+                        <div class="overflow-x-auto">
 
-                            <table id="dataTable" datatable id="datatable-search" class="table table-flush items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                            <table id="dataTable" class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
                                 <thead class="align-bottom">
                                     <tr>
                                         <th

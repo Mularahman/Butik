@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsAdmin
+class IsPelanggan
 {
     /**
      * Handle an incoming request.
@@ -18,10 +19,9 @@ class IsAdmin
         if(!auth()->check() || auth()->user()->role === 'member'){
             abort(403);
         }
-        if(!auth()->check() || auth()->user()->role === 'pelanggan'){
+        if(!auth()->check() || auth()->user()->role === 'admin'){
             abort(403);
         }
-        
         return $next($request);
     }
 }
