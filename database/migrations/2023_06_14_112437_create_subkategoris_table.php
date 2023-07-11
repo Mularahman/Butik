@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('kategori_id');
             $table->string('subkategori');
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade')->onUpdate('cascade');
         });
     }

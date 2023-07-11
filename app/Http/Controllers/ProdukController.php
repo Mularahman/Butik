@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Subkategori;
@@ -18,11 +19,13 @@ class ProdukController extends Controller
     }
 
     public function tambahprodukview(){
+        $user = User::where('status_toko',1)->get();
         $produk = Produk::with('kategori', 'subkategori')->get();
         $kategori = Kategori::with('subkategori')->get();
         $subkategori = Subkategori::with('kategori')->get();
 
         return view('admin.produk.tambahproduk',[
+            'user' => $user,
             'produk' => $produk,
             'kategori' => $kategori,
             'subkategori' => $subkategori,
@@ -40,6 +43,7 @@ class ProdukController extends Controller
             'stokproduk' => 'required',
             'hargaproduk' => 'required',
             'diskon' => 'required',
+            'user_id' => 'required',
             'kategori_id' => 'required',
             'subkategori_id' => 'required',
             'deskripsishort' => 'required',
@@ -49,7 +53,7 @@ class ProdukController extends Controller
             // 'barudatang' => 'required',
             // 'produkbaru' => 'required',
             'thumbnail' => 'required',
-            'galeri' => 'required',
+
         ]);
         if($request->file('thumbnail')){
             if($request->oldthumbnail){
@@ -57,13 +61,9 @@ class ProdukController extends Controller
             }
             $data['thumbnail'] = $request->file('thumbnail')->store('public/thumbnail');
         }
-        if($request->file('galeri')){
-            if($request->oldgaleri){
-                Storage::delete($request->oldgaleri);
-            }
-            $data['galeri'] = $request->file('galeri')->store('public/galeri');
-        }
+
         Produk::create([
+            'user_id' => $data['user_id'],
             'kategori_id' => $data['kategori_id'],
             'subkategori_id' => $data['subkategori_id'],
             'namaproduk' => $data['namaproduk'],
@@ -82,7 +82,7 @@ class ProdukController extends Controller
             // 'bestseller' => $data['bestseller'],
             'status' => 1,
             'thumbnail' => $data['thumbnail'],
-            'galeri' => $data['galeri'],
+
 
         ]);
 
@@ -93,9 +93,7 @@ class ProdukController extends Controller
         if($data->thumbnail){
             Storage::delete($data->thumbnail);
         }
-        if($data->galeri){
-            Storage::delete($data->galeri);
-        }
+
         $data->delete();
         return redirect('/produk-admin')->with('success', 'Berhasil Menghapus Produk!');
 
@@ -103,12 +101,13 @@ class ProdukController extends Controller
 
     public function editprodukview($id){
         $produk = Produk::with('kategori', 'subkategori')->where('id', $id)->get();
-       
+        $user = User::all();
         $kategori = Kategori::with('subkategori')->get();
         $subkategori = Subkategori::with('kategori')->get();
 
         return view('admin.produk.editproduk',[
             'produk' => $produk,
+            'user' => $user,
             'kategori' => $kategori,
             'subkategori' => $subkategori,
 
@@ -124,6 +123,7 @@ class ProdukController extends Controller
             'stokproduk' => 'required',
             'hargaproduk' => 'required',
             'diskon' => 'required',
+            'user_id' => 'required',
             'kategori_id' => 'required',
             'subkategori_id' => 'required',
             'deskripsishort' => 'required',
@@ -132,9 +132,9 @@ class ProdukController extends Controller
             // 'bestseller' => 'required',
             // 'barudatang' => 'required',
             // 'produkbaru' => 'required',
-            'status' => 'required',
+            // 'status' => 'required',
             'thumbnail' => 'required',
-            'galeri' => 'required',
+
         ]);
         $update = Produk::Find($id);
         if($request->file('thumbnail')){
@@ -143,12 +143,7 @@ class ProdukController extends Controller
             }
             $data['thumbnail'] = $request->file('thumbnail')->store('public/thumbnail');
         }
-        if($request->file('galeri')){
-            if($request->oldgaleri){
-                Storage::delete($request->oldgaleri);
-            }
-            $data['galeri'] = $request->file('galeri')->store('public/galeri');
-        }
+
         $update->update($data);
 
         return redirect('/produk-admin')->with('success', 'Berhasil Mengedit Produk!');

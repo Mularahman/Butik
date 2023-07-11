@@ -21,26 +21,62 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        DB::table('kategoris')->insert([
+            'kategori' => 'pakaian',
+            'slug' => 'pakaian',
+
+        ]);
+        DB::table('subkategoris')->insert([
+            'kategori_id' => 1,
+            'subkategori' => 'kemeja',
+
+
+        ]);
+
         DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
-            'role' => 'admin'
+            'role' => 'admin',
+            'nama_toko' =>'',
+            'kategori_id' =>0,
+            'status_toko' =>0,
         ]);
 
         DB::table('users')->insert([
             'name' => 'member',
             'email' => 'member@gmail.com',
             'password' => Hash::make('password'),
-            'role' => 'member'
+            'role' => 'member',
+            'nama_toko' =>'Sneker',
+            'kategori_id' =>1,
+            'status_toko' =>1,
         ]);
         DB::table('users')->insert([
             'name' => 'pelanggan',
             'email' => 'pelanggan@gmail.com',
             'password' => Hash::make('password'),
-            'role' => 'pelanggan'
+            'role' => 'pelanggan',
+            'nama_toko' =>'',
+            'kategori_id' =>0,
+            'status_toko' =>0,
         ]);
 
+        DB::table('provinsis')->insert([
+            'provinsi' => 'Kalimantan Selatan',
+
+        ]);
+        DB::table('kotas')->insert([
+            'provinsi_id' => 1,
+            'kota' => 'Banjarmasin',
+
+        ]);
+        DB::table('kecamatans')->insert([
+            'provinsi_id' => 1,
+            'kota_id' => 1,
+            'kecamatan' => 'Banjarmasin Utara',
+
+        ]);
 
     }
 }

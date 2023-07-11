@@ -112,7 +112,7 @@
                                                 Kategori</label>
                                             <select id="kategori" name="kategori_id"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                <option selected>Pilih Kategori</option>
+                                                <option selected>--- Pilih Kategori ---</option>
                                                 @foreach ($kategori as $data)
                                                     <option value="{{ $data->id }}">{{ $data->kategori }}</option>
                                                 @endforeach
@@ -124,7 +124,7 @@
                                                 Kategori</label>
                                             <select id="subkategori" name="subkategori_id"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                <option selected>Pilih Sub Kategori</option>
+                                                <option selected>--- Pilih Sub Kategori ---</option>
 
                                                     @foreach ($subkategori as $data)
                                                         <option value="{{ $data->id }}">{{ $data->subkategori }}
@@ -136,12 +136,23 @@
                                         </div>
                                     </div>
                                     <div class="grid lg:grid-cols-4 gap-4">
-                                        <div class="col-span-2">
+                                        <div>
                                             <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
                                                 for="deskripsishort">Deskripsi Produk</label>
                                             <input
                                                 class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg  bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"
                                                 name="deskripsishort" type="text" placeholder="Deskripsi Short">
+                                        </div>
+                                        <div>
+                                            <label for="user"
+                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pemilik Product</label>
+                                            <select id="user" name="user_id"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                <option selected>--- Pilih User ---</option>
+                                                @foreach ($user as $data)
+                                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                        {{--  <div>
                                         <div>
@@ -196,23 +207,16 @@
                                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Deskripsi Long"></textarea>
                                     </div>
-                                    <div class="grid lg:grid-cols-2 gap-4">
+
                                         <div>
                                             <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
                                                 for="thumbail">Thumbnail</label>
                                             <input
                                                 class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"
-                                                name="thumbnail" type="file">
+                                                name="thumbnail" multiple="multiple" id="gambarInput" onchange="tampilkanGambar()"  type="file">
                                         </div>
-                                        <div>
-                                            <label
-                                                class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white">Produk
-                                                Galeri</label>
-                                            <input
-                                                class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"
-                                                name="galeri" type="file">
-                                        </div>
-                                    </div>
+
+
                                     <div
                                         class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
                                         <button type="submit"

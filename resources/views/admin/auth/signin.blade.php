@@ -42,16 +42,16 @@
                       Contact
                     </a>
                   </li>
-                  <li>
+                  {{--  <li>
                     <a class="block px-4 py-2 mr-2 font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2" href="/galleries">
                       galleries
                     </a>
-                  </li>
+                  </li>  --}}
                 </ul>
 
                 <ul class="hidden pl-0 mb-0 list-none lg:block lg:flex-row">
                   <li>
-                    <a href="/register" class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-yellow-300 to-orange-400 rounded-3.5xl mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-8 py-2 text-center align-middle font-bold uppercase text-gray-800 transition-all">Sign Up</a>
+                    <a href="/register" class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-yellow-300 to-orange-400 rounded-3.5xl mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-8 py-2 text-center align-middle font-bold uppercase text-white transition-all">Sign Up</a>
                   </li>
                 </ul>
               </div>
@@ -68,8 +68,9 @@
               <div class="flex flex-col w-full max-w-full px-3 mx-auto md:flex-0 shrink-0 md:w-6/12 lg:w-5/12 xl:w-4/12">
                 <div class="relative flex flex-col min-w-0 mt-32 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                   <div class="p-6 pb-0 mb-0 bg-transparent border-b-0 rounded-t-2xl">
-                    <h3 class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Welcome back</h3>
-                    <p class="mb-0">Enter your email and password to sign in</p>
+                    <h3 class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Welcome To Butik Imun</h3>
+                    <p class="mb-0">Belanja kebutuhan utama,
+                        menjadi lebih mudah</p>
                 </div>
                 <div class="flex-auto p-6">
                       @if(session()->has('error'))
@@ -112,9 +113,9 @@
                   </div>
                 </div>
               </div>
-              <div class="w-full max-w-full px-3 lg:flex-0 shrink-0 md:w-6/12">
-                <div class="absolute top-0 hidden w-3/5 h-full -mr-32 overflow-hidden -skew-x-10 -right-40 rounded-bl-xl md:block">
-                  <div class="absolute inset-x-0 top-0 z-0 h-full -ml-16 bg-cover skew-x-10" style="background-image: url('/assets/img/curved-images/curved6.jpg')"></div>
+              <div class="w-full flex flex-col justify-center content-center text-center max-w-full px-3 lg:flex-0 shrink-0 md:w-6/12">
+                <div class="relative top-0  w-44 h-[336px] ml-[190px] rounded-bl-xl md:block">
+                  <div class="absolute inset-x-0 top-0 z-0 h-full -ml-20 bg-cover skew-x-10" style="background-image: url('/frontend/img/login.png')"></div>
                 </div>
               </div>
             </div>

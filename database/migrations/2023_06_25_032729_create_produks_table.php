@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('kategori_id');
             $table->foreignId('subkategori_id');
+            $table->foreignId('user_id');
             $table->string('namaproduk');
             $table->string('kodeproduk');
             $table->string('beratproduk');
@@ -30,12 +31,13 @@ return new class extends Migration
             $table->tinyInteger('produkbaru')->nullable();
             $table->tinyInteger('bestseller')->nullable();
             $table->tinyInteger('barudatang')->nullable();
-            $table->string('thumbnail');
-            $table->string('galeri');
+          
+
             $table->string('slug')->nullable();
             $table->tinyInteger('status')->nullable();
             $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('subkategori_id')->references('id')->on('subkategoris')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

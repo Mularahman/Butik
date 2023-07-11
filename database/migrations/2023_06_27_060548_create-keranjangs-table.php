@@ -16,6 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('produk_id');
             $table->foreignId('user_id');
+            $table->string('jumlah');
+            $table->softDeletes();
             // $table->foreign('produk_id')->references('id')->on('produks')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });

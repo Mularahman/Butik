@@ -40,7 +40,7 @@
     <hr
         class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent">
 
-    <div class="h-full px-3  py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+    <div class="h-auto px-3  py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
             <li class="mt-0.5 w-full">
                 <a href="/dashboard-admin"
@@ -336,7 +336,7 @@
                             Pesanan Masuk
                         </a>
                     </li>
-                    
+
                     <li>
                         <a href="/pesanan_dikonfirmasi-admin"
                             class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60">
@@ -382,7 +382,7 @@
                             Pesanan Dalam Perjalanan
                         </a>
                     </li>
-                   
+
                     <li>
                         <a href="/pesanan_selesai-admin"
                             class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60">
@@ -549,7 +549,7 @@
                             </div>
                             Pesanan Masuk
                         </a>
-                    </li>                    
+                    </li>
                 </ul>
             </li>
             <li class="mt-0.5 w-full">

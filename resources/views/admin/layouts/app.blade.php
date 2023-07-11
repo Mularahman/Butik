@@ -20,7 +20,33 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
 
     {{--  <link href="/assets/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />  --}}
+    <script>
+        function tampilkanGambar() {
+            var input = document.getElementById("gambarInput");
+            var preview = document.getElementById("previewGambar");
 
+            preview.innerHTML = "";
+
+            if (input.files) {
+              var filesAmount = input.files.length;
+
+              for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                  var img = document.createElement("img");
+                  img.setAttribute("src", event.target.result);
+                  img.setAttribute("class", "gambar-preview");
+
+                  preview.appendChild(img);
+                };
+
+                reader.readAsDataURL(input.files[i]);
+              }
+            }
+          }
+
+    </script>
 </head>
 
 <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
@@ -130,7 +156,7 @@
             @include('admin.layouts.partial.footer')
         </main>
     </div>
-    
+
 </body>
 
 <!-- plugin for charts  -->

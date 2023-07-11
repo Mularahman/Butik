@@ -21,7 +21,7 @@ class IsAdmin
         if(!auth()->check() || auth()->user()->role === 'pelanggan'){
             abort(403);
         }
-        
+
         return $next($request);
     }
 }

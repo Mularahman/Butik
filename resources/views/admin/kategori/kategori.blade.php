@@ -145,9 +145,9 @@
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Kategori</th>
-                                        {{--  <th
+                                        <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Slug</th>  --}}
+                                            Slug</th>
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Action</th>
@@ -181,10 +181,10 @@
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
                                             <span class="font-semibold leading-tight text-xs"> {{$item->kategori}} </span>
                                         </td>
-                                        {{--  <td
+                                        <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
                                             <span class="font-semibold leading-tight text-xs"> {{$item->slug}} </span>
-                                        </td>  --}}
+                                        </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
 

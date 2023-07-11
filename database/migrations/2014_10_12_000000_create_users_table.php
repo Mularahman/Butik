@@ -18,12 +18,24 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['admin', 'member', 'pelanggan'])->nullable()->default('pelanggan');
-            $table->enum('jenis_kelamin', ['laki_laki', 'perempuan'])->nullable();
+            $table->enum('jenis_kelamin', ['Laki - laki', 'Perempuan'])->nullable();
+            $table->date('tahun')->nullable();
             $table->string('image')->nullable();
             $table->tinyInteger('status')->nullable();
-            $table->text('alamat')->nullable();
+            $table->text('alamat1')->nullable();
+            $table->text('alamat2')->nullable();
+            $table->text('negara')->nullable();
+            $table->string('provinsi_id')->nullable();
+            $table->string('kecamatan_id')->nullable();
+            $table->string('kota_id')->nullable();
+            $table->string('kodepos')->nullable();
+            $table->string('no_hp')->nullable();
+            $table->string('nama_toko')->nullable();
+            $table->integer('kategori_id')->nullable();
+            $table->integer('status_toko')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

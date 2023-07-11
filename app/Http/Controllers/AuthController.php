@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -31,7 +34,10 @@ class AuthController extends Controller
     }
 
     public function register(){
-        return view('admin.auth.signup');
+        $kategori = Kategori::all();
+        return view('admin.auth.signup',[
+            'kategori' => $kategori 
+        ]);
     }
 
     public function registeraksi(Request $request){
@@ -39,6 +45,9 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email:dns',
             'password' => 'required',
+            'nama_toko' => ['nullable', 'string', 'max:255'],
+            'kategori_id' => ['nullable', 'integer', 'exists:kategoris,id'],
+            'status_toko' => ['required'],
         ]);
         $data['password']=Hash::make($data['password']);
 
@@ -46,9 +55,14 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $data['password'],
+            'nama_toko' => isset($data['nama_toko']) ? $data['nama_toko'] : '',
+            'kategori_id' => isset($data['kategori_id']) ? $data['kategori_id'] : 0,
+            'status_toko' => $data['status_toko'] ? 1 : 0,
+            'role' => $data['status_toko'] ? 'member' : 'pelanggan',
+        
         ]);
         $user = $this->validate($request, [
-            'email' => 'required|email|dns',
+            'email' => 'required',
             'password' => 'required'
         ]);
 

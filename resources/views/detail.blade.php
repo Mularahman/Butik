@@ -2,6 +2,20 @@
 @section('title')
     Detail Produk
 @endsection
+@section('keranjang')
+<a href="/keranjang" type="button"
+                                            class="relative inline-flex items-center p-2 me-4 text-sm font-medium text-center text-white bg-gradient-to-tl from-yellow-300 to-orange-400 rounded-3.5xl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                            </svg>
+                                            <span class="sr-only">Notifications</span>
+                                            <div
+                                                class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-1.5 p-1 -right-2 dark:border-gray-900">
+                                                {{$keranjang->count()}}</div>
+                                        </a>
+@endsection
 @section('content')
 @foreach ($produk as $item)
 
@@ -26,29 +40,22 @@
                             <div
                                 class="relative flex-auto mx-2 flex-col min-w-0 mb-6 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                                 <img class="h-[432px] w-full rounded-lg justify-center align-middle items-center"
-                                    src=" {{ asset('storage/' . $item->thumbnail) }}" alt="">
+                                    src=" {{ asset('storage/' . $item->gambar->first()->thumbnail) }}" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="lg:col-span-1">
                         <div class="flex-wrap flex ">
+                            @foreach ($item->gambar as $gambar)
 
 
                             <div
-                                class="relative w-28  md:w-40 lg:w-44 cursor-pointer mx-1 lg:mx-8 flex-col min-w-0 mb-6 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                                <img class="h-32 w-full rounded-lg justify-center align-middle items-center"
-                                    src=" {{ asset('storage/' . $item->galeri) }}" alt="">
-                            </div>
-                            <div
-                                class="relative w-28 md:w-40 lg:w-44  cursor-pointer mx-1 lg:mx-8 flex-col min-w-0 mb-6 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                                <img class="h-32 w-full rounded-lg justify-center align-middle items-center"
-                                    src=" {{ asset('storage/' . $item->galeri) }}" alt="">
-                            </div>
-                            <div
-                                class="relative w-28 md:w-40 lg:w-44 cursor-pointer mx-1  lg:mx-8 flex-col min-w-0 mb-6 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                                <img class="h-32 w-full rounded-lg justify-center align-middle items-center"
-                                    src=" {{ asset('storage/' . $item->galeri) }}" alt="">
-                            </div>
+                            class="relative w-28  md:w-40 lg:w-44 cursor-pointer mx-1 lg:mx-8 flex-col min-w-0 mb-6 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+                            <img class="h-32 w-full rounded-lg justify-center align-middle items-center"
+                            src=" {{ asset('storage/' . $gambar->thumbnail) }}" alt="">
+                        </div>
+                        @endforeach
+
 
 
 
@@ -64,10 +71,10 @@
         <div class="container px-4">
             <div class="px-10">
                 <h4>{{$item->namaproduk}}</h4>
-
+                <p class="font-md text-muted pb-3">By {{$item->users->nama_toko}}</p>
                 <h5
                     class="font-bold text-lg relative z-10 text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">
-                    Rp. {{$item->hargaproduk}}</h5>
+                    Rp. {{number_format($item->hargaproduk)}}</h5>
 
                 <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 md:grid-cols-2">
                     <div>
@@ -86,20 +93,27 @@
                     <div>
                         <table>
                             <tr>
+                                <td colspan="2">Warna </td>
+                                <td>: {{$item->warnaproduk}} Gram</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Ukuran </td>
+                                <td>: {{$item->ukuranproduk}}</td>
+                            </tr>
+                            {{--  <tr>
                                 <td colspan="2">
                                     <label for="countries"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih
                                         Warna</label>
 
                                 </td>
-                                <td> <select id="countries"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option selected>Pilih Warna</option>
-                                        <option value="US">Merah</option>
-                                        <option value="CA">Hitam</option>
-                                        <option value="FR">Cream</option>
-
-                                    </select></td>
+                                <td> <select id="warna" name="warnaproduk"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>--- Pilih Warna ---</option>
+                                    @foreach ($warna as $data)
+                                        <option value="{{ $item->warnaproduk }}">{{ $item->warnaproduk }}</option>
+                                    @endforeach
+                                </select></td>
                             <tr>
                                 <td colspan="2">
                                     <label for="countries"
@@ -107,20 +121,22 @@
                                         Ukuran</label>
 
                                 </td>
-                                <td> <select id="countries"
-                                        class="block w-full p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option selected>Pilih Warna</option>
-                                        <option value="US">M</option>
-                                        <option value="CA">L</option>
-                                        <option value="FR">XL</option>
-
-                                    </select></td>
-                            </tr>
+                                <td> <select id="warna" name="ukuranproduk"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>--- Pilih ukuran ---</option>
+                                    @foreach ($ukuran as $data)
+                                        <option value="{{ $item->ukuranproduk }}">{{ $item->warnaproduk }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            </tr>  --}}
 
                         </table>
                     </div>
                     <div>
                         <table>
+                            <form class="" action="/produk_add_keranjang/{{$item->id}}" method="POST" >
+                                @csrf
                             <tr>
                                 <td colspan="2">
                                     <label for="countries"
@@ -128,11 +144,10 @@
                                         Jumlah</label>
 
                                 </td>
-                                <td> <input type="number" class="rounded-lg w-16"></td>
+                                <td> <input type="number" name="jumlah" class="rounded-lg w-16"></td>
                             <tr>
                                 <td colspan="3">
-                                    <form class="" action="/produk_cart_add" method="POST" >
-                                        @csrf
+                                    {{--  <input type="hidden" name="user_id" value="{{Auth::user()->id}}">  --}}
 
 
                                             <button type="submit" class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-44 rounded-lg mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-2 py-3 text-center align-middle font-bold uppercase transition-all text-white">
@@ -144,12 +159,12 @@
 
 
 
-                                        </form>
 
 
-                                </td>
+                                        </td>
 
-                            </tr>
+                                    </tr>
+                                </form>
 
                         </table>
                     </div>

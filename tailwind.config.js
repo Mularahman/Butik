@@ -7,7 +7,9 @@ export default {
         "./node_modules/flowbite/**/*.js"
       ],
   theme: {
-    extend: {},
+    extend: {
+        backgroundColor: ['active'],
+    },
   },
   plugins: [
     require('flowbite/plugin')

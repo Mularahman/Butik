@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Subkategori;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,9 +32,10 @@ class KategoriController extends Controller
             }
             $data['icon'] = $request->file('icon')->store('public/icon');
         }
+        $data['slug'] = Str::slug($request->kategori);
         Kategori::create([
             'kategori' => $data['kategori'],
-
+            'slug' => $data['slug'],
             'icon' => $data['icon']
 
         ]);
@@ -108,7 +110,7 @@ class KategoriController extends Controller
             'subkategori' => 'required'
 
         ]);
-        
+
         $update = Subkategori::Find($id);
         $update->update($data);
 

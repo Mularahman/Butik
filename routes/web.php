@@ -11,6 +11,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,13 +90,48 @@ Route:: group(['middleware' => ['auth', 'member']], function(){
 
 });
 
-Route:: group(['middleware' => ['auth', 'pelanggan']], function(){
-    Route:: get('/dashboard/{id}', [PelangganController::class, 'index']);
-    Route:: get('/setting/{id}', [PelangganController::class, 'setting']);
+Route:: group(['middleware' => ['auth']], function(){
+    Route:: get('/dashboard', [PelangganController::class, 'index']);
+
+    Route:: get('/myproduct', [PelangganController::class, 'myproduct']);
+    Route:: get('/myproduct_add', [PelangganController::class, 'add_product']);
+    Route:: Post('/myproduct_add_aksi', [PelangganController::class, 'add_product_aksi']);
+    Route:: get('/myproduct_edit/{id}', [PelangganController::class, 'edit_product'])->name('dashboard-product-details');
+    Route:: put('/myproduct_edit_aksi/{id}', [PelangganController::class, 'edit_product_aksi']);
+    Route:: post('/myproduct/gallery', [PelangganController::class, 'myproductgallery']);
+    Route:: get('/myproduct/gallery/delete/{id}', [PelangganController::class, 'myproductgallerydelete'])->name('dashboard-product-gallery-delete');
+
+
+    Route:: get('/transaction', [PelangganController::class, 'transaction']);
+    Route:: get('/transaction_buy', [PelangganController::class, 'transactionbuy']);
+    Route:: get('/transaction_active', [PelangganController::class, 'transactionactive']);
+    Route:: get('/transaction_confirmed', [PelangganController::class, 'transactionconfirmed']);
+    Route:: get('/transaction_packing', [PelangganController::class, 'transactionpacking']);
+    Route:: get('/transaction_delivered', [PelangganController::class, 'transactiondelivered']);
+    Route:: get('/transaction_complated', [PelangganController::class, 'transactioncomplated']);
+
+    Route:: get('/transaction_sell', [PelangganController::class, 'transactionactive']);
+
+    Route:: get('/transaction_details', [PelangganController::class, 'transaction_details']);
+
+    Route:: get('/store_settings', [PelangganController::class, 'store']);
+    Route:: put('/store_aksi/{id}', [PelangganController::class, 'store_aksi']);
+
+    Route:: get('/myaccount', [PelangganController::class, 'myaccount']);
+    Route:: put('/myaccount/update_profile/{id}', [PelangganController::class, 'update_profile']);
+    Route:: put('/myaccount/update_password/{id}', [PelangganController::class, 'update_password']);
+    Route:: put('/myaccount/update_alamat/{id}', [PelangganController::class, 'update_alamat']);
 });
 
 Route:: get('/home', [FrontendController::class, 'home']);
 Route:: get('/detail-produk/{id}', [FrontendController::class, 'detailproduk']);
-Route:: get('/keranjang', [FrontendController::class, 'keranjang']);
-Route:: get('/konfirmasi-bayar', [FrontendController::class, 'konfirmasibayar']);
+
+Route::group(['middleware' => 'auth'], function() {
+    //
+    Route:: post('/produk_add_keranjang/{id}', [FrontendController::class, 'produkaddkeranjang']);
+    Route:: get('/keranjang', [FrontendController::class, 'keranjang']);
+    Route:: delete('/keranjang_delete/{id}', [FrontendController::class, 'deletekeranjang']);
+    Route:: post('/checkout', [TransaksiController::class, 'transaksi']);
+});
+
 
