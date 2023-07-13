@@ -73,21 +73,21 @@
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">Rp .450.000</span>
+                                    <span class="font-semibold leading-tight text-xs">Rp {{number_format($transaksi->total_harga)}}</span>
                                 </td>
 
                                 <td
                                 class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                @if ($transaksi->status_transaksi == 'PENDDING')
+                                @if ($transaksi->transaction_status == 'PENDING')
 
-                                <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Pendding</span>
-                                @elseif ($transaksi->status_transaksi == 'PROCESSED')
+                                <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Pending</span>
+                                @elseif ($transaksi->transaction_status == 'PROCESSED')
                                 <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Processed</span>
-                                @elseif ($transaksi->status_transaksi == 'PACKING')
+                                @elseif ($transaksi->transaction_status == 'PACKING')
                                 <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Packing</span>
-                                @elseif ($transaksi->status_transaksi == 'DELIVERED')
+                                @elseif ($transaksi->transaction_status == 'DELIVERED')
                                 <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Delivered</span>
-                                @elseif ($transaksi->status_transaksi == 'COMPLATED')
+                                @elseif ($transaksi->transaction_status == 'COMPLATED')
                                 <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Complated</span>
 
                                 @endif

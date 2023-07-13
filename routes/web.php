@@ -112,7 +112,7 @@ Route:: group(['middleware' => ['auth']], function(){
 
     Route:: get('/transaction_sell', [PelangganController::class, 'transactionactive']);
 
-    Route:: get('/transaction_details', [PelangganController::class, 'transaction_details']);
+    Route:: get('/transaction_details/{id}', [PelangganController::class, 'transaction_details']);
 
     Route:: get('/store_settings', [PelangganController::class, 'store']);
     Route:: put('/store_aksi/{id}', [PelangganController::class, 'store_aksi']);
@@ -132,6 +132,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route:: get('/keranjang', [FrontendController::class, 'keranjang']);
     Route:: delete('/keranjang_delete/{id}', [FrontendController::class, 'deletekeranjang']);
     Route:: post('/checkout', [TransaksiController::class, 'transaksi']);
+    
 });
 
 

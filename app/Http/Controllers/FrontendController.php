@@ -46,6 +46,7 @@ class FrontendController extends Controller
 
     public function produkaddkeranjang(Request $request, $id){
         $data = $request->all();
+        
         if(Auth::check()){
 
             Keranjang::create([

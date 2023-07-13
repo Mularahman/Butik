@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->integer('diskon');
             $table->integer('total_harga');
-            $table->string('status_transaksi'); // UNPAID/PENDING/SUCCESS/FAILED
+            $table->string('transaction_status'); // UNPAID/PENDING/SUCCESS/FAILED
             $table->string('kode');
             $table->softDeletes();
             $table->timestamps();

@@ -112,7 +112,7 @@
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
 
-                                    <a type="button" href="/transaction_details"
+                                    <a type="button" href="/transaction_details/{{$transaksi->id}}"
                                         data-tooltip-target="detail"
                                         class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 pacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 

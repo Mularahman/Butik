@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>@yield('title')</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">

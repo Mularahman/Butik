@@ -13,7 +13,7 @@ class Transaction extends Model
         'tanggal',
         'diskon',
         'total_harga',
-        'status_transaksi',
+        'transaction_status',
         'kode'
     ];
 

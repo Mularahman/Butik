@@ -175,12 +175,14 @@ class PelangganController extends Controller
     //transaction
 
     public function transactionbuy(){
-        $user = User::all();
+
         $transaction = Transaction::with('user')->where('user_id', Auth::user()->id)->get();
-        $transactiondetail = TransactionDetail::with('transaction', 'produk')->get();
+        $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
+            $produk->where('user_id', Auth::user()->id);
+        })->get();
         $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
         return view('pelanggan.transactions.transactionbuy',[
-            'user' => $user,
+
             'keranjang' => $keranjang,
             'transaction' => $transaction,
             'transactiondetail' => $transactiondetail,
@@ -188,10 +190,12 @@ class PelangganController extends Controller
     }
     public function transactionactive(){
         $user = User::all();
-        $transaction = Transaction::with('user')->where(['status_transaksi' => 'PENDDING' , 'user_id'=> Auth::user()->id])->get();
-        $transactiondetail = TransactionDetail::with('transaction', 'produk')->get();
+        $transaction = Transaction::with('user')->where(['transaction_status' => 'PENDDING' , 'user_id'=> Auth::user()->id])->get();
+        $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
+            $produk->where('user_id', Auth::user()->id);
+        })->get();
         $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
-        
+
         return view('pelanggan.transactions.sell.transactionactive',[
             'user' => $user,
             'keranjang' => $keranjang,
@@ -232,13 +236,21 @@ class PelangganController extends Controller
         ]);
     }
 
-    public function transaction_details(){
+    public function transaction_details($id){
         $user = User::all();
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
+        $transaction = Transaction::with('user')->where(['transaction_status' => 'PENDDING' , 'user_id'=> Auth::user()->id])->get();
+        $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
+            $produk->where('user_id', Auth::user()->id);
+        })->where('produk_id',$id)->first();
+        
+        $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
 
         return view('pelanggan.transactions.transaction_details',[
             'user' => $user,
             'keranjang' => $keranjang,
+            'keranjang' => $keranjang,
+            'transaction' => $transaction,
+            'transactiondetail' => $transactiondetail,
         ]);
     }
 
