@@ -14,6 +14,9 @@ class TransactionDetail extends Model
         'harga',
         'status',
         'resi',
+        'qty',
+        'catatan',
+        'kurir',
         'kode'
     ];
 

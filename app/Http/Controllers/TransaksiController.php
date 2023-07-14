@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Auth;
 class TransaksiController extends Controller
 {
     public function transaksi(Request $request){
+        
 
         $user = Auth::user();
         $user->update($request->except(['total','subtotal','diskon']));
         $date = Carbon::now();
         $kode = '#INVOICE-' . mt_rand(0000,9999);
         $keranjang = Keranjang::with('produk', 'user', 'produk.gambar')->where('user_id', Auth::user()->id)->get();
-
         $transaksi = Transaction::create([
             'user_id' => Auth::user()->id,
             'tanggal' => $date->toDateString(),
@@ -40,7 +40,10 @@ class TransaksiController extends Controller
                 'harga' => $cart->produk->hargaproduk,
                 'status' => 'PENDING',
                 'resi' => '',
-                'kode' => $trx
+                'kode' => $trx,
+                'qty' => $cart->jumlah,
+                'kurir' => $request->kurir,
+                'catatan' => $request->catatan
             ]);
         }
 

@@ -198,6 +198,7 @@
                                         </div>
 
 
+
                                     </div>
                                     <h6 class="mb-0 font-bold capitalize">Status Pengiriman</h6>
                                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -228,8 +229,8 @@
                                             <div>
                                                 <label for="customer"
                                                     class="block mb-2 text-muted text-sm font-medium ">Resi</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transactiondetail->resi }}</label>
+                                               <input type="text" name="resi" id="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                               required>
 
                                             </div>
 
@@ -242,13 +243,10 @@
 
                                     <div
                                         class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
-                                        @if ($transactiondetail->status == 'DALAM PERJALANAN')
-                                        @else
                                         <button type="submit"
                                             class="inline-block w-full px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs mb-3">
                                             Konfirmasi
                                         </button>
-                                        @endif
                                     </div>
                                 </form>
                             </div>

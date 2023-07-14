@@ -26,7 +26,7 @@ use App\Http\Controllers\TransaksiController;
 
 Route::get('/', [FrontendController::class, 'home']);
 
-Route:: get('/login', [AuthController::class, 'login']);
+Route:: get('/login', [AuthController::class, 'login'])->name('login');
 Route:: post('/login', [AuthController::class, 'loginaksi']);
 Route:: get('/register', [AuthController::class, 'register']);
 Route:: post('/register', [AuthController::class, 'registeraksi']);
@@ -105,6 +105,7 @@ Route:: group(['middleware' => ['auth']], function(){
     Route:: get('/transaction', [PelangganController::class, 'transaction']);
     Route:: get('/transaction_buy', [PelangganController::class, 'transactionbuy']);
     Route:: get('/transaction_active', [PelangganController::class, 'transactionactive']);
+    Route:: post('/transaction_active_aksi/{id}', [PelangganController::class, 'transactionactive_aksi']);
     Route:: get('/transaction_confirmed', [PelangganController::class, 'transactionconfirmed']);
     Route:: get('/transaction_packing', [PelangganController::class, 'transactionpacking']);
     Route:: get('/transaction_delivered', [PelangganController::class, 'transactiondelivered']);
@@ -113,6 +114,10 @@ Route:: group(['middleware' => ['auth']], function(){
     Route:: get('/transaction_sell', [PelangganController::class, 'transactionactive']);
 
     Route:: get('/transaction_details/{id}', [PelangganController::class, 'transaction_details']);
+    Route:: get('/transaction_detail_dikirim/{id}', [PelangganController::class, 'transaction_detail_dikirim']);
+    Route:: get('/transaction_detail/{id}', [PelangganController::class, 'transaction_detail']);
+    Route:: post('/transaction_selesai_aksi/{id}', [PelangganController::class, 'transaction_selesai']);
+
 
     Route:: get('/store_settings', [PelangganController::class, 'store']);
     Route:: put('/store_aksi/{id}', [PelangganController::class, 'store_aksi']);
@@ -132,7 +137,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route:: get('/keranjang', [FrontendController::class, 'keranjang']);
     Route:: delete('/keranjang_delete/{id}', [FrontendController::class, 'deletekeranjang']);
     Route:: post('/checkout', [TransaksiController::class, 'transaksi']);
-    
+
 });
 
 

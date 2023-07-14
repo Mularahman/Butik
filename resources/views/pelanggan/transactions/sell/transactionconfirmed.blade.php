@@ -68,6 +68,8 @@
         </ul>
 
 
+
+
         <div
             class="lack/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border mt-3">
 
@@ -76,18 +78,53 @@
 
                     <table id="dataTable" datatable id="datatable-search"
                         class="table table-flush items-center w-full mb-0 align-top border-gray-200 text-slate-500">
-
+                        <thead>
+                            <div class="font-bold flex ml-4 mb-4 mt-3">
+                                <h3 class="me-2">Data Pesanan Dikonfirmasi</h3>
+                                <span
+                                class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$transactiondetail->count()}}</span>
+                            </div>
+                        </thead>
                         <tbody>
-
-                            <tr>
-
+                            <tr class="border-b-2 font-bold">
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">No</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Gambar</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Nama Produk</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Invoice</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Tanggal</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Action</span>
+                                </td>
+                            </tr>
+                            @foreach ($transactiondetail as $transaksi)
+                            <tr class="border-b-2">
+                                <td
+                                class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                <span class="font-semibold leading-tight text-xs">{{ $loop->iteration }}</span>
+                            </td>
 
 
                                 <td class="p-2 align-middle text-center bg-transparent  whitespace-nowrap">
                                     <div class="mt-2 avatar-group">
                                         <div>
 
-                                            <img src="/frontend/img/model1.png"
+                                            <img src="{{ asset('storage/' . $transaksi->produk->gambar->first()->thumbnail) }}"
                                                 class="inline-flex items-center justify-center  text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
                                                 alt="atlassian" />
                                         </div>
@@ -96,23 +133,23 @@
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs"> Baju Batik </span>
+                                    <span class="font-semibold leading-tight text-xs"> {{$transaksi->produk->namaproduk}} </span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">Sneker</span>
+                                    <span class="font-semibold leading-tight text-xs">{{$transaksi->kode}}</span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">12 juni 2023</span>
+                                    <span class="font-semibold leading-tight text-xs">{{$transaksi->transaction->tanggal}}</span>
                                 </td>
 
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
 
-                                    <a type="button" href="/transaction_details"
+                                    <a type="button" href="/transaction_details/{{$transaksi->id}}"
                                         data-tooltip-target="detail"
-                                        class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
+                                        class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 pacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
@@ -132,84 +169,7 @@
                                 </td>
 
                             </tr>
-
-
-                        </tbody>
-
-
-                    </table>
-
-                </div>
-            </div>
-        </div>
-        <div
-            class="lack/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border mt-3">
-
-            <div class="flex-auto px-0  py-2">
-                <div class="overflow-x-auto table-responsive">
-
-                    <table id="dataTable" datatable id="datatable-search"
-                        class="table table-flush items-center w-full mb-0 align-top border-gray-200 text-slate-500">
-
-                        <tbody>
-
-                            <tr>
-
-
-
-                                <td class="p-2 align-middle text-center bg-transparent  whitespace-nowrap">
-                                    <div class="mt-2 avatar-group">
-                                        <div>
-
-                                            <img src="/frontend/img/model1.png"
-                                                class="inline-flex items-center justify-center  text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                alt="atlassian" />
-                                        </div>
-
-                                    </div>
-                                </td>
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs"> Baju Batik </span>
-                                </td>
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">Sneker</span>
-                                </td>
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">12 juni 2023</span>
-                                </td>
-
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
-
-                                    <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                        data-tooltip-target="detail"
-                                        class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
-
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                          </svg>
-                                    </button>
-                                    <div id="popup-modal" tabindex="-1"
-                                        class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-
-                                    </div>
-
-                                    <div id="detail" role="tooltip"
-                                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Lihat Detail
-                                        <div class="tooltip-arrow" data-popper-arrow></div>
-                                    </div>
-
-
-
-                                </td>
-
-                            </tr>
-
+                            @endforeach
 
                         </tbody>
 
@@ -219,6 +179,8 @@
                 </div>
             </div>
         </div>
+
+
 
     </section>
 @endsection

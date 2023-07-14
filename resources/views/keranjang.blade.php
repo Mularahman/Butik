@@ -187,8 +187,7 @@
                                                 <h5 class="mb-0 font-bold dark:text-white">Alamat Pengiriman</h5>
                                                 <p class="mb-0 leading-normal text-sm">Informasi Pengiriman</p>
                                             </div>
-                                            <form class="space-y-6  px-6"
-                                                action="/checkout" method="POST">
+                                            <form class="space-y-6  px-6" action="/checkout" method="POST">
                                                 @csrf
 
                                                 <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
@@ -218,7 +217,7 @@
 
                                                     <div>
                                                         <label for="country"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Negara</label>
                                                         <input type="text" value="{{ $user->negara }}" name="negara"
                                                             id="country" placeholder=""
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -228,12 +227,12 @@
 
                                                     <div>
                                                         <label for="Province"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Province</label>
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
 
 
                                                         <select id="Province" name="provinsi_id"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                            <option selected>--- Select Province ---</option>
+                                                            <option selected>--- Pilih Provinsi ---</option>
                                                             @foreach ($provinsi as $data)
                                                                 <option value="{{ $data->provinsi }}">
                                                                     {{ $data->provinsi }}</option>
@@ -244,12 +243,12 @@
                                                     </div>
                                                     <div>
                                                         <label for="kategori"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kabupaten / Kota</label>
 
 
                                                         <select id="kota" name="kota_id"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                            <option selected>--- Select City ---</option>
+                                                            <option selected>--- Pilih Kota ---</option>
                                                             @foreach ($kota as $data)
                                                                 <option value="{{ $data->kota }}">{{ $data->kota }}
                                                                 </option>
@@ -258,14 +257,16 @@
                                                         </select>
 
                                                     </div>
+                                                    </div>
+                                                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                                                     <div>
                                                         <label for="kategori"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">District</label>
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
 
 
                                                         <select id="kota" name="kecamatan_id"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                            <option selected>--- Select District ---</option>
+                                                            <option selected>--- Pilih Kecamatan ---</option>
                                                             @foreach ($kecamatan as $data)
                                                                 <option value="{{ $data->kecamatan }}">
                                                                     {{ $data->kecamatan }}</option>
@@ -278,8 +279,7 @@
 
                                                     <div>
                                                         <label for="postalcode"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Postal
-                                                            Code</label>
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Pos</label>
                                                         <input type="number" value="{{ $user->kodepos }}"
                                                             name="kodepos" id="postalcode" placeholder=""
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -287,14 +287,40 @@
                                                     </div>
                                                     <div>
                                                         <label for="mobile"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mobile</label>
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No WA / Telepon</label>
                                                         <input type="number" value="{{ $user->no_hp }}" name="no_hp"
                                                             id="mobile" placeholder=""
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                             required>
                                                     </div>
+                                                    <div>
+                                                        <label for="kurir"
+                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jasa Kurir</label>
 
 
+                                                        <select id="kurir" name="kurir"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                            <option selected>--- Pilih Kurir ---</option>
+                                                            @foreach ($kecamatan as $data)
+                                                                <option value="{{ $data->kecamatan }}">
+                                                                    {{ $data->kecamatan }}</option>
+                                                            @endforeach
+
+                                                        </select>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div>
+                                                    <label for="mobile"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Catatan</label>
+
+
+                                                    <textarea id="message" name="catatan" rows="4"
+                                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                        placeholder="Write your thoughts here..."></textarea>
 
                                                 </div>
 
@@ -305,35 +331,44 @@
                                                     <div class="flex py-2.5">
 
 
-                                                            <input type="text" placeholder="Masukkan Kupon" class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-36 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                                                            <button type="button" class="p-2.5   w-14 text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-lg inline-block cursor-pointer border-0 bg-transparent">Use</button>
+                                                        <input type="text" placeholder="Masukkan Kupon"
+                                                            class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-36 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                                        <button type="button"
+                                                            class="p-2.5   w-14 text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-lg inline-block cursor-pointer border-0 bg-transparent">Use</button>
 
                                                     </div>
                                                     <div>
                                                         <label for="total"
                                                             class="block mb-2  tracking-normal text-start uppercase align-middle bg-transparent text-sm whitespace-nowrap border-b-gray-200 text-slate-400 ">Diskon</label>
-                                                            <input hidden type="text" value="{{$diskon}}" name="diskon">
+                                                        <input hidden type="text" value="{{ $diskon }}"
+                                                            name="diskon">
+
                                                         <span
                                                             class="font-bold tracking-normal text-end uppercase align-middle bg-transparent border-b letter border-b-solid text-sm whitespace-nowrap border-b-gray-200 text-red-400 ">
-                                                             - Rp. {{ number_format($diskon) }}</span>
-                                                    </div><div>
+                                                            - Rp. {{ number_format($diskon) }}</span>
+                                                    </div>
+                                                    <div>
                                                         <label for="total"
-                                                            class="block mb-2 tracking-normal text-start uppercase align-middle bg-transparent text-sm whitespace-nowrap border-b-gray-200 text-slate-400 ">Sub Total</label>
-                                                            <input hidden type="text" name="subtotal" id="" value="{{$total}}">
+                                                            class="block mb-2 tracking-normal text-start uppercase align-middle bg-transparent text-sm whitespace-nowrap border-b-gray-200 text-slate-400 ">Sub
+                                                            Total</label>
+                                                        <input hidden type="text" name="subtotal" id=""
+                                                            value="{{ $total }}">
                                                         <span
                                                             class="font-bold tracking-normal text-end uppercase align-middle bg-transparent border-b letter border-b-solid text-sm whitespace-nowrap border-b-gray-200 text-slate-400">
-                                                             Rp. {{ number_format($total) }}</span>
+                                                            Rp. {{ number_format($total) }}</span>
                                                     </div>
                                                     @php
                                                         $totalbayar = $total - $diskon;
                                                     @endphp
                                                     <div>
                                                         <label for="total"
-                                                            class="block mb-2 font-bold tracking-normal text-start uppercase align-middle bg-transparent text-sm whitespace-nowrap border-b-gray-200 text-slate-400 ">Total Bayar</label>
-                                                            <input hidden type="text" value="{{$totalbayar}}" name="total">
-                                                            <span
+                                                            class="block mb-2 font-bold tracking-normal text-start uppercase align-middle bg-transparent text-sm whitespace-nowrap border-b-gray-200 text-slate-400 ">Total
+                                                            Bayar</label>
+                                                        <input hidden type="text" value="{{ $totalbayar }}"
+                                                            name="total">
+                                                        <span
                                                             class="font-bold tracking-normal text-end uppercase align-middle bg-transparent border-b letter border-b-solid text-sm whitespace-nowrap border-b-gray-200 text-slate-400">
-                                                             Rp. {{ number_format($totalbayar) }}</span>
+                                                            Rp. {{ number_format($totalbayar) }}</span>
                                                     </div>
 
 

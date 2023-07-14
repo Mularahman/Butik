@@ -17,9 +17,11 @@ return new class extends Migration
             $table->integer('transactions_id');
             $table->integer('produk_id');
             $table->integer('harga');
-
+            $table->integer('qty');
             $table->string('status'); // PENDING/SHIPPING/SUCCESS
-            $table->string('resi');
+            $table->string('resi')->nullable();
+            $table->string('kurir')->nullable();
+            $table->text('catatan')->nullable();
             $table->string('kode');
             $table->timestamps();
         });

@@ -30,7 +30,6 @@
     </nav>
 @endsection
 @section('content')
-
     <section class="px-10 py-2">
 
         <ul class="flex flex-col pl-0 mx-auto mb-0 list-none lg:flex-row xl:ml-auto">
@@ -52,7 +51,6 @@
         </ul>
 
 
-        @foreach ($transaction as $transaksi)
         <div
             class="lack/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border mt-3">
 
@@ -61,65 +59,132 @@
 
                     <table id="dataTable" datatable id="datatable-search"
                         class="table  table-flush items-center w-full mb-0 align-top border-gray-200 text-slate-500">
-                        <tbody>
-                            <tr>
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">{{$transaksi->tanggal}}</span>
-                                </td>
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs"> {{$transaksi->kode}} </span>
-                                </td>
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">Rp {{number_format($transaksi->total_harga)}}</span>
-                                </td>
 
-                                <td
-                                class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                @if ($transaksi->transaction_status == 'PENDING')
+                        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-4 mb-3">
 
-                                <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Pending</span>
-                                @elseif ($transaksi->transaction_status == 'PROCESSED')
-                                <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Processed</span>
-                                @elseif ($transaksi->transaction_status == 'PACKING')
-                                <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Packing</span>
-                                @elseif ($transaksi->transaction_status == 'DELIVERED')
-                                <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Delivered</span>
-                                @elseif ($transaksi->transaction_status == 'COMPLATED')
-                                <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Complated</span>
-
-                                @endif
-                            </td>
-
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
-
-                                    <a type="button" href="/transaction_details"
-                                        data-tooltip-target="detail"
-                                        class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
-
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                          </svg>
-                                    </a>
+                            <div>
+                                <div class="font-bold flex ml-4 mb-4 mt-3">
+                                    <h3 class="me-2">Data Pesanan</h3>
+                                    <span
+                                    class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{ $transaction->count() }}</span>
 
 
-                                    <div id="detail" role="tooltip"
-                                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                                        Lihat Detail
-                                        <div class="tooltip-arrow" data-popper-arrow></div>
+
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-center justify-end flex items-content-end mr-4">
+
+                                    <div class="flex py-2.5">
+
+                                        <form action="/transaction_buy" method="get">
+                                        <input type="text" name="search" placeholder="Cari Invoice"
+                                            class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                        <button type="submit"
+                                            class="p-2.5   w-20 text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-lg inline-block cursor-pointer border-0 bg-transparent">Cari</button>
+                                        </form>
                                     </div>
+                                </div>
+                            </div>
+
+
+                        </div>
 
 
 
+
+
+
+
+                        <tbody>
+                            <tr class="border-b-2 font-bold">
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">No</span>
                                 </td>
-
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Tanggal</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Invoice</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Total Bayar</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Status Pembayaran</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Action</span>
+                                </td>
                             </tr>
+                            @foreach ($transaction as $transaksi)
+                                <tr class="border-b-2">
+                                    <td
+                                        class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                        <span class="font-semibold leading-tight text-xs">{{ $loop->iteration }}</span>
+                                    </td>
+                                    <td
+                                        class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                        <span class="font-semibold leading-tight text-xs">{{ $transaksi->tanggal }}</span>
+                                    </td>
+                                    <td
+                                        class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                        <span class="font-semibold leading-tight text-xs"> {{ $transaksi->kode }} </span>
+                                    </td>
+                                    <td
+                                        class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                        <span class="font-semibold leading-tight text-xs">Rp
+                                            {{ number_format($transaksi->total_harga) }}</span>
+                                    </td>
+
+                                    <td
+                                        class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                        @if ($transaksi->transaction_status == 'PENDING')
+                                            <span
+                                                class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
+                                        @elseif ($transaksi->transaction_status == 'SUCCESS')
+                                            <span
+                                                class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Susccess</span>
+                                        @elseif ($transaksi->transaction_status == 'CANCELLED')
+                                            <
+                                                class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+                                                Cancelled</ @endif
+                                    </td>
+
+                                    <td
+                                        class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
+
+                                        <a type="button" href="/transaction_detail/{{ $transaksi->id }}"
+                                            data-tooltip-target="detail"
+                                            class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                <path
+                                                    d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                            </svg>
+                                        </a>
 
 
+                                        <div id="detail" role="tooltip"
+                                            class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                            Lihat Detail
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+
+
+
+                                    </td>
+
+                                </tr>
+                            @endforeach
                         </tbody>
 
 
@@ -128,7 +193,6 @@
                 </div>
             </div>
         </div>
-        @endforeach
 
 
     </section>

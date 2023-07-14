@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
@@ -185,14 +186,14 @@
                                               </div>
                                             </div>
                                     </div>
-                                    
+
                                     <div class="mb-4 "  v-if="is_store_open">
                                         <label for="countries"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Toko</label>
-                                        <input type="text" id="toko_baru" name="nama_toko" 
+                                        <input type="text" id="toko_baru" name="nama_toko"
                                             class="text-sm toko_baru focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                                            required 
-                                            autocomplete="nama_toko" 
+                                            required
+                                            autocomplete="nama_toko"
                                             autofocus disabled/>
                                     </div>
                                     <div class="mb-4"  v-if="is_store_open">
