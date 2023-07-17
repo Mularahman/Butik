@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class CustomerController extends Controller
 {
     public function customer(){
-        $customer = User::where('role', 'member')->get();
+        $customer = User::where('role', 'pelanggan')->orWhere('role', 'member')->get();
 
         return view('admin.Pelanggan.pelanggan',[
             'customer' => $customer

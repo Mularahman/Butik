@@ -80,7 +80,7 @@
 </head>
 
 <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
-    @include('pelanggan.layouts.partial.sidebar')
+    @include('member.layouts.partial.sidebar')
     @if (session()->has('success'))
         <div class="fixed z-50 top-0 flex justify-center items-center w-full">
 
@@ -114,7 +114,7 @@
         </div>
     @endif
     <div class="p-4 lg:ml-64">
-        <main class=" xl:ml-68.5  h-full max-h-screen rounded-xl transition-all duration-200">
+        <main class=" xl:ml-68.5 h-full max-h-screen rounded-xl transition-all duration-200">
             <!-- Navbar -->
             <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start"
                 navbar-main navbar-scroll="true">
@@ -142,49 +142,49 @@
 
                                 <!-- Dropdown menu -->
                                 <div id="dropdownAvatar"
-                                    class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600 ">
+                                class="z-[1000] hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600 ">
 
-                                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white ">
-                                        <figcaption class="flex items-center justify-center space-x-2">
-                                            @if (Auth()->user()->image)
-                                            <img class="w-10 h-10 rounded-full"
-                                                src="{{ asset('storage/' . auth()->user()->image) }}" alt="user photo">
-                                        @else
-                                            <img src="{{ 'https://ui-avatars.com/api/?size=32&name=' . auth()->user()->name }}"
-                                                class="w-12 h-12 rounded-full border-2 border-orange-300 " alt="{{ auth()->user()->name }}">
-                                        @endif
-                                            <div class="space-y-0.5 font-medium dark:text-white text-left">
-                                                <div>{{ auth()->user()->name }}</div>
-                                            <div class="font-medium truncate">{{ auth()->user()->email }}</div>
-                                            </div>
-                                        </figcaption>
-                                        <a href="/dashboard-member" type="button" class="text-gray-900 mt-3 w-full bg-white border border-gray-300 focus:outline-none text-center hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-3 py-2 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Switch To Seller</a>
-                                    </div>
-
-                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                        aria-labelledby="dropdownUserAvatarButton">
-                                        <li>
-                                            <a href="/transaction"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Transaction</a>
-                                        </li>
-                                        <li>
-                                            <a href="/myaccount"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Account</a>
-                                        </li>
-                                        {{--  <li>
-                                            <a href="#"
-                                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-                                        </li>  --}}
-                                    </ul>
-                                    <div class="py-2">
-                                        <form action="/logout" method="post">
-                                            @csrf
-                                            <button type="submit"
-                                                class="block w-full text-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                                out</button>
-                                        </form>
-                                    </div>
+                                <div class="px-4 py-3 text-sm text-gray-900 dark:text-white ">
+                                    <figcaption class="flex items-center justify-center space-x-2">
+                                        @if (Auth()->user()->image)
+                                        <img class="w-10 h-10 rounded-full"
+                                            src="{{ asset('storage/' . auth()->user()->image) }}" alt="user photo">
+                                    @else
+                                        <img src="{{ 'https://ui-avatars.com/api/?size=32&name=' . auth()->user()->name }}"
+                                            class="w-12 h-12 rounded-full border-2 border-orange-300 " alt="{{ auth()->user()->name }}">
+                                    @endif
+                                        <div class="space-y-0.5 font-medium dark:text-white text-left">
+                                            <div>{{ auth()->user()->name }}</div>
+                                        <div class="font-medium truncate">{{ auth()->user()->email }}</div>
+                                        </div>
+                                    </figcaption>
+                                    <a href="/home" type="button" class="text-gray-900 mt-3 w-full bg-white border border-gray-300 focus:outline-none text-center hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-3 py-2 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Switch To Buying</a>
                                 </div>
+
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                    aria-labelledby="dropdownUserAvatarButton">
+                                    <li>
+                                        <a href="/dashboard-member"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="/myaccount"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Account</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                                    </li>
+                                </ul>
+                                <div class="py-2">
+                                    <form action="/logout" method="post">
+                                        @csrf
+                                        <button type="submit"
+                                            class="block w-full text-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                            out</button>
+                                    </form>
+                                </div>
+                            </div>
 
                                 <span
                                     class="font-medium me-2 mx-2 leading-normal text-sm text-gray-600 dark:text-gray-300">Hi,
@@ -200,7 +200,7 @@
             </nav>
 
             @yield('content')
-          @include('pelanggan.layouts.partial.footer')
+          @include('member.layouts.partial.footer')
         </main>
     </div>
     @stack('addon-script')

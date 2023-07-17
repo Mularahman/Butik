@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KuponController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FrontendController;
@@ -86,41 +88,52 @@ Route:: group(['middleware' => ['auth', 'admin']], function(){
 
 });
 
-Route:: group(['middleware' => ['auth', 'member']], function(){
+Route:: group(['middleware' => ['auth']], function(){
+    Route:: get('/dashboard-member', [MemberController::class, 'index']);
 
+    Route:: get('/myproduct-member', [MemberController::class, 'myproduct']);
+    Route:: get('/myproduct_add', [MemberController::class, 'add_product']);
+    Route:: Post('/myproduct_add_aksi', [MemberController::class, 'add_product_aksi']);
+    Route:: get('/myproduct_edit/{id}', [MemberController::class, 'edit_product'])->name('dashboard-product-details');
+    Route:: put('/myproduct_edit_aksi/{id}', [MemberController::class, 'edit_product_aksi']);
+    Route:: post('/myproduct/gallery', [MemberController::class, 'myproductgallery']);
+    Route:: get('/myproduct/gallery/delete/{id}', [MemberController::class, 'myproductgallerydelete'])->name('dashboard-product-gallery-delete');
+
+
+    Route:: get('/transaction-member', [MemberController::class, 'transactionactive']);
+
+    Route:: post('/transaction_active_aksi/{id}', [MemberController::class, 'transactionactive_aksi']);
+    Route:: get('/transaction_confirmed', [MemberController::class, 'transactionconfirmed']);
+    Route:: get('/transaction_packing', [MemberController::class, 'transactionpacking']);
+    Route:: get('/transaction_delivered', [MemberController::class, 'transactiondelivered']);
+    Route:: get('/transaction_complated', [MemberController::class, 'transactioncomplated']);
+
+
+    Route:: get('/transaction_details/{id}', [MemberController::class, 'transaction_details']);
+    Route:: get('/transaction_detail_dikirim/{id}', [MemberController::class, 'transaction_detail_dikirim']);
+
+
+
+    Route:: get('/review-member', [MemberController::class, 'review']);
+
+    Route:: get('/store_settings', [MemberController::class, 'store']);
+    Route:: put('/store_aksi/{id}', [MemberController::class, 'store_aksi']);
 });
 
 Route:: group(['middleware' => ['auth']], function(){
-    Route:: get('/dashboard', [PelangganController::class, 'index']);
 
-    Route:: get('/myproduct', [PelangganController::class, 'myproduct']);
-    Route:: get('/myproduct_add', [PelangganController::class, 'add_product']);
-    Route:: Post('/myproduct_add_aksi', [PelangganController::class, 'add_product_aksi']);
-    Route:: get('/myproduct_edit/{id}', [PelangganController::class, 'edit_product'])->name('dashboard-product-details');
-    Route:: put('/myproduct_edit_aksi/{id}', [PelangganController::class, 'edit_product_aksi']);
-    Route:: post('/myproduct/gallery', [PelangganController::class, 'myproductgallery']);
-    Route:: get('/myproduct/gallery/delete/{id}', [PelangganController::class, 'myproductgallerydelete'])->name('dashboard-product-gallery-delete');
+    Route:: get('/transaction', [PelangganController::class, 'transactionbuy']);
+    Route:: get('/transaction-confirmed', [PelangganController::class, 'transactionconfirmed']);
+    Route:: get('/transaction-packing', [PelangganController::class, 'transactionpacking']);
+    Route:: get('/transaction-delivered', [PelangganController::class, 'transactiondelivered']);
+    Route:: get('/transaction-complated', [PelangganController::class, 'transactioncomplated']);
 
-
-    Route:: get('/transaction', [PelangganController::class, 'transaction']);
-    Route:: get('/transaction_buy', [PelangganController::class, 'transactionbuy']);
-    Route:: get('/transaction_active', [PelangganController::class, 'transactionactive']);
-    Route:: post('/transaction_active_aksi/{id}', [PelangganController::class, 'transactionactive_aksi']);
-    Route:: get('/transaction_confirmed', [PelangganController::class, 'transactionconfirmed']);
-    Route:: get('/transaction_packing', [PelangganController::class, 'transactionpacking']);
-    Route:: get('/transaction_delivered', [PelangganController::class, 'transactiondelivered']);
-    Route:: get('/transaction_complated', [PelangganController::class, 'transactioncomplated']);
-
-    Route:: get('/transaction_sell', [PelangganController::class, 'transactionactive']);
-
-    Route:: get('/transaction_details/{id}', [PelangganController::class, 'transaction_details']);
-    Route:: get('/transaction_detail_dikirim/{id}', [PelangganController::class, 'transaction_detail_dikirim']);
     Route:: get('/transaction_detail/{id}', [PelangganController::class, 'transaction_detail']);
     Route:: post('/transaction_selesai_aksi/{id}', [PelangganController::class, 'transaction_selesai']);
 
-
-    Route:: get('/store_settings', [PelangganController::class, 'store']);
-    Route:: put('/store_aksi/{id}', [PelangganController::class, 'store_aksi']);
+    Route:: get('/review', [UlasanController::class, 'ulasan']);
+    Route:: get('/review-product/{id}', [UlasanController::class, 'ulasanproduk'])->name('review.product');
+    Route:: post('/review-aksi/{id}', [UlasanController::class, 'ulasanaksi']);
 
     Route:: get('/myaccount', [PelangganController::class, 'myaccount']);
     Route:: put('/myaccount/update_profile/{id}', [PelangganController::class, 'update_profile']);
@@ -135,6 +148,8 @@ Route::group(['middleware' => 'auth'], function() {
     //
     Route:: post('/produk_add_keranjang/{id}', [FrontendController::class, 'produkaddkeranjang']);
     Route:: get('/keranjang', [FrontendController::class, 'keranjang']);
+    Route:: get('/buka-toko', [FrontendController::class, 'bukatoko']);
+    Route:: post('/buka-toko_aksi', [FrontendController::class, 'bukatokoaksi']);
     Route:: delete('/keranjang_delete/{id}', [FrontendController::class, 'deletekeranjang']);
     Route:: post('/checkout', [TransaksiController::class, 'transaksi']);
 

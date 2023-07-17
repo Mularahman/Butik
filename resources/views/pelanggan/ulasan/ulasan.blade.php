@@ -1,6 +1,6 @@
 @extends('pelanggan.layouts.app')
 @section('title')
-    Transaction
+    Review
 @endsection
 @section('keranjang')
     <a href="/keranjang" type="button"
@@ -24,49 +24,13 @@
                 <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
             </li>
             <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
-                aria-current="page">Transaction</li>
+                aria-current="page">Review</li>
         </ol>
-        <h6 class="mb-0 font-bold capitalize">Transaction Buy Product</h6>
+        <h6 class="mb-0 font-bold capitalize">Review Product</h6>
     </nav>
 @endsection
 @section('content')
     <section class="px-10 py-2">
-
-        <ul class="flex flex-col pl-0 mx-auto mb-0 list-none lg:flex-row xl:ml-auto">
-            <li>
-                <a class="block font-bold border-b-2 me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
-                    href="/transaction">
-                    Active Order
-                </a>
-            </li>
-            <li>
-                <a class="block font-bold  me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
-                    href="/transaction-confirmed">
-                    Confirmed
-                </a>
-            </li>
-            <li>
-                <a class="block font-bold  me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
-                    href="/transaction-packing">
-                    Packing
-                </a>
-            </li>
-            <li>
-                <a class="block font-bold  me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
-                    href="/transaction-delivered">
-                    Delivered
-                </a>
-            </li>
-            <li>
-                <a class="font-bold me-3 block px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
-                    href="/transaction-complated">
-                    Complated
-                </a>
-            </li>
-
-        </ul>
-
-
         <div
             class="lack/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border mt-3">
 
@@ -80,7 +44,7 @@
 
                             <div>
                                 <div class="font-bold flex ml-4 mb-4 mt-3">
-                                    <h3 class="me-2">Pesanan</h3>
+                                    <h3 class="me-2">Review</h3>
                                     <span
                                     class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$transactiondetail->count()}}</span>
 
@@ -102,15 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
-
-
-
-
-
-
 
                         <tbody>
                             <tr class="border-b-2 font-bold">
@@ -124,16 +80,14 @@
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class=" leading-tight ">Invoice</span>
+                                    <span class=" leading-tight ">Produk</span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class=" leading-tight ">Total Bayar</span>
+                                    <span class=" leading-tight ">Review</span>
                                 </td>
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class=" leading-tight ">Status Pembayaran</span>
-                                </td>
+
+
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                     <span class=" leading-tight ">Action</span>
@@ -152,25 +106,6 @@
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                         <span class="font-semibold leading-tight text-xs"> {{ $transaksi->transaction->kode }} </span>
-                                    </td>
-                                    <td
-                                        class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs">Rp
-                                            {{ number_format($transaksi->transaction->total_harga) }}</span>
-                                    </td>
-
-                                    <td
-                                        class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                        @if ($transaksi->transaction->transaction_status == 'PENDING')
-                                            <span
-                                                class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
-                                        @elseif ($transaksi->transaction->transaction_status == 'SUCCESS')
-                                            <span
-                                                class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Susccess</span>
-                                        @elseif ($transaksi->transaction->transaction_status == 'CANCELLED')
-                                            <
-                                                class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
-                                                Cancelled</ @endif
                                     </td>
 
                                     <td

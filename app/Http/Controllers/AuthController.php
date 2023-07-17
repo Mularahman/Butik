@@ -26,7 +26,7 @@ class AuthController extends Controller
                 return redirect()->intended('/dashboard-admin');
             }
             if(Auth::user()->role == 'member'){
-                return redirect()->intended('/dashboard');
+                return redirect()->intended('/dashboard-member');
             }
             return redirect()->intended('/home');
         }
@@ -36,7 +36,7 @@ class AuthController extends Controller
     public function register(){
         $kategori = Kategori::all();
         return view('admin.auth.signup',[
-            'kategori' => $kategori 
+            'kategori' => $kategori
         ]);
     }
 
@@ -59,7 +59,7 @@ class AuthController extends Controller
             'kategori_id' => isset($data['kategori_id']) ? $data['kategori_id'] : 0,
             'status_toko' => $data['status_toko'] ? 1 : 0,
             'role' => $data['status_toko'] ? 'member' : 'pelanggan',
-        
+
         ]);
         $user = $this->validate($request, [
             'email' => 'required',

@@ -101,21 +101,40 @@
 
                                         <!-- Dropdown menu -->
                                         <div id="dropdownAvatar"
-                                            class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                                            <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                                                <div>{{ auth()->user()->name }}</div>
-                                                <div class="font-medium truncate">{{ auth()->user()->email }}</div>
+                                            class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700 dark:divide-gray-600 ">
+
+                                            <div class="px-4 py-3 text-sm text-gray-900 dark:text-white ">
+                                                <figcaption class="flex items-center justify-center space-x-2">
+                                                    @if (Auth()->user()->image)
+                                                    <img class="w-10 h-10 rounded-full"
+                                                        src="{{ asset('storage/' . auth()->user()->image) }}" alt="user photo">
+                                                @else
+                                                    <img src="{{ 'https://ui-avatars.com/api/?size=32&name=' . auth()->user()->name }}"
+                                                        class="w-12 h-12 rounded-full border-2 border-orange-300 " alt="{{ auth()->user()->name }}">
+                                                @endif
+                                                    <div class="space-y-0.5 font-medium dark:text-white text-left">
+                                                        <div>{{ auth()->user()->name }}</div>
+                                                    <div class="font-medium truncate">{{ auth()->user()->email }}</div>
+                                                    </div>
+                                                </figcaption>
+                                                @if (Auth()->user()->role == 'pelanggan')
+                                                <a href="/buka-toko" type="button" class="text-gray-900 mt-3 w-full bg-white border border-gray-300 focus:outline-none text-center hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-3 py-2 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Switch To Seller</a>
+                                                @else
+                                                <a href="/dashboard-member" type="button" class="text-gray-900 mt-3 w-full bg-white border border-gray-300 focus:outline-none text-center hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-3 py-2 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Switch To Seller</a>
+                                                @endif
+
                                             </div>
+
                                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                                 aria-labelledby="dropdownUserAvatarButton">
                                                 <li>
-                                                    <a href="/dashboard"
-                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                                                    <a href="/transaction"
+                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Transaction</a>
                                                 </li>
-                                                {{--  <li>
-                                                    <a href="/setting"
-                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-                                                </li>  --}}
+                                                <li>
+                                                    <a href="/myaccount"
+                                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Account</a>
+                                                </li>
                                                 {{--  <li>
                                                     <a href="#"
                                                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>

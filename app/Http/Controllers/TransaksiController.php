@@ -14,9 +14,8 @@ use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
-    public function transaksi(Request $request){
-        
-
+    public function transaksi(Request $request)
+    {
         $user = Auth::user();
         $user->update($request->except(['total','subtotal','diskon']));
         $date = Carbon::now();
@@ -77,100 +76,100 @@ class TransaksiController extends Controller
         catch(Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function callback(Request $request)
+    {
+
+        // Set konfigurasi midtrans
+        Config::$serverKey = config('services.midtrans.serverKey');
+        Config::$isProduction = config('services.midtrans.isProduction');
+        Config::$isSanitized = config('services.midtrans.isSanitized');
+        Config::$is3ds = config('services.midtrans.is3ds');
+
+        // Buat instance midtrans notification
+        $notification = new Notification();
+        // Assign ke variable untuk memudahkan coding
+        $status = $notification->transaction_status;
+        $type = $notification->payment_type;
+        $fraud = $notification->fraud_status;
+        $order_id = $notification->order_id;
+
+        $order = explode('/', $order_id);
+        // Cari transaksi berdasarkan ID
+        $transaction = Transaction::findOrFail($order[1]);
+
+        // Handle notification status midtrans
+        if ($status == 'capture') {
+            if ($type == 'credit_card'){
+                if($fraud == 'challenge'){
+                    $transaction->transaction_status = 'PENDING';
+                }
+                else {
+                    $transaction->transaction_status = 'SUCCESS';
+                }
+            }
+        }
+        else if ($status == 'settlement'){
+            $transaction->transaction_status = 'SUCCESS';
+        }
+        else if($status == 'pending'){
+            $transaction->transaction_status = 'PENDING';
+        }
+        else if ($status == 'deny') {
+            $transaction->transaction_status = 'CANCELLED';
+        }
+        else if ($status == 'expire') {
+            $transaction->transaction_status = 'CANCELLED';
+        }
+        else if ($status == 'cancel') {
+            $transaction->transaction_status = 'CANCELLED';
         }
 
-        public function callback(Request $request)
+        // Simpan transaksi
+        $transaction->save();
+
+        // Kirimkan email
+        if ($transaction)
         {
-
-            // Set konfigurasi midtrans
-            Config::$serverKey = config('services.midtrans.serverKey');
-            Config::$isProduction = config('services.midtrans.isProduction');
-            Config::$isSanitized = config('services.midtrans.isSanitized');
-            Config::$is3ds = config('services.midtrans.is3ds');
-
-            // Buat instance midtrans notification
-            $notification = new Notification();
-            // Assign ke variable untuk memudahkan coding
-            $status = $notification->transaction_status;
-            $type = $notification->payment_type;
-            $fraud = $notification->fraud_status;
-            $order_id = $notification->order_id;
-
-            $order = explode('/', $order_id);
-            // Cari transaksi berdasarkan ID
-            $transaction = Transaction::findOrFail($order[1]);
-
-            // Handle notification status midtrans
-            if ($status == 'capture') {
-                if ($type == 'credit_card'){
-                    if($fraud == 'challenge'){
-                        $transaction->transaction_status = 'PENDING';
-                    }
-                    else {
-                        $transaction->transaction_status = 'SUCCESS';
-                    }
-                }
-            }
-            else if ($status == 'settlement'){
-                $transaction->transaction_status = 'SUCCESS';
-            }
-            else if($status == 'pending'){
-                $transaction->transaction_status = 'PENDING';
-            }
-            else if ($status == 'deny') {
-                $transaction->transaction_status = 'CANCELLED';
-            }
-            else if ($status == 'expire') {
-                $transaction->transaction_status = 'CANCELLED';
-            }
-            else if ($status == 'cancel') {
-                $transaction->transaction_status = 'CANCELLED';
-            }
-
-            // Simpan transaksi
-            $transaction->save();
-
-           // Kirimkan email
-            if ($transaction)
+            if($status == 'capture' && $fraud == 'accept' )
             {
-                if($status == 'capture' && $fraud == 'accept' )
-                {
-                    //
-                }
-                else if ($status == 'settlement')
-                {
-                    //
-                }
-                else if ($status == 'success')
-                {
-                    //
-                }
-                else if($status == 'capture' && $fraud == 'challenge' )
-                {
-                    return response()->json([
-                        'meta' => [
-                            'code' => 200,
-                            'message' => 'Midtrans Payment Challenge'
-                        ]
-                    ]);
-                }
-                else
-                {
-                    return response()->json([
-                        'meta' => [
-                            'code' => 200,
-                            'message' => 'Midtrans Payment not Settlement'
-                        ]
-                    ]);
-                }
-
+                //
+            }
+            else if ($status == 'settlement')
+            {
+                //
+            }
+            else if ($status == 'success')
+            {
+                //
+            }
+            else if($status == 'capture' && $fraud == 'challenge' )
+            {
                 return response()->json([
                     'meta' => [
                         'code' => 200,
-                        'message' => 'Midtrans Notification Success'
+                        'message' => 'Midtrans Payment Challenge'
                     ]
                 ]);
             }
+            else
+            {
+                return response()->json([
+                    'meta' => [
+                        'code' => 200,
+                        'message' => 'Midtrans Payment not Settlement'
+                    ]
+                ]);
+            }
+
+            return response()->json([
+                'meta' => [
+                    'code' => 200,
+                    'message' => 'Midtrans Notification Success'
+                ]
+            ]);
         }
     }
+}
 

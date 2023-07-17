@@ -35,7 +35,7 @@
             <div class="w-full max-w-full px-3 mt-0 mb-6 ">
                 <div class="grid lg:grid-cols-2 gap-4">
                     <div
-                        class="border-black/12.5 mb-7 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+                        class="border-black/12.5 mb-7 shadow-soft-xl  flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
 
                         <div class="flex-auto  px-0 pb-2">
                             <div class="overflow-x-auto">
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                     <div
-                        class="border-black/12.5 mb-7 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+                        class="border-black/12.5 mb-7 shadow-soft-xl  flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                         <div class="flex-auto  px-0 pb-2">
                             <div class="overflow-x-auto">
                                 <div class="px-6 py-3 lg:px-8">
@@ -165,7 +165,7 @@
                     </div>
                 </div>
                 <div
-                    class="border-black/12.5  shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+                    class="border-black/12.5  shadow-soft-xl  flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
 
                     <div class="flex-auto  px-0 pb-2">
                         <div class="overflow-x-auto">

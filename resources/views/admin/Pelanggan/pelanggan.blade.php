@@ -155,12 +155,7 @@
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Role</th>
-                                        <th
-                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Jenis Kelamin</th>
-                                        <th
-                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Alamat</th>
+                                       
                                         {{--  <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Slug</th>  --}}
@@ -196,6 +191,14 @@
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
                                             <span class="font-semibold leading-tight text-xs"> {{$item->name}} </span>
+                                        </td>
+                                        <td
+                                            class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
+                                            <span class="font-semibold leading-tight text-xs"> {{$item->email}} </span>
+                                        </td>
+                                        <td
+                                            class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
+                                            <span class="font-semibold leading-tight text-xs"> {{$item->role}} </span>
                                         </td>
                                         {{--  <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">

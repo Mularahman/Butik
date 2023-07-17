@@ -1,0 +1,33 @@
+Role == ADMIN
+1. Mengelola kategori
+2. Mengelola Produk
+3. Mengelola Slider
+4. Mengelola Kupon
+5. Mengelola Wilayah
+6. Melihat Laporan Transaksi Keseluruhan
+7. Melihat Laporan Keuangan
+8. Melihat Laporan Pengguna terdaftar
+9. Melihat Laporan Member(Pemilik Toko) terdaftar
+10. Melihat Laporan Pengguna paling banyak transaksi
+
+Role == Member
+1. Mengelola Produk
+2. Mengelola Pesanan (Masuk, dikemas, dikirim, selesai)
+3. Mengelola Pengembalian Produk
+4. Mengelola Ulasan
+5. Bisa mengatur Toko Buka atau Tutup
+6. Mengelola Stok Produk
+7. Melihat Laporan Transaksi khusus toko tersebut 
+8. Melihat Laporan Produk yang sering dibeli
+9. Melihat Laporan Laba/rugi
+10. Melihat Laporan Histori pelanggan yang pernah membeli
+11. Melihat Laporan Ulasan
+12. Mengelola Kupon Diskon
+
+Role == Pelanggan
+1. Membeli Produk
+2. Mengatur profile
+3. Melihat keranjang
+4. Melacak pesanan
+5. Memberi Ulasan produk yang sudah dibeli
+6. Melihat histori pembelian

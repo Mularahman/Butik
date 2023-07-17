@@ -1,4 +1,4 @@
-@extends('pelanggan.layouts.app')
+@extends('member.layouts.app')
 @section('title')
     Transaction
 @endsection
@@ -36,18 +36,18 @@
         <ul class="flex flex-col pl-0 mx-auto mb-0 list-none lg:flex-row xl:ml-auto">
             <li>
                 <a class="block font-bold  me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
-                    href="/transaction_active">
+                    href="/transaction-member">
                     Active Order
                 </a>
             </li>
             <li>
-                <a class="block font-bold  me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
+                <a class="block font-bold border-b-2 me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
                     href="/transaction_confirmed">
                     Confirmed
                 </a>
             </li>
             <li>
-                <a class="block font-bold border-b-2 me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
+                <a class="block font-bold  me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
                     href="/transaction_packing">
                     Packing
                 </a>
@@ -59,14 +59,13 @@
                 </a>
             </li>
             <li>
-                <a class="font-bold me-3 block px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
+                <a class="font-bold  me-3 block px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
                     href="/transaction_complated">
                     Complated
                 </a>
             </li>
 
         </ul>
-
 
 
 
@@ -79,10 +78,9 @@
 
                     <table id="dataTable" datatable id="datatable-search"
                         class="table table-flush items-center w-full mb-0 align-top border-gray-200 text-slate-500">
-
                         <thead>
                             <div class="font-bold flex ml-4 mb-4 mt-3">
-                                <h3 class="me-2">Data Pesanan Dikemas</h3>
+                                <h3 class="me-2">Data Pesanan Dikonfirmasi</h3>
                                 <span
                                 class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$transactiondetail->count()}}</span>
                             </div>
@@ -116,11 +114,11 @@
                             </tr>
                             @foreach ($transactiondetail as $transaksi)
                             <tr class="border-b-2">
-
                                 <td
                                 class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                 <span class="font-semibold leading-tight text-xs">{{ $loop->iteration }}</span>
                             </td>
+
 
                                 <td class="p-2 align-middle text-center bg-transparent  whitespace-nowrap">
                                     <div class="mt-2 avatar-group">
@@ -149,7 +147,7 @@
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
 
-                                    <a type="button" href="/transaction_detail_dikirim/{{$transaksi->id}}"
+                                    <a type="button" href="/transaction_details/{{$transaksi->id}}"
                                         data-tooltip-target="detail"
                                         class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 pacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 
@@ -171,8 +169,8 @@
                                 </td>
 
                             </tr>
-
                             @endforeach
+
                         </tbody>
 
 
@@ -181,6 +179,7 @@
                 </div>
             </div>
         </div>
+
 
 
     </section>

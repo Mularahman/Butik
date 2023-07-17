@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kota;
 use App\Models\User;
 use App\Models\Produk;
+use App\Models\Kategori;
 use App\Models\Provinsi;
 use App\Models\Kecamatan;
 use App\Models\Keranjang;
@@ -36,8 +37,8 @@ class FrontendController extends Controller
 
             $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
         }
-        $produk = Produk::with('kategori','users','gambar')->where('id', $id)->get();
-
+        $produk = Produk::with('kategori','users','gambar','ulasan')->where('id', $id)->get();
+       
         return view('detail',[
             'produk' => $produk,
             'keranjang' => $keranjang,
@@ -46,7 +47,7 @@ class FrontendController extends Controller
 
     public function produkaddkeranjang(Request $request, $id){
         $data = $request->all();
-        
+
         if(Auth::check()){
 
             Keranjang::create([
@@ -86,8 +87,29 @@ class FrontendController extends Controller
         return redirect('/keranjang')->with('success', 'Berhasil Menghapus Produk Dari Keranjang !');
     }
 
-    public function konfirmasibayar(){
-        return view('konfirmasibayar');
+    public function bukatoko(){
+        $kategori = Kategori::all();
+        return view('bukatoko',[
+            'kategori' => $kategori
+        ]);
     }
+    public function bukatokoaksi(Request $request){
+        $data = $this->validate($request,[
+            'nama_toko' => ['nullable', 'string', 'max:255'],
+            'kategori_id' => ['nullable', 'integer', 'exists:kategoris,id'],
+            'status_toko' => ['required'],
+        ]);
+
+        $save = User::findOrFail(Auth::user()->id);
+        $save->nama_toko = isset($data['nama_toko']) ? $data['nama_toko'] : '';
+        $save->kategori_id = isset($data['kategori_id']) ? $data['kategori_id'] : 0;
+        $save->status_toko = $data['status_toko'] ? 1 : 0;
+        $save->role = $data['status_toko'] ? 'member' : 'pelanggan';
+
+        $save->save();
+
+        return redirect('/dashboard-member');
+    }
+
 
 }
