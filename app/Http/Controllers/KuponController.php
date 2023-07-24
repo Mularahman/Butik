@@ -17,18 +17,16 @@ class KuponController extends Controller
     public function tambahKupon(Request $request){
 
         $data = $this->validate($request, [
-            'kupon' => 'required',
-            'diskon' => 'required',
-            'validasi' => 'required',
-            'status' => 'required',
+            'code' => 'required|unique:kupons|string|max:10', // Ubah aturan validasi sesuai kebutuhan
+            'description' => 'required|string',
+            'type' => 'required|in:percentage,fixed',
+            'amount' => 'required|numeric',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+            'is_active' => 'boolean',
         ]);
 
-        Kupon::create([
-            'kupon' => $data['kupon'],
-            'diskon' => $data['diskon'],
-            'validasi' => $data['validasi'],
-            'status' => $data['status'],
-        ]);
+        Kupon::create($request->all());
 
         return back()->with('success', 'Berhasil Menambah Data Kupon!' );
     }
@@ -42,12 +40,18 @@ class KuponController extends Controller
     }
 
     public function editKupon($id, Request $request){
-        $data = $this->validate($request, [
-            'kupon' => 'required',
+        $request->validate([
+            'code' => 'required|unique:kupons,code,'.$id.'|string|max:10',
+            'description' => 'required|string',
+            'type' => 'required|in:percentage,fixed',
+            'amount' => 'required|numeric',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+            'is_active' => 'boolean',
         ]);
-        $update = Kupon::Find($id);
 
-        $update->update($data);
+        $diskon = Kupon::findOrFail($id);
+        $diskon->update($request->all());
 
         return redirect('/kupon-admin')->with('success', 'Berhasil Mengedit Data Kupon!');
     }

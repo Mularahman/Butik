@@ -21,6 +21,6 @@ class Ulasan extends Model
         return $this->belongsTo( User::class, 'user_id', 'id');
     }
     public function produk(){
-        return $this->belongsTo( Produk::class, 'id', 'produk_id' );
+        return $this->belongsTo( Produk::class, 'produk_id', 'id' );
     }
 }

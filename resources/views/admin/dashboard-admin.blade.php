@@ -31,21 +31,27 @@ Dashboard
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Today's
-                                    Money</p>
+                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Transaksi</p>
                                 <h5 class="mb-0 font-bold">
-                                    $53,000
-                                    <span
-                                        class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>
+                                    500
+                                    {{--  <span
+                                        class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>  --}}
                                 </h5>
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">
                             <div
-                                class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                                <i
-                                    class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
-                            </div>
+                            class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 py-2.7 flex h-12 w-12 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"
+                            fill="currentColor"
+                            class="bi bi-clipboard-data-fill  flex-shrink-0   text-white transition duration-75 group-hover:text-gray-300 dark:text-gray-400 dark:group-hover:text-white"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z" />
+                            <path
+                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V8Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z" />
+                        </svg>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -60,21 +66,20 @@ Dashboard
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Today's
-                                    Users</p>
+                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Toko</p>
                                 <h5 class="mb-0 font-bold">
-                                    2,300
-                                    <span
-                                        class="leading-normal text-sm font-weight-bolder text-lime-500">+3%</span>
+                                   200
+                                    {{--  <span
+                                        class="leading-normal text-sm font-weight-bolder text-lime-500">+3%</span>  --}}
                                 </h5>
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">
                             <div
-                                class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                                <i
-                                    class="ni leading-none ni-world text-lg relative top-3.5 text-white"></i>
-                            </div>
+                            class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 py-2.7 flex h-12 w-12 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"
+                            fill="currentColor" class="flex-shrink-0 text-white "  viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M547.6 103.8L490.3 13.1C485.2 5 476.1 0 466.4 0H109.6C99.9 0 90.8 5 85.7 13.1L28.3 103.8c-29.6 46.8-3.4 111.9 51.9 119.4c4 .5 8.1 .8 12.1 .8c26.1 0 49.3-11.4 65.2-29c15.9 17.6 39.1 29 65.2 29c26.1 0 49.3-11.4 65.2-29c15.9 17.6 39.1 29 65.2 29c26.2 0 49.3-11.4 65.2-29c16 17.6 39.1 29 65.2 29c4.1 0 8.1-.3 12.1-.8c55.5-7.4 81.8-72.5 52.1-119.4zM499.7 254.9l-.1 0c-5.3 .7-10.7 1.1-16.2 1.1c-12.4 0-24.3-1.9-35.4-5.3V384H128V250.6c-11.2 3.5-23.2 5.4-35.6 5.4c-5.5 0-11-.4-16.3-1.1l-.1 0c-4.1-.6-8.1-1.3-12-2.3V384v64c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V384 252.6c-4 1-8 1.8-12.3 2.3z"/></svg>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -89,21 +94,25 @@ Dashboard
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">New Clients
+                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Pelanggan
                                 </p>
                                 <h5 class="mb-0 font-bold">
-                                    +3,462
-                                    <span
-                                        class="leading-normal text-red-600 text-sm font-weight-bolder">-2%</span>
+                                   500
+                                    {{--  <span
+                                        class="leading-normal text-red-600 text-sm font-weight-bolder">-2%</span>  --}}
                                 </h5>
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">
                             <div
-                                class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                                <i
-                                    class="ni leading-none ni-paper-diploma text-lg relative top-3.5 text-white"></i>
-                            </div>
+                            class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 py-2.7 flex h-12 w-12 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"
+                                fill="currentColor" class="flex-shrink-0 text-white " viewBox="0 0 640 512">
+                                <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                <path
+                                    d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z" />
+                            </svg>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -118,19 +127,24 @@ Dashboard
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Sales</p>
+                                <p class="mb-0 font-sans font-semibold leading-normal text-sm">Total Transaksi</p>
                                 <h5 class="mb-0 font-bold">
-                                    $103,430
-                                    <span
-                                        class="leading-normal text-sm font-weight-bolder text-lime-500">+5%</span>
+                                   Rp. 500.000
+                                    {{--  <span
+                                        class="leading-normal text-sm font-weight-bolder text-lime-500">+5%</span>  --}}
                                 </h5>
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">
                             <div
-                                class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                                <i class="ni leading-none ni-cart text-lg relative top-3.5 text-white"></i>
-                            </div>
+                            class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 py-2.7 flex h-12 w-12 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"
+                                        fill="currentColor" class="flex-shrink-0 text-white " viewBox="0 0 512 512">
+                                        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                        <path
+                                            d="M320 96H192L144.6 24.9C137.5 14.2 145.1 0 157.9 0H354.1c12.8 0 20.4 14.2 13.3 24.9L320 96zM192 128H320c3.8 2.5 8.1 5.3 13 8.4C389.7 172.7 512 250.9 512 416c0 53-43 96-96 96H96c-53 0-96-43-96-96C0 250.9 122.3 172.7 179 136.4l0 0 0 0c4.8-3.1 9.2-5.9 13-8.4zm84 88c0-11-9-20-20-20s-20 9-20 20v14c-7.6 1.7-15.2 4.4-22.2 8.5c-13.9 8.3-25.9 22.8-25.8 43.9c.1 20.3 12 33.1 24.7 40.7c11 6.6 24.7 10.8 35.6 14l1.7 .5c12.6 3.8 21.8 6.8 28 10.7c5.1 3.2 5.8 5.4 5.9 8.2c.1 5-1.8 8-5.9 10.5c-5 3.1-12.9 5-21.4 4.7c-11.1-.4-21.5-3.9-35.1-8.5c-2.3-.8-4.7-1.6-7.2-2.4c-10.5-3.5-21.8 2.2-25.3 12.6s2.2 21.8 12.6 25.3c1.9 .6 4 1.3 6.1 2.1l0 0 0 0c8.3 2.9 17.9 6.2 28.2 8.4V424c0 11 9 20 20 20s20-9 20-20V410.2c8-1.7 16-4.5 23.2-9c14.3-8.9 25.1-24.1 24.8-45c-.3-20.3-11.7-33.4-24.6-41.6c-11.5-7.2-25.9-11.6-37.1-15l0 0-.7-.2c-12.8-3.9-21.9-6.7-28.3-10.5c-5.2-3.1-5.3-4.9-5.3-6.7c0-3.7 1.4-6.5 6.2-9.3c5.4-3.2 13.6-5.1 21.5-5c9.6 .1 20.2 2.2 31.2 5.2c10.7 2.8 21.6-3.5 24.5-14.2s-3.5-21.6-14.2-24.5c-6.5-1.7-13.7-3.4-21.1-4.7V216z" />
+                                    </svg>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -138,66 +152,8 @@ Dashboard
         </div>
     </div>
 
-    <!-- cards row 2 -->
-    <div class="flex flex-wrap mt-6 -mx-3">
-        <div class="w-full px-3 mb-6 lg:mb-0 lg:w-7/12 lg:flex-none">
-            <div
-                class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
-                <div class="flex-auto p-4">
-                    <div class="flex flex-wrap -mx-3">
-                        <div class="max-w-full px-3 lg:w-1/2 lg:flex-none">
-                            <div class="flex flex-col h-full">
-                                <p class="pt-2 mb-1 font-semibold">Built by developers</p>
-                                <h5 class="font-bold">Soft UI Dashboard</h5>
-                                <p class="mb-12">From colors, cards, typography to complex elements, you
-                                    will find the full documentation.</p>
-                                <a class="mt-auto mb-0 font-semibold leading-normal text-sm group text-slate-500"
-                                    href="javascript:;">
-                                    Read More
-                                    <i
-                                        class="fas fa-arrow-right ease-bounce text-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div
-                            class="max-w-full px-3 mt-12 ml-auto text-center lg:mt-0 lg:w-5/12 lg:flex-none">
-                            <div class="h-full bg-gradient-to-tl from-purple-700 to-pink-500 rounded-xl">
-                                <img src="/assets/img/shapes/waves-white.svg"
-                                    class="absolute top-0 hidden w-1/2 h-full lg:block" alt="waves" />
-                                <div class="relative flex items-center justify-center h-full">
-                                    <img class="relative z-20 w-full pt-6"
-                                        src="/assets/img/illustrations/rocket-white.png"
-                                        alt="rocket" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="w-full max-w-full px-3 lg:w-5/12 lg:flex-none">
-            <div
-                class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border p-4">
-                <div class="relative h-full overflow-hidden bg-cover rounded-xl"
-                    style="background-image: url('./assets/img/ivancik.jpg')">
-                    <span
-                        class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
-                    <div class="relative z-10 flex flex-col flex-auto h-full p-4">
-                        <h5 class="pt-2 mb-6 font-bold text-white">Work with the rockets</h5>
-                        <p class="text-white">Wealth creation is an evolutionarily recent positive-sum
-                            game. It is all about who take the opportunity first.</p>
-                        <a class="mt-auto mb-0 font-semibold leading-normal text-white group text-sm"
-                            href="javascript:;">
-                            Read More
-                            <i
-                                class="fas fa-arrow-right ease-bounce text-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
+{{--
     <!-- cards row 3 -->
 
     <div class="flex flex-wrap mt-6 -mx-3">
@@ -392,26 +348,26 @@ Dashboard
                 </div>
             </div>
         </div>
-    </div>
+    </div>  --}}
 
     <!-- cards row 4 -->
 
     <div class="flex flex-wrap my-6 -mx-3">
         <!-- card 1 -->
 
-        <div class="w-full max-w-full px-3 mt-0 mb-6 md:mb-0 md:w-1/2 md:flex-none lg:w-2/3 lg:flex-none">
+        <div class="w-full max-w-full px-3 mt-0 mb-6 md:mb-0 md:flex-none lg:flex-none">
             <div
                 class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                 <div
                     class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
                     <div class="flex flex-wrap mt-0 -mx-3">
                         <div class="flex-none w-7/12 max-w-full px-3 mt-0 lg:w-1/2 lg:flex-none">
-                            <h6>Projects</h6>
-                            <p class="mb-0 leading-normal text-sm">
+                            <h6>Member</h6>
+                            {{--  <p class="mb-0 leading-normal text-sm">
                                 <i class="fa fa-check text-cyan-500"></i>
                                 <span class="ml-1 font-semibold">30 done</span>
                                 this month
-                            </p>
+                            </p>  --}}
                         </div>
                         <div
                             class="flex-none w-5/12 max-w-full px-3 my-auto text-right lg:w-1/2 lg:flex-none">
@@ -447,448 +403,176 @@ Dashboard
                                 <tr>
                                     <th
                                         class="px-6 py-3 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        Companies</th>
+                                        Nama Toko</th>
                                     <th
                                         class="px-6 py-3 pl-2 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        Members</th>
+                                        Nama Pemilik</th>
                                     <th
                                         class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        Budget</th>
+                                        Pendapatan</th>
                                     <th
                                         class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        Completion</th>
+                                        Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="flex px-2 py-1">
-                                            <div>
+                                            {{--  <div>
                                                 <img src="/assets/img/small-logos/logo-xd.svg"
                                                     class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
                                                     alt="xd" />
-                                            </div>
+                                            </div>  --}}
                                             <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Soft UI XD Version
+                                                <h6 class="mb-0 leading-normal text-sm">7 Seconds
                                                 </h6>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="mt-2 avatar-group">
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-1.jpg"
-                                                    class="w-full rounded-full" alt="team1" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Ryan Tompson
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
-                                            </div>
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
+                                        <div class="flex px-2 py-1">
+                                            <div>
                                                 <img src="/assets/img/team-2.jpg"
-                                                    class="w-full rounded-full" alt="team2" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Romina Hadid
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
+                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-8 w-8 rounded-xl"
+                                                    alt="xd" />
                                             </div>
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-3.jpg"
-                                                    class="w-full rounded-full" alt="team3" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Alexander Smith
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
-                                            </div>
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-4.jpg"
-                                                    class="w-full rounded-full" alt="team4" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Jessica Doe
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
+                                            <div class="flex flex-col justify-center">
+                                                <h6 class="mb-0 leading-normal text-sm">Member1
+                                                </h6>
                                             </div>
                                         </div>
+
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> $14,000 </span>
+                                        <span class="font-semibold leading-tight text-xs"> Rp. 1.400.000 </span>
                                     </td>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="w-3/4 mx-auto">
-                                            <div>
-                                                <div>
-                                                    <span
-                                                        class="font-semibold leading-tight text-xs">60%</span>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 -ml-px flex h-1.5 w-3/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                    role="progressbar" aria-valuenow="60"
-                                                    aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
+
+                                            <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-red-600 to-rose-400">Tidak Aktif</span>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="flex px-2 py-1">
-                                            <div>
+                                            {{--  <div>
                                                 <img src="/assets/img/small-logos/logo-atlassian.svg"
                                                     class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
                                                     alt="atlassian" />
-                                            </div>
+                                            </div>  --}}
                                             <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Add Progress Track
+                                                <h6 class="mb-0 leading-normal text-sm">Eriga
                                                 </h6>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="mt-2 avatar-group">
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-2.jpg"
-                                                    class="w-full rounded-full" alt="team5" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Romina Hadid
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
+                                        <div class="flex px-2 py-1">
+                                            <div>
+                                                <img src="/assets/img/team-1.jpg"
+                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-8 w-8 rounded-xl"
+                                                    alt="xd" />
                                             </div>
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-4.jpg"
-                                                    class="w-full rounded-full" alt="team6" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Jessica Doe
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
+                                            <div class="flex flex-col justify-center">
+                                                <h6 class="mb-0 leading-normal text-sm">Member2
+                                                </h6>
                                             </div>
                                         </div>
+
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> $3,000 </span>
+                                        <span class="font-semibold leading-tight text-xs"> Rp. 5.400.000 </span>
                                     </td>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="w-3/4 mx-auto">
-                                            <div>
-                                                <div>
-                                                    <span
-                                                        class="font-semibold leading-tight text-xs">10%</span>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 w-1/10 -ml-px flex h-1.5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                    role="progressbar" aria-valuenow="10"
-                                                    aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
+
+                                            <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-green-600 to-lime-400">Aktif</span>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="/assets/img/small-logos/logo-slack.svg"
+                                            {{--  <div>
+                                                <img src="/assets/img/small-logos/logo-xd.svg"
                                                     class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                    alt="team7" />
-                                            </div>
+                                                    alt="xd" />
+                                            </div>  --}}
                                             <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Fix Platform Errors
+                                                <h6 class="mb-0 leading-normal text-sm">Dress Kita
                                                 </h6>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="mt-2 avatar-group">
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
+                                        <div class="flex px-2 py-1">
+                                            <div>
                                                 <img src="/assets/img/team-3.jpg"
-                                                    class="w-full rounded-full" alt="team8" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Romina Hadid
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
+                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-8 w-8 rounded-xl"
+                                                    alt="xd" />
                                             </div>
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-1.jpg"
-                                                    class="w-full rounded-full" alt="team9" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Jessica Doe
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
+                                            <div class="flex flex-col justify-center">
+                                                <h6 class="mb-0 leading-normal text-sm">Member3
+                                                </h6>
                                             </div>
                                         </div>
+
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> Not set </span>
+                                        <span class="font-semibold leading-tight text-xs"> Rp. 3.400.000 </span>
                                     </td>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="w-3/4 mx-auto">
-                                            <div>
-                                                <div>
-                                                    <span
-                                                        class="font-semibold leading-tight text-xs">100%</span>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                <div class="duration-600 ease-soft bg-gradient-to-tl from-green-600 to-lime-400 -mt-0.38 -ml-px flex h-1.5 w-full flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                    role="progressbar" aria-valuenow="100"
-                                                    aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
+
+                                            <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-red-600 to-rose-400">Tidak Aktif</span>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="/assets/img/small-logos/logo-spotify.svg"
+                                            {{--  <div>
+                                                <img src="/assets/img/small-logos/logo-atlassian.svg"
                                                     class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                    alt="spotify" />
-                                            </div>
+                                                    alt="atlassian" />
+                                            </div>  --}}
                                             <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Launch our Mobile
-                                                    App</h6>
+                                                <h6 class="mb-0 leading-normal text-sm">KitaBelanja
+                                                </h6>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="mt-2 avatar-group">
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-4.jpg"
-                                                    class="w-full rounded-full" alt="user1" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Ryan Tompson
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
-                                            </div>
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-3.jpg"
-                                                    class="w-full rounded-full" alt="user2" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Romina Hadid
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
-                                            </div>
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-4.jpg"
-                                                    class="w-full rounded-full" alt="user3" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Alexander Smith
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
-                                            </div>
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-1.jpg"
-                                                    class="w-full rounded-full" alt="user4" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Jessica Doe
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> $20,500 </span>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-                                            <div>
-                                                <div>
-                                                    <span
-                                                        class="font-semibold leading-tight text-xs">100%</span>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                <div class="duration-600 ease-soft bg-gradient-to-tl from-green-600 to-lime-400 -mt-0.38 -ml-px flex h-1.5 w-full flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                    role="progressbar" aria-valuenow="100"
-                                                    aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="flex px-2 py-1">
                                             <div>
-                                                <img src="/assets/img/small-logos/logo-jira.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                    alt="jira" />
+                                                <img src="/assets/img/team-4.jpg"
+                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-8 w-8 rounded-xl"
+                                                    alt="xd" />
                                             </div>
                                             <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Add the New Pricing
-                                                    Page</h6>
+                                                <h6 class="mb-0 leading-normal text-sm">Member4
+                                                </h6>
                                             </div>
                                         </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="mt-2 avatar-group">
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-4.jpg"
-                                                    class="w-full rounded-full" alt="user5" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Ryan Tompson
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
-                                            </div>
-                                        </div>
+
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> $500 </span>
+                                        <span class="font-semibold leading-tight text-xs"> Rp. 7.400.000 </span>
                                     </td>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="w-3/4 mx-auto">
-                                            <div>
-                                                <div>
-                                                    <span
-                                                        class="font-semibold leading-tight text-xs">25%</span>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 -ml-px flex h-1.5 w-1/4 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                    role="progressbar" aria-valuenow="25"
-                                                    aria-valuemin="0" aria-valuemax="25"></div>
-                                            </div>
+
+                                            <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-green-600 to-lime-400">Aktif</span>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="p-2 align-middle bg-transparent border-0 whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="/assets/img/small-logos/logo-invision.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                    alt="invision" />
-                                            </div>
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Redesign New Online
-                                                    Shop</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-0 whitespace-nowrap">
-                                        <div class="mt-2 avatar-group">
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-1.jpg"
-                                                    class="w-full rounded-full" alt="user6" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Ryan Tompson
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
-                                            </div>
-                                            <a href="javascript:;"
-                                                class="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out text-xs hover:z-30"
-                                                data-target="tooltip_trigger" data-placement="bottom">
-                                                <img src="/assets/img/team-4.jpg"
-                                                    class="w-full rounded-full" alt="user7" />
-                                            </a>
-                                            <div data-target="tooltip"
-                                                class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm"
-                                                role="tooltip">
-                                                Jessica Doe
-                                                <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                                                    data-popper-arrow></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td
-                                        class="p-2 leading-normal text-center align-middle bg-transparent border-0 text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> $2,000 </span>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-0 whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-                                            <div>
-                                                <div>
-                                                    <span
-                                                        class="font-semibold leading-tight text-xs">40%</span>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="text-xs h-0.75 w-30 m-0 flex overflow-visible rounded-lg bg-gray-200">
-                                                <div class="duration-600 ease-soft bg-gradient-to-tl from-blue-600 to-cyan-400 -mt-0.38 -ml-px flex h-1.5 w-2/5 flex-col justify-center overflow-hidden whitespace-nowrap rounded bg-fuchsia-500 text-center text-white transition-all"
-                                                    role="progressbar" aria-valuenow="40"
-                                                    aria-valuemin="0" aria-valuemax="40"></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -896,104 +580,7 @@ Dashboard
             </div>
         </div>
 
-        <!-- card 2 -->
 
-        <div class="w-full max-w-full px-3 md:w-1/2 md:flex-none lg:w-1/3 lg:flex-none">
-            <div
-                class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-                <div
-                    class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
-                    <h6>Orders overview</h6>
-                    <p class="leading-normal text-sm">
-                        <i class="fa fa-arrow-up text-lime-500"></i>
-                        <span class="font-semibold">24%</span> this month
-                    </p>
-                </div>
-                <div class="flex-auto p-4">
-                    <div
-                        class="before:border-r-solid relative before:absolute before:top-0 before:left-4 before:h-full before:border-r-2 before:border-r-slate-100 before:content-[''] before:lg:-ml-px">
-                        <div class="relative mb-4 mt-0 after:clear-both after:table after:content-['']">
-                            <span
-                                class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                                <i
-                                    class="relative z-10 text-transparent ni leading-none ni-bell-55 leading-pro bg-gradient-to-tl from-green-600 to-lime-400 bg-clip-text fill-transparent"></i>
-                            </span>
-                            <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                                <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">$2400,
-                                    Design changes</h6>
-                                <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">22
-                                    DEC 7:20 PM</p>
-                            </div>
-                        </div>
-                        <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                            <span
-                                class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                                <i
-                                    class="relative z-10 text-transparent ni leading-none ni-html5 leading-pro bg-gradient-to-tl from-red-600 to-rose-400 bg-clip-text fill-transparent"></i>
-                            </span>
-                            <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                                <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">New
-                                    order #1832412</h6>
-                                <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">21
-                                    DEC 11 PM</p>
-                            </div>
-                        </div>
-                        <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                            <span
-                                class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                                <i
-                                    class="relative z-10 text-transparent ni leading-none ni-cart leading-pro bg-gradient-to-tl from-blue-600 to-cyan-400 bg-clip-text fill-transparent"></i>
-                            </span>
-                            <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                                <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Server
-                                    payments for April</h6>
-                                <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">21
-                                    DEC 9:34 PM</p>
-                            </div>
-                        </div>
-                        <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                            <span
-                                class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                                <i
-                                    class="relative z-10 text-transparent ni leading-none ni-credit-card leading-pro bg-gradient-to-tl from-red-500 to-yellow-400 bg-clip-text fill-transparent"></i>
-                            </span>
-                            <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                                <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">New
-                                    card added for order #4395133</h6>
-                                <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">20
-                                    DEC 2:20 AM</p>
-                            </div>
-                        </div>
-                        <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                            <span
-                                class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                                <i
-                                    class="relative z-10 text-transparent ni leading-none ni-key-25 leading-pro bg-gradient-to-tl from-purple-700 to-pink-500 bg-clip-text fill-transparent"></i>
-                            </span>
-                            <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                                <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Unlock
-                                    packages for development</h6>
-                                <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">18
-                                    DEC 4:54 AM</p>
-                            </div>
-                        </div>
-                        <div class="relative mb-0 after:clear-both after:table after:content-['']">
-                            <span
-                                class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                                <i
-                                    class="relative z-10 text-transparent ni leading-none ni-money-coins leading-pro bg-gradient-to-tl from-gray-900 to-slate-800 bg-clip-text fill-transparent"></i>
-                            </span>
-                            <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                                <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">New
-                                    order #9583120</h6>
-                                <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">17
-                                    DEC</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <footer class="pt-4">

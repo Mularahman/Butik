@@ -93,7 +93,8 @@
                                     <span class=" leading-tight ">Action</span>
                                 </td>
                             </tr>
-                            @foreach ($transactiondetail as $transaksi)
+                            @foreach ($ulasan as $review)
+
                                 <tr class="border-b-2">
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
@@ -101,17 +102,21 @@
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs">{{ $transaksi->transaction->tanggal }}</span>
+                                        <span class="font-semibold leading-tight text-xs">{{ $review->tanggal }}</span>
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> {{ $transaksi->transaction->kode }} </span>
+                                        <span class="font-semibold leading-tight text-xs"> {{ $review->produk->namaproduk }} </span>
+                                    </td>
+                                    <td
+                                        class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                        <span class="font-semibold leading-tight text-xs"> {{ $review->ulasan }} </span>
                                     </td>
 
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
 
-                                        <a type="button" href="/transaction_detail/{{ $transaksi->transaction->id }}"
+                                        <a type="button" href="/produk-detail/{{$review->produk->id}}"
                                             data-tooltip-target="detail"
                                             class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 
@@ -136,6 +141,7 @@
 
                                 </tr>
                             @endforeach
+
                         </tbody>
 
 

@@ -37,7 +37,7 @@
             <li>
                 <a class="block font-bold  me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
                     href="/transaction">
-                    Active Order
+                    My Transaction
                 </a>
             </li>
             <li>
@@ -139,7 +139,7 @@
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">{{$transaksi->kode}}</span>
+                                    <span class="font-semibold leading-tight text-xs">{{$transaksi->transaction->kode}}</span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
@@ -149,7 +149,7 @@
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
 
-                                    <a type="button" href="/transaction_detail/{{$transaksi->id}}"
+                                    <a type="button" href="/transaction_detailss/{{$transaksi->id}}"
                                         data-tooltip-target="detail"
                                         class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 pacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 

@@ -26,7 +26,7 @@ class PelangganController extends Controller
     public function transactionbuy(){
 
         $user = User::all();
-        $transaction = Transaction::with('user')->where(['transaction_status' => 'SUCCESS' , 'user_id'=> Auth::user()->id])->get();
+        $transaction = Transaction::with('user')->where( 'user_id', Auth::user()->id)->get();
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('transaction', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->where('status','PENDING')->get();
@@ -102,12 +102,28 @@ class PelangganController extends Controller
     public function transaction_detail($id){
         $user = User::all();
         $transaction = Transaction::with('user')->where(['id' => $id , 'user_id'=> Auth::user()->id])->first();
-        $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->where('transactions_id',$id)->get();
-
+        $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->where('transaction_id',$id)->get();
+      
 
         $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
 
         return view('pelanggan.transactions.transaction_detail',[
+            'user' => $user,
+            'keranjang' => $keranjang,
+            'keranjang' => $keranjang,
+            'transaction' => $transaction,
+            'transactiondetail' => $transactiondetail,
+        ]);
+    }
+    public function transaction_details($id){
+        $user = User::all();
+        $transaction = Transaction::with('user')->where(['id' => $id , 'user_id'=> Auth::user()->id])->first();
+        $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->where('transaction_id',$id)->get();
+
+
+        $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
+
+        return view('pelanggan.transactions.transaction_details',[
             'user' => $user,
             'keranjang' => $keranjang,
             'keranjang' => $keranjang,

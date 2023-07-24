@@ -36,7 +36,7 @@
             <li>
                 <a class="block font-bold border-b-2 me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
                     href="/transaction">
-                    Active Order
+                    My Transaction
                 </a>
             </li>
             <li>
@@ -82,7 +82,7 @@
                                 <div class="font-bold flex ml-4 mb-4 mt-3">
                                     <h3 class="me-2">Pesanan</h3>
                                     <span
-                                    class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$transactiondetail->count()}}</span>
+                                    class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$transaction->count()}}</span>
 
 
 
@@ -139,7 +139,7 @@
                                     <span class=" leading-tight ">Action</span>
                                 </td>
                             </tr>
-                            @foreach ($transactiondetail as $transaksi)
+                            @foreach ($transaction as $transaksi)
                                 <tr class="border-b-2">
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
@@ -147,36 +147,36 @@
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs">{{ $transaksi->transaction->tanggal }}</span>
+                                        <span class="font-semibold leading-tight text-xs">{{ $transaksi->tanggal }}</span>
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> {{ $transaksi->transaction->kode }} </span>
+                                        <span class="font-semibold leading-tight text-xs"> {{ $transaksi->kode }} </span>
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                         <span class="font-semibold leading-tight text-xs">Rp
-                                            {{ number_format($transaksi->transaction->total_harga) }}</span>
+                                            {{ number_format($transaksi->total_harga) }}</span>
                                     </td>
 
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                        @if ($transaksi->transaction->transaction_status == 'PENDING')
+                                        @if ($transaksi->transaction_status == 'PENDING')
                                             <span
-                                                class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Pending</span>
-                                        @elseif ($transaksi->transaction->transaction_status == 'SUCCESS')
+                                                class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">UNPAID</span>
+                                        @elseif ($transaksi->transaction_status == 'SUCCESS')
                                             <span
-                                                class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Susccess</span>
-                                        @elseif ($transaksi->transaction->transaction_status == 'CANCELLED')
+                                                class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">PAID</span>
+                                        @elseif ($transaksi->transaction_status == 'CANCELLED')
                                             <
                                                 class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
-                                                Cancelled</ @endif
+                                                CANCELLED</ @endif
                                     </td>
 
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
 
-                                        <a type="button" href="/transaction_detail/{{ $transaksi->transaction->id }}"
+                                        <a type="button" href="/transaction_detailss/{{ $transaksi->id }}"
                                             data-tooltip-target="detail"
                                             class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 

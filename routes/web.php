@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KuponController;
+use App\Http\Controllers\KurirController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UlasanController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FrontendController;
@@ -53,8 +55,10 @@ Route:: group(['middleware' => ['auth', 'admin']], function(){
     Route:: get('/produk-admin_tambah', [ProdukController::class, 'tambahprodukview']);
     Route:: Post('/produk-admin_tambah_aksi', [ProdukController::class, 'tambahproduk']);
     Route:: delete('/produk-admin_hapus/{id}', [ProdukController::class, 'hapusproduk']);
-    Route:: get('/produk-admin_edit/{id}', [ProdukController::class, 'editprodukview']);
+    Route:: get('/produk-admin_edit/{id}', [ProdukController::class, 'editprodukview'])->name('dashboard-product');
     Route:: put('/produk-admin_edit_aksi/{id}', [ProdukController::class, 'editproduk']);
+    Route:: post('/produk-admin/gallery', [ProdukController::class, 'myproductgallery']);
+    Route:: get('/produk-admin/gallery/delete/{id}', [ProdukController::class, 'myproductgallerydelete'])->name('dashboard-product-galleri-delete');
 
     Route:: get('/slider-admin', [SliderController::class, 'slider']);
     Route:: Post('/tambah_slider', [SliderController::class, 'tambahslider']);
@@ -65,6 +69,11 @@ Route:: group(['middleware' => ['auth', 'admin']], function(){
     Route:: Post('/tambah_kupon', [KuponController::class, 'tambahkupon']);
     Route:: delete('/hapus_kupon/{id}', [KuponController::class, 'hapuskupon']);
     Route:: put('/edit_kupon/{id}', [KuponController::class, 'editkupon']);
+
+    Route:: get('/kurir-admin', [KurirController::class, 'kurir']);
+    Route:: Post('/tambah_kurir', [KurirController::class, 'tambahkurir']);
+    Route:: delete('/hapus_kurir/{id}', [KurirController::class, 'hapuskurir']);
+    Route:: put('/edit_kurir/{id}', [KurirController::class, 'editkurir']);
 
     Route:: get('/provinsi-admin', [WilayahController::class, 'provinsi']);
     Route:: Post('/tambah_provinsi', [WilayahController::class, 'tambahprovinsi']);
@@ -116,8 +125,16 @@ Route:: group(['middleware' => ['auth']], function(){
 
     Route:: get('/review-member', [MemberController::class, 'review']);
 
+    Route:: get('/refund-member', [MemberController::class, 'refund']);
+
     Route:: get('/store_settings', [MemberController::class, 'store']);
     Route:: put('/store_aksi/{id}', [MemberController::class, 'store_aksi']);
+
+    Route:: get('/laporan-transaksi', [LaporanController::class, 'transaksi']);
+    Route:: get('/laporan-pelanggan', [LaporanController::class, 'pelanggan']);
+    Route:: get('/laporan-produk', [LaporanController::class, 'produk']);
+    Route:: get('/laporan-ulasan', [LaporanController::class, 'review']);
+    Route:: get('/laporan-laba', [LaporanController::class, 'laba']);
 });
 
 Route:: group(['middleware' => ['auth']], function(){
@@ -129,11 +146,20 @@ Route:: group(['middleware' => ['auth']], function(){
     Route:: get('/transaction-complated', [PelangganController::class, 'transactioncomplated']);
 
     Route:: get('/transaction_detail/{id}', [PelangganController::class, 'transaction_detail']);
+    Route:: get('/transaction_detailss/{id}', [PelangganController::class, 'transaction_details']);
     Route:: post('/transaction_selesai_aksi/{id}', [PelangganController::class, 'transaction_selesai']);
 
     Route:: get('/review', [UlasanController::class, 'ulasan']);
     Route:: get('/review-product/{id}', [UlasanController::class, 'ulasanproduk'])->name('review.product');
+    Route:: get('/produk-detail/{id}', [UlasanController::class, 'produk']);
     Route:: post('/review-aksi/{id}', [UlasanController::class, 'ulasanaksi']);
+
+    Route:: get('/refund', [UlasanController::class, 'refund']);
+    Route:: post('/refund-aksi', [UlasanController::class, 'refundaksi']);
+    Route:: get('/refund/{id}', [UlasanController::class, 'formrefund']);
+
+    Route:: post('/refund-tolak/{id}', [UlasanController::class, 'refundtolak']);
+    Route:: post('/refund-terima/{id}', [UlasanController::class, 'refundterima']);
 
     Route:: get('/myaccount', [PelangganController::class, 'myaccount']);
     Route:: put('/myaccount/update_profile/{id}', [PelangganController::class, 'update_profile']);
@@ -147,11 +173,13 @@ Route:: get('/detail-produk/{id}', [FrontendController::class, 'detailproduk']);
 Route::group(['middleware' => 'auth'], function() {
     //
     Route:: post('/produk_add_keranjang/{id}', [FrontendController::class, 'produkaddkeranjang']);
+    Route:: post('/produk_add_keranjangs/{id}', [FrontendController::class, 'produkaddkeranjangs']);
     Route:: get('/keranjang', [FrontendController::class, 'keranjang']);
     Route:: get('/buka-toko', [FrontendController::class, 'bukatoko']);
     Route:: post('/buka-toko_aksi', [FrontendController::class, 'bukatokoaksi']);
     Route:: delete('/keranjang_delete/{id}', [FrontendController::class, 'deletekeranjang']);
     Route:: post('/checkout', [TransaksiController::class, 'transaksi']);
+    Route:: get('/buatpesanan', [TransaksiController::class, 'checkout']);
 
 });
 

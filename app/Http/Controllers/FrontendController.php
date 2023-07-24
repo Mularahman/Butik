@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kota;
 use App\Models\User;
+use App\Models\Kurir;
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Provinsi;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class FrontendController extends Controller
 {
     public function home(){
+        $kategori = Kategori::all();
         $keranjang = Keranjang::all();
         if(Auth::check()){
 
@@ -27,6 +29,7 @@ class FrontendController extends Controller
         return view('home',[
             'produk' => $produk,
             'keranjang' => $keranjang,
+            'kategori' => $kategori,
         ]);
 
     }
@@ -38,13 +41,32 @@ class FrontendController extends Controller
             $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
         }
         $produk = Produk::with('kategori','users','gambar','ulasan')->where('id', $id)->get();
-       
+
         return view('detail',[
             'produk' => $produk,
             'keranjang' => $keranjang,
         ]);
     }
 
+    public function produkaddkeranjangs(Request $request, $id){
+        $data = $request->all();
+
+        if(Auth::check()){
+
+            Keranjang::create([
+                'produk_id' => $id,
+                'user_id' => Auth::user()->id,
+                'jumlah' => 1
+            ]);
+            return back();
+        }
+        return redirect('/login');
+
+
+
+
+
+    }
     public function produkaddkeranjang(Request $request, $id){
         $data = $request->all();
 
@@ -72,9 +94,11 @@ class FrontendController extends Controller
         $provinsi = Provinsi::with('kecamatans','kotas')->get();
         $kota = Kota::all();
         $kecamatan = Kecamatan::all();
+        $kurir = Kurir::all();
         return view('keranjang',[
             'keranjang' => $keranjang,
             'user' => $user,
+            'kurir' => $kurir,
             'id' => $id,
             'provinsi' => $provinsi,
             'kota' => $kota,

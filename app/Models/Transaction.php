@@ -24,4 +24,12 @@ class Transaction extends Model
     public function user(){
         return $this->belongsTo( User::class, 'user_id', 'id');
     }
+    public function transaction_details()
+    {
+        return $this->hasMany(TransactionDetail::class);
+    }
+    public function totalSoldQuantity()
+    {
+        return $this->transaction_details()->sum('qty');
+    }
 }

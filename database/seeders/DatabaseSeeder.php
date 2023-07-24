@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'pakaian',
 
         ]);
+
         DB::table('subkategoris')->insert([
             'kategori_id' => 1,
             'subkategori' => 'kemeja',
@@ -76,6 +77,24 @@ class DatabaseSeeder extends Seeder
             'kota_id' => 1,
             'kecamatan' => 'Banjarmasin Utara',
 
+        ]);
+        DB::table('kurirs')->insert([
+            'kurir' => 'J&T',
+
+        ]);
+        DB::table('kurirs')->insert([
+            'kurir' => 'JNE',
+
+        ]);
+
+        DB::table('kupons')->insert([
+            'code' => 'FIRST2023',
+            'description' => 'Diskon Spesial Transaksi Pertama',
+            'type' => 'percentage',
+            'amount' => 15, // 15% diskon
+            'start_date' => '2023-06-01',
+            'end_date' => '2023-08-31',
+            'is_active' => true,
         ]);
 
     }

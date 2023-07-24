@@ -37,7 +37,7 @@
             <li>
                 <a class="block font-bold  me-3 px-4 py-2 mr-2 transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
                     href="/transaction">
-                    Active Order
+                    My Transaction
                 </a>
             </li>
             <li>
@@ -139,7 +139,7 @@
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">{{$transaksi->kode}}</span>
+                                    <span class="font-semibold leading-tight text-xs">{{$transaksi->transaction->kode}}</span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">

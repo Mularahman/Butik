@@ -172,7 +172,7 @@
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Account</a>
                                     </li>
                                     <li>
-                                        <a href="#"
+                                        <a href="/billings-member"
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
                                     </li>
                                 </ul>
@@ -189,7 +189,7 @@
                                 <span
                                     class="font-medium me-2 mx-2 leading-normal text-sm text-gray-600 dark:text-gray-300">Hi,
                                     {{ auth()->user()->name }}</span>
-                                @yield('keranjang')
+
 
 
                             </li>

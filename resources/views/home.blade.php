@@ -135,8 +135,8 @@
                                 <div class="text-center align-middle">
                                     <div
                                         class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-orange-300 to-yellow-400 shadow-soft-2xl">
-                                        <i class="ni ni-money-coins text-lg relative top-3.5 text-white"
-                                            aria-hidden="true"></i>
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="text-white relative top-2.5" viewBox="0 0 640 512"><path d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 208c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/></svg>
                                     </div>
                                     <h5 class="mb-0 text-sm font-bold">
                                         Pengiriman Cepat
@@ -160,8 +160,7 @@
                                 <div class="text-center align-middle">
                                     <div
                                         class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-orange-300 to-yellow-400 shadow-soft-2xl">
-                                        <i class="ni ni-money-coins text-lg relative top-3.5 text-white"
-                                            aria-hidden="true"></i>
+                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="relative text-white top-2.5" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M4.1 38.2C1.4 34.2 0 29.4 0 24.6C0 11 11 0 24.6 0H133.9c11.2 0 21.7 5.9 27.4 15.5l68.5 114.1c-48.2 6.1-91.3 28.6-123.4 61.9L4.1 38.2zm503.7 0L405.6 191.5c-32.1-33.3-75.2-55.8-123.4-61.9L350.7 15.5C356.5 5.9 366.9 0 378.1 0H487.4C501 0 512 11 512 24.6c0 4.8-1.4 9.6-4.1 13.6zM80 336a176 176 0 1 1 352 0A176 176 0 1 1 80 336zm184.4-94.9c-3.4-7-13.3-7-16.8 0l-22.4 45.4c-1.4 2.8-4 4.7-7 5.1L168 298.9c-7.7 1.1-10.7 10.5-5.2 16l36.3 35.4c2.2 2.2 3.2 5.2 2.7 8.3l-8.6 49.9c-1.3 7.6 6.7 13.5 13.6 9.9l44.8-23.6c2.7-1.4 6-1.4 8.7 0l44.8 23.6c6.9 3.6 14.9-2.2 13.6-9.9l-8.6-49.9c-.5-3 .5-6.1 2.7-8.3l36.3-35.4c5.6-5.4 2.5-14.8-5.2-16l-50.1-7.3c-3-.4-5.7-2.4-7-5.1l-22.4-45.4z"/></svg>
                                     </div>
                                     <h5 class="mb-0 text-sm font-bold">
                                         Kualitas Terjamin
@@ -184,8 +183,9 @@
                                 <div class="text-center align-middle">
                                     <div
                                         class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-orange-300 to-yellow-400 shadow-soft-2xl">
-                                        <i class="ni ni-money-coins text-lg relative top-3.5 text-white"
-                                            aria-hidden="true"></i>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-credit-card-2-back-fill text-white relative top-2.5" viewBox="0 0 16 16">
+                                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1H0z"/>
+                                          </svg>
                                     </div>
                                     <h5 class="mb-0 text-sm font-bold">Pembayaran Mudah
                                         {{--  <span
@@ -207,8 +207,10 @@
                                 <div class="text-center align-middle">
                                     <div
                                         class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-orange-300 to-yellow-400 shadow-soft-2xl">
-                                        <i class="ni ni-money-coins text-lg relative top-3.5 text-white"
-                                            aria-hidden="true"></i>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill-check text-white relative top-2.5" viewBox="0 0 16 16">
+                                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                            <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z"/>
+                                          </svg>
                                     </div>
                                     <h5 class="mb-0 text-sm font-bold">
                                         Admin Bersahabat
@@ -262,7 +264,7 @@
                                                     <path
                                                         d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                                 </svg>Detail</a>
-                                            <form class="" action="/produk_cart" method="POST">
+                                            <form class="" action="/produk_add_keranjangs/{{ $item->id }}" method="POST">
                                                 @csrf
 
 

@@ -6,6 +6,7 @@ use App\Models\Kota;
 use App\Models\User;
 use App\Models\Gambar;
 use App\Models\Produk;
+use App\Models\Refund;
 use App\Models\Ulasan;
 use App\Models\Kategori;
 use App\Models\Provinsi;
@@ -25,21 +26,39 @@ class MemberController extends Controller
      //dashboard
      public function index(){
         $user = User::all();
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
+        $produk = Produk::with('kategori', 'users','gambar')->where('user_id', Auth::user()->id)->get();
+        $transaction = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
+            $produk->where('user_id', Auth::user()->id);
+        })->get();
+        $customer = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
+            $produk->where('user_id', Auth::user()->id);
+        })->latest()->take(5)->get();
+        $recent = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
+            $produk->where('user_id', Auth::user()->id);
+        })->latest()->take(3)->get();
+        $data = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
+            $produk->where('user_id', Auth::user()->id);
+        })->get();
+
+        foreach($data as $total){
+            $pendapatan = $total->transaction->sum('total_harga');
+        }
         return view('member.dashboard',[
             'user' => $user,
-            'keranjang' => $keranjang,
+            'produk' => $produk,
+            'transaction' => $transaction,
+            'customer' => $customer,
+            'pendapatan' => $pendapatan,
+            'recent' => $recent,
         ]);
     }
      //myproduct
      public function myproduct(){
         $user = User::all();
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
         $produk = Produk::with('kategori', 'users','gambar')->where('user_id', Auth::user()->id)->get();
         return view('member.myproduct.myproduct',[
             'user' => $user,
             'produk' => $produk,
-            'keranjang' => $keranjang,
         ]);
     }
     public function add_product(){
@@ -48,12 +67,9 @@ class MemberController extends Controller
         $user = User::all();
         $id = Auth::user()->id;
         $produk = Produk::with('gambar', 'users')->where('user_id', $id)->get();
-
-        $keranjang = Keranjang::where('user_id', $id)->get();
         return view('member.myproduct.add_product',[
             'user' => $user,
             'kategori' => $kategori,
-            'keranjang' => $keranjang,
             'produk' => $produk,
             'subkategori' => $subkategori,
         ]);
@@ -111,12 +127,10 @@ class MemberController extends Controller
         $produk = Produk::with('kategori', 'subkategori')->where('id', $id)->get();
         $kategori = Kategori::with('subkategori')->get();
         $subkategori = Subkategori::with('kategori')->get();
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
 
         return view('member.myproduct.edit_product',[
             'produk' => $produk,
             'kategori' => $kategori,
-            'keranjang' => $keranjang,
             'subkategori' => $subkategori,
             'id' => $id
         ]);
@@ -181,11 +195,9 @@ class MemberController extends Controller
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->where('status','PENDING')->get();
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
 
         return view('member.transactions.sell.transactionactive',[
             'user' => $user,
-            'keranjang' => $keranjang,
             'transaction' => $transaction,
             'transactiondetail' => $transactiondetail,
         ]);
@@ -220,10 +232,8 @@ class MemberController extends Controller
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->where('status','DIKONFIRMASI')->get();
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
         return view('member.transactions.sell.transactionconfirmed',[
             'user' => $user,
-            'keranjang' => $keranjang,
             'transaction' => $transaction,
             'transactiondetail' => $transactiondetail,
         ]);
@@ -234,10 +244,8 @@ class MemberController extends Controller
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->where('status','DIKEMAS')->get();
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
         return view('member.transactions.sell.transactionpacking',[
             'user' => $user,
-            'keranjang' => $keranjang,
             'transaction' => $transaction,
             'transactiondetail' => $transactiondetail,
         ]);
@@ -248,10 +256,8 @@ class MemberController extends Controller
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->where('status','DALAM PERJALANAN')->get();
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
         return view('member.transactions.sell.transactiondelivered',[
             'user' => $user,
-            'keranjang' => $keranjang,
             'transaction' => $transaction,
             'transactiondetail' => $transactiondetail,
         ]);
@@ -262,10 +268,8 @@ class MemberController extends Controller
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->where('status','SELESAI')->get();
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
         return view('member.transactions.sell.transactioncomplated',[
             'user' => $user,
-            'keranjang' => $keranjang,
             'transaction' => $transaction,
             'transactiondetail' => $transactiondetail,
         ]);
@@ -278,12 +282,9 @@ class MemberController extends Controller
             $produk->where('user_id', Auth::user()->id);
         })->where('id',$id)->first();
 
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
 
         return view('member.transactions.transaction_details',[
             'user' => $user,
-            'keranjang' => $keranjang,
-            'keranjang' => $keranjang,
             'transaction' => $transaction,
             'transactiondetail' => $transactiondetail,
         ]);
@@ -295,12 +296,9 @@ class MemberController extends Controller
             $produk->where('user_id', Auth::user()->id);
         })->where('id',$id)->first();
 
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
 
         return view('member.transactions.transaction_detail_dikirim',[
             'user' => $user,
-            'keranjang' => $keranjang,
-            'keranjang' => $keranjang,
             'transaction' => $transaction,
             'transactiondetail' => $transactiondetail,
         ]);
@@ -311,11 +309,21 @@ class MemberController extends Controller
         $produk = Produk::with('ulasan','gambar','users')->where('user_id', Auth::user()->id)->get();
         $ulasan = Ulasan::where('produk_id',Auth::user()->id)->get();
 
-        $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
         return view('member.review.review',[
-            'keranjang' => $keranjang,
             'ulasan' => $produk,
+            'review' => $ulasan,
+        ]);
+    }
 
+    //refund
+    public function refund(){
+        $produk = Produk::with('ulasan','gambar','users')->where('user_id', Auth::user()->id)->get();
+        $refunds = Refund::with('transaction','user','transaction.transaction_details')->get();
+
+        return view('member.refund.refund',[
+
+            'ulasan' => $produk,
+            'refunds' => $refunds,
 
         ]);
     }
@@ -326,13 +334,11 @@ class MemberController extends Controller
         $id = Auth::user()->id;
         $produk = Produk::with('users')->where('user_id', $id)->first();
         $user = User::where('id', $id)->first();
-        $keranjang = Keranjang::where('user_id', $id)->get();
         return view('member.store_setting.store',[
             'produk' => $produk,
             'user' => $user,
             'id' => $id,
             'kategori' => $kategori,
-            'keranjang' => $keranjang,
         ]);
     }
     public function store_aksi(Request $request, $id ){

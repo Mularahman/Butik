@@ -208,13 +208,22 @@
                                             placeholder="Deskripsi Long"></textarea>
                                     </div>
 
-                                        <div>
-                                            <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
-                                                for="thumbail">Thumbnail</label>
-                                            <input
-                                                class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"
-                                                name="thumbnail" multiple="multiple" id="gambarInput" onchange="tampilkanGambar()"  type="file">
+                                    <div>
+                                        <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
+                                            for="thumbail">Thumbnail</label>
+                                        <input
+                                            class="gambarInput block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"
+                                            name="thumbnail[]" multiple="multiple" id="gambarInput"
+                                             type="file" onchange="tampilkanGambar()" >
+
+
+                                    </div>
+                                    <div class="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-4">
+                                        <div class="flex me-3">
+                                            <div id="previewGambar" class="flex me-3 rounded-[20px] h-44 w-44 p-3">
                                         </div>
+                                        </div>
+                                    </div>
 
 
                                     <div

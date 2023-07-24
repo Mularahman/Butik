@@ -9,7 +9,7 @@ class TransactionDetail extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'transactions_id',
+        'transaction_id',
         'produk_id',
         'harga',
         'status',
@@ -29,6 +29,13 @@ class TransactionDetail extends Model
     }
 
     public function transaction(){
-        return $this->hasOne( Transaction::class, 'id', 'transactions_id' );
+        return $this->hasOne( Transaction::class, 'id', 'transaction_id' );
+    }
+
+    public function scopeSoldProductsCount($query)
+    {
+        return $query->selectRaw('produk_id, sum(qty) as total_sold')
+            ->groupBy('produk_id')
+            ->orderByDesc('total_sold');
     }
 }

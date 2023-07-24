@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('transactions_id');
+            $table->integer('transaction_id');
             $table->integer('produk_id');
             $table->integer('harga');
             $table->integer('qty');

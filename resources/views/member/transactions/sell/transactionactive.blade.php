@@ -2,20 +2,7 @@
 @section('title')
     Transaction
 @endsection
-@section('keranjang')
-    <a href="/keranjang" type="button"
-        class="relative inline-flex items-center p-2 me-4 text-sm font-medium text-center text-white bg-gradient-to-tl from-yellow-300 to-orange-400 rounded-full focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4"
-            viewBox="0 0 16 16">
-            <path
-                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-        </svg>
-        <span class="sr-only">Notifications</span>
-        <div
-            class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-1.5 p-1 -right-2 dark:border-gray-900">
-            {{ $keranjang->count() }}</div>
-    </a>
-@endsection
+
 @section('breadcrum')
     <nav>
         <!-- breadcrumb -->
@@ -93,19 +80,23 @@
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class=" leading-tight ">Gambar</span>
-                                </td>
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class=" leading-tight ">Nama Produk</span>
-                                </td>
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                     <span class=" leading-tight ">Invoice</span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                     <span class=" leading-tight ">Tanggal</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Customer</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Produk</span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class=" leading-tight ">Status</span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
@@ -119,23 +110,7 @@
                                 class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                 <span class="font-semibold leading-tight text-xs">{{ $loop->iteration }}</span>
                             </td>
-
-                                <td class="p-2 align-middle text-center bg-transparent  whitespace-nowrap">
-                                    <div class="mt-2 avatar-group">
-                                        <div>
-
-                                            <img src="{{ asset('storage/' . $transaksi->produk->gambar->first()->thumbnail) }}"
-                                                class="inline-flex items-center justify-center  text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                alt="atlassian" />
-                                        </div>
-
-                                    </div>
-                                </td>
-                                <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs"> {{$transaksi->produk->namaproduk}} </span>
-                                </td>
-                                <td
+                            <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                     <span class="font-semibold leading-tight text-xs">{{$transaksi->kode}}</span>
                                 </td>
@@ -143,6 +118,29 @@
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                     <span class="font-semibold leading-tight text-xs">{{$transaksi->transaction->tanggal}}</span>
                                 </td>
+
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class="font-semibold leading-tight text-xs"> {{$transaksi->transaction->user->name}} </span>
+                                </td>
+                                <td
+                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class="font-semibold leading-tight text-xs"> {{$transaksi->produk->namaproduk}} </span>
+                                </td>
+                                <td
+                                        class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                        @if ($transaksi->transaction->transaction_status == 'PENDING')
+                                            <span
+                                            class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">UNPAID</span>
+                                        @elseif ($transaksi->transaction->transaction_status == 'SUCCESS')
+                                            <span
+                                                class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">PAID</span>
+                                        @elseif ($transaksi->transaction->transaction_status == 'CANCELLED')
+                                            <
+                                                class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+                                                CANCELLED</ @endif
+                                    </td>
+
 
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">

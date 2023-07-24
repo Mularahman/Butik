@@ -25,7 +25,7 @@
                     class="absolute top-0 left-0 right-0 z-30 flex flex-wrap items-center px-4 py-2 mx-6 my-4 shadow-soft-2xl rounded-blur bg-white/80 backdrop-blur-2xl backdrop-saturate-200 lg:flex-nowrap lg:justify-start">
                     <div class="flex items-center justify-between w-full p-0 pl-6 mx-auto flex-wrap-inherit">
                         <a class="py-2.375 text-sm mr-4 ml-4 whitespace-nowrap font-bold text-slate-700 lg:ml-0"
-                            href="../pages/dashboard.html"> Butik Imun</a>
+                            href="/home"> Butik Imun</a>
                         <button navbar-trigger
                             class="px-3 py-1 ml-2 leading-none transition-all bg-transparent border border-transparent border-solid rounded-lg shadow-none cursor-pointer text-lg ease-soft-in-out lg:hidden"
                             type="button" aria-controls="navigation" aria-expanded="false"
@@ -45,7 +45,7 @@
                             <ul class="flex flex-col pl-0 mx-auto mb-0 list-none lg:flex-row xl:ml-auto">
                                 <li>
                                     <a class="flex items-center px-4 py-2 mr-2 font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
-                                        aria-current="page" href="/home">
+                                        aria-current="page" href="      /home">
                                         Home
                                     </a>
                                 </li>
@@ -61,12 +61,12 @@
                                         Contact
                                     </a>
                                 </li>
-                                <li>
+                                {{--  <li>
                                     <a class="block px-4 py-2 mr-2 font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
                                         href="/galleries">
                                         galleries
                                     </a>
-                                </li>
+                                </li>  --}}
                             </ul>
 
                             <ul class="hidden pl-0 mb-0 list-none lg:block lg:flex-row">

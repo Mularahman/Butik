@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Gambar;
 use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Subkategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
     public function produk(){
-        $produk = Produk::all();
+        $produk = Produk::with('gambar')->get();
+
         return view('admin.produk.produk',[
             'produk' => $produk
         ]);
@@ -34,33 +37,8 @@ class ProdukController extends Controller
     }
     public function tambahproduk(Request $request){
 
-        $data = $request->validate([
-            'namaproduk' => 'required',
-            'kodeproduk' => 'required',
-            'beratproduk' => 'required',
-            'warnaproduk' => 'required',
-            'ukuranproduk' => 'required',
-            'stokproduk' => 'required',
-            'hargaproduk' => 'required',
-            'diskon' => 'required',
-            'user_id' => 'required',
-            'kategori_id' => 'required',
-            'subkategori_id' => 'required',
-            'deskripsishort' => 'required',
-            'deskripsiproduk' => 'required',
-            // 'promo' => 'required',
-            // 'bestseller' => 'required',
-            // 'barudatang' => 'required',
-            // 'produkbaru' => 'required',
-            'thumbnail' => 'required',
+        $data = $request->all();
 
-        ]);
-        if($request->file('thumbnail')){
-            if($request->oldthumbnail){
-                Storage::delete($request->oldthumbnail);
-            }
-            $data['thumbnail'] = $request->file('thumbnail')->store('public/thumbnail');
-        }
 
         Produk::create([
             'user_id' => $data['user_id'],
@@ -81,10 +59,25 @@ class ProdukController extends Controller
             // 'barudatang' => $data['barudatang'],
             // 'bestseller' => $data['bestseller'],
             'status' => 1,
-            'thumbnail' => $data['thumbnail'],
+
 
 
         ]);
+
+
+        $id = Produk::orderBy('id','desc')->first();
+        if ($request->hasFile('thumbnail')) {
+            $gambarArray = $request->file('thumbnail');
+
+            foreach ($gambarArray as $key=>$gambar) {
+               $insert = [
+                'produk_id' => $id->id,
+                'thumbnail' => $gambarArray[$key]->store('public/thumbnail')
+               ];
+
+                DB::table('gambars')->insert($insert);
+            }
+        }
 
         return redirect('/produk-admin')->with('success', 'Berhasil Menambah Data Produk!');
     }
@@ -110,6 +103,7 @@ class ProdukController extends Controller
             'user' => $user,
             'kategori' => $kategori,
             'subkategori' => $subkategori,
+            'id' => $id
 
         ]);
     }
@@ -133,19 +127,33 @@ class ProdukController extends Controller
             // 'barudatang' => 'required',
             // 'produkbaru' => 'required',
             // 'status' => 'required',
-            'thumbnail' => 'required',
+
 
         ]);
         $update = Produk::Find($id);
-        if($request->file('thumbnail')){
-            if($request->oldthumbnail){
-                Storage::delete($request->oldthumbnail);
-            }
-            $data['thumbnail'] = $request->file('thumbnail')->store('public/thumbnail');
-        }
+
 
         $update->update($data);
 
         return redirect('/produk-admin')->with('success', 'Berhasil Mengedit Produk!');
+    }
+    public function myproductgallery(Request $request){
+
+        $data = $request->all();
+
+        $data['thumbnail'] = $request->file('thumbnail')->store('public/thumbnail');
+
+        Gambar::create($data);
+        return redirect()->route('dashboard-product',$request->produk_id);
+    }
+    public function myproductgallerydelete(Request $request, $id){
+        $data = Gambar::findOrFail($id);
+
+        if($data->thumbnail){
+            Storage::delete($data->thumbnail);
+        }
+        $data->delete();
+        return back();
+
     }
 }

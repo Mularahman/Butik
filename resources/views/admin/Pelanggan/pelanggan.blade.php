@@ -155,7 +155,7 @@
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Role</th>
-                                       
+
                                         {{--  <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Slug</th>  --}}
@@ -165,7 +165,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($customer as $item)
+                                    @foreach ($customer as $item => $value)
                                     <tr>
 
 
@@ -180,25 +180,30 @@
                                         <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                             <div class="mt-2 avatar-group">
                                                 <div>
-
-                                                    <img src=" {{ asset('storage/' . $item->image) }}"
+                                                    @if ($value->image)
+                                                    <img class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl" src="{{ asset('storage/' . $value->image) }}"
+                                                    alt="user photo">
+                                                    @else
+                                                        <img src="{{ 'https://ui-avatars.com/api/?size=32&name=' . $value->name }}"
                                                         class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                        alt="atlassian" />
+                                                            alt="{{ auth()->user()->name }}">
+                                                    @endif
+
                                                 </div>
 
                                             </div>
                                         </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            <span class="font-semibold leading-tight text-xs"> {{$item->name}} </span>
+                                            <span class="font-semibold leading-tight text-xs"> {{$value->name}} </span>
                                         </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            <span class="font-semibold leading-tight text-xs"> {{$item->email}} </span>
+                                            <span class="font-semibold leading-tight text-xs"> {{$value->email}} </span>
                                         </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            <span class="font-semibold leading-tight text-xs"> {{$item->role}} </span>
+                                            <span class="font-semibold leading-tight text-xs"> {{$value->role}} </span>
                                         </td>
                                         {{--  <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
@@ -207,7 +212,7 @@
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
 
-                                            <button type="button"  data-modal-target="popup-modal{{$item->id}}" data-modal-toggle="popup-modal{{$item->id}}" data-tooltip-target="delete"
+                                            <button type="button"  data-modal-target="popup-modal{{$value->id}}" data-modal-toggle="popup-modal{{$value->id}}" data-tooltip-target="delete"
 
                                                 class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-red-700 to-red-500 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 
@@ -217,7 +222,7 @@
                                                         d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                                 </svg>
                                             </button>
-                                            <div id="popup-modal{{$item->id}}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div id="popup-modal{{$value->id}}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 @include('admin.Pelanggan.hapuspelanggan')
                                             </div>
 
@@ -227,7 +232,7 @@
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <button type="button"
-                                           data-modal-target="edit{{$item->id}}" data-modal-toggle="edit{{$item->id}}" data-tooltip-target="edit"
+                                           data-modal-target="edit{{$value->id}}" data-modal-toggle="edit{{$value->id}}" data-tooltip-target="edit"
 
                                                 class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-700 to-blue-500 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 
@@ -236,7 +241,7 @@
                                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                                   </svg>
                                             </button>
-                                            <div id="edit{{$item->id}}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div id="edit{{$value->id}}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                 @include('admin.Pelanggan.editpelanggan')
                                             </div>
 

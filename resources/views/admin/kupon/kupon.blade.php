@@ -46,27 +46,48 @@
 
 
                     <div>
-                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kupon</label>
-                        <input type="text" name="kupon" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+                        <label for="code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode</label>
+                        <input type="text" name="code" id="code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
                     </div>
                     <div>
-                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Diskon Kupon(%)</label>
-                        <input type="number" name="diskon" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+                        <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
+                        <input type="text" name="description" id="deskripsi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
                     </div>
                     <div>
-                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Validasi</label>
-                        <input type="date" name="validasi" id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
-                    </div>
-                    <div>
-                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                        <label for="tipe" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipe Diskon</label>
 
-                        <select id="provinsi" name="status"
+                        <select id="tipe" name="type"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="" selected>--- Pilih Tipe Diskon ---</option>
+
+                            <option value="percentage">Persentase Diskon</option>
+                            <option value="fixed">Potongan Harga Tetap</option>
+
+
+                        </select>
+                    </div>
+                    <div>
+                        <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Diskon</label>
+                        <input type="number" name="amount" id="amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+                    </div>
+                    <div>
+                        <label for="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Mulai Diskon</label>
+                        <input type="date" name="start_date" id="start_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+                    </div>
+                    <div>
+                        <label for="end_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Berakhir Diskon</label>
+                        <input type="date" name="end_date" id="end_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  required>
+                    </div>
+                    <div>
+                        <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+
+                        <select id="status" name="is_active"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option value="" selected>--- Pilih Status ---</option>
 
 
                             <option value=1>Aktif</option>
-                            <option value=2>Tidak Aktif</option>
+                            <option value=0>Tidak Aktif</option>
 
 
                         </select>
@@ -148,13 +169,20 @@
                                             No</th>
 
                                         <th
-                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">Kupon</th>
+                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">Kode</th>
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Diskon Kupon</th>
+                                            Deskripsi</th>
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Validasi</th>
+                                            Tipe Diskon</th>
+                                        <th
+                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                            Jumlah Diskon</th>
+                                        <th
+                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                            Tanggal Masa Berlaku</th>
+
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Status</th>
@@ -182,19 +210,35 @@
 
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            <span class="font-semibold leading-tight text-xs"> {{$item->kupon}} </span>
+                                            <span class="font-semibold leading-tight text-xs"> {{$item->code}} </span>
                                         </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            <span class="font-semibold leading-tight text-xs"> {{$item->diskon}} %</span>
+                                            <span class="font-semibold leading-tight text-xs"> {{$item->description}}</span>
                                         </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            <span class="font-semibold leading-tight text-xs"> {{$item->validasi}} </span>
+                                            @if ($item->type == 'percentage')
+
+                                            <span class="bg-blue-100 text-blue-800 text-xs tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300"> Persentase
+                                            </span>
+                                            @else
+                                            <span class="bg-red-100 text-red-800 text-xs tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-red-900 dark:text-red-300"> Potongan Harga Tetap
+                                            </span>
+                                                @endif
+
                                         </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            @if ($item->status == 1)
+                                            <span class="font-semibold leading-tight text-xs"> {{$item->amount}}</span>
+                                        </td>
+                                        <td
+                                            class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
+                                            <span class="font-semibold leading-tight text-xs"> {{$item->start_date}} - {{$item->end_date}} </span>
+                                        </td>
+                                        <td
+                                            class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
+                                            @if ($item->is_active == 1)
 
                                             <span class="bg-blue-100 text-blue-800 text-xs tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300"> Aktif
                                             </span>

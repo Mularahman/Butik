@@ -1,4 +1,4 @@
-@extends('member.layouts.app')
+@extends('pelanggan.layouts.app')
 @section('title')
     Transaction Detail
 @endsection
@@ -256,7 +256,7 @@
                                             class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
                                             <button type="submit"
                                                 class="inline-block w-full px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs mb-3">
-                                                Pesanan Diterima
+                                                Beli Lagi
                                             </button>
                                         </div>
                                     </form>

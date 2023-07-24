@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('kupons', function (Blueprint $table) {
             $table->id();
-            $table->string('kupon');
-            $table->string('diskon');
-            $table->date('validasi');
-            $table->tinyInteger('status')->nullable();
+            $table->string('code')->unique();
+            $table->string('description');
+            $table->enum('type', ['percentage', 'fixed']);
+            $table->decimal('amount', 10, 2);
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+           
         });
     }
 

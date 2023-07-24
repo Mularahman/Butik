@@ -214,28 +214,11 @@
                                             placeholder="Deskripsi Long">{{$item->deskripsiproduk}}</textarea>
                                     </div>
                                     <input type="hidden" name="oldthumbnail" value="{{$item->thumbnail}}">
-                                    <input type="hidden" name="oldgaleri" value="{{$item->galeri}}">
-                                    <div class="grid lg:grid-cols-2 gap-4">
-                                        <div>
-                                            <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
-                                                for="thumbail">Thumbnail</label>
-                                            <input
-                                                class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"
-                                                name="thumbnail" type="file">
-                                        </div>
-                                        <div>
-                                            <label
-                                                class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white">Produk
-                                                Galeri</label>
-                                            <input
-                                                class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"
-                                                name="galeri" type="file">
-                                        </div>
-                                    </div>
+
                                     <div
                                         class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
                                         <button type="submit"
-                                            class="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-purple-700 to-pink-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs mb-3">
+                                            class="inline-block px-6 py-3 font-bold text-center w-full text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-purple-700 to-pink-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs mb-3">
                                             Submit
                                         </button>
                                     </div>
@@ -246,7 +229,75 @@
                     </div>
                 </div>
                 @endforeach
+                <div
+                    class="border-black/12.5 mt-8 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+
+                    <div class="flex-auto  px-0 pb-2">
+                        <div class="overflow-x-auto">
+
+                            <div class="px-6 py-3 lg:px-8">
+
+                                <form class="space-y-6" action="/produk-admin/gallery" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="produk_id" value="{{ $id }}">
+                                    <div>
+                                        <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
+                                            for="thumbail">Thumbnail</label>
+                                        <input
+                                            class="block w-full text-sm text-gray-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"
+                                            name="thumbnail" multiple="multiple" id="file"  style="display: none;"
+                                             type="file" onchange="form.submit()">
+                                    </div>
+                                    <div class="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-4">
+                                        @foreach ($produk as $gambar)
+                                        @foreach ($gambar->gambar as $item)
+
+
+
+                                        <div
+                                        class="w-48 h-48 justify-center items-center align-middle flex bg-grey-700 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 me-3">
+
+                                        <img class="h-44 w-44 p-3 rounded-[20px]"
+                                        src=" {{ asset('storage/' . $item->thumbnail) }}" alt="" />
+
+                                                <a href="{{ route('dashboard-product-gallery-delete', $item->id) }}" class="-mt-44">
+                                                    <img src="/frontend/img/icon-delete.svg" alt="" />
+                                                  </a>
+
+                                        </div>
+
+                                        @endforeach
+                                        @endforeach
+
+                                    </div>
+
+
+
+
+                                    <div
+                                        class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
+                                        <button onclick="thisFileUpload()" type="button"
+                                            class="inline-block px-6 py-3 font-bold text-center text-white uppercase w-full align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-purple-700 to-pink-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 active:opacity-85 hover:shadow-soft-xs mb-3">
+                                            Add Image
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 @endsection
+@push('addon-script')
+
+  <script>
+    function thisFileUpload() {
+      document.getElementById("file").click();
+    }
+  </script>
+
+@endpush
