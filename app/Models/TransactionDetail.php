@@ -17,7 +17,8 @@ class TransactionDetail extends Model
         'qty',
         'catatan',
         'kurir',
-        'kode'
+        'kode',
+        'ongkir',
     ];
 
     protected $hidden = [

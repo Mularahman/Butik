@@ -107,7 +107,7 @@
                     <span class="flex-1 ml-1 text-left whitespace-nowrap  opacity-60">Refund</span>
                 </a>
             </li>
-            <li class="mt-0.5 w-full">
+            {{--  <li class="mt-0.5 w-full">
                 <a href="/billings-member"
                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group active:shadow-md drop-shadow  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                     <div
@@ -116,7 +116,7 @@
                     </div>
                     <span class="flex-1 ml-1 text-left whitespace-nowrap  opacity-60">Billings</span>
                 </a>
-            </li>
+            </li>  --}}
             <li class="mt-0.5 w-full">
                 <a href="/store_settings"
                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group active:shadow-md drop-shadow  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">

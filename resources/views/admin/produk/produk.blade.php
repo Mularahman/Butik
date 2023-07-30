@@ -81,13 +81,14 @@
                                             No</th>
                                         <th
                                             class="px-6 py-3 pl-2 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Image</th>
+                                            Produk</th>
+                                            <th
+                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
+                                            Nama Toko</th>
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Kode Produk</th>
-                                        <th
-                                            class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                            Nama Produk</th>
+
                                         <th
                                             class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
                                             Harga</th>
@@ -135,14 +136,15 @@
                                             </td>
                                             <td
                                                 class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                                <span class="font-semibold leading-tight text-xs"> {{ $item->kodeproduk }}
+                                                <span class="font-semibold leading-tight text-xs"> {{ $item->users->nama_toko }}
                                                 </span>
                                             </td>
                                             <td
                                                 class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                                <span class="font-semibold leading-tight text-xs"> {{ $item->namaproduk }}
+                                                <span class="font-semibold leading-tight text-xs"> {{ $item->kodeproduk }}
                                                 </span>
                                             </td>
+
                                             <td
                                                 class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
                                                 <span class="font-semibold leading-tight text-xs"> {{ $item->hargaproduk }}

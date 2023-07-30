@@ -21,9 +21,6 @@
         <div class="flex flex-wrap -mx-3">
             <div class="w-full max-w-full px-3 mt-0 mb-6 ">
 
-
-
-
                 <div
                     class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
 
@@ -74,6 +71,7 @@
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 required>
                                         </div>
+
                                         <div>
                                             <label for="ukuranproduk"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ukuran
@@ -98,19 +96,19 @@
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 required>
                                         </div>
-                                        <div>
+                                        {{--  <div>
                                             <label for="diskon"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga
                                                 Diskon</label>
                                             <input type="number" name="diskon" placeholder="Harga Diskon"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 required>
-                                        </div>
+                                        </div>  --}}
                                         <div>
-                                            <label for="kategori"
+                                            <label for="produkkategori"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih
                                                 Kategori</label>
-                                            <select id="kategori" name="kategori_id"
+                                            <select id="produkkategori" name="kategori_id"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 <option selected>--- Pilih Kategori ---</option>
                                                 @foreach ($kategori as $data)
@@ -121,17 +119,11 @@
                                         <div>
                                             <label for="subkategori"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih
-                                                Kategori</label>
+                                                Sub Kategori</label>
                                             <select id="subkategori" name="subkategori_id"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 <option selected>--- Pilih Sub Kategori ---</option>
-
-                                                    @foreach ($subkategori as $data)
-                                                        <option value="{{ $data->id }}">{{ $data->subkategori }}
-                                                        </option>
-                                                    @endforeach
-
-
+                                                    <option value=""></option>
                                             </select>
                                         </div>
                                     </div>
@@ -154,51 +146,52 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                       {{--  <div>
-                                        <div>
-                                            <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
-                                                for="produkbaru"></label>
-                                            <div class="flex items-center mb-4">
-                                                <input id="default-checkbox" type="checkbox" value=1 name="produkbaru"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                <label for="default-checkbox"
-                                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Produk Baru</label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
-                                                for="promo"></label>
 
-                                            <div class="flex items-center mb-4">
-                                                <input id="default-checkbox" type="checkbox" value=1 name="promo"
-                                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                <label for="default-checkbox"
-                                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Promo</label>
-                                            </div>
+                                        {{--  <div>
+                                    <div>
+                                        <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
+                                            for="produkbaru"></label>
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value=1 name="produkbaru"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox"
+                                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Produk Baru</label>
                                         </div>
-                                       </div>
-                                       <div>
-                                        <div>
-                                            <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
-                                                for="bestseller"></label>
-                                            <div class="flex items-center mb-4">
-                                                <input id="default-checkbox" type="checkbox" value=1 name="bestseller"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                <label for="default-checkbox"
-                                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Best Seller</label>
-                                            </div>
+                                    </div>
+                                    <div>
+                                        <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
+                                            for="promo"></label>
+
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value=1 name="promo"
+                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox"
+                                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Promo</label>
                                         </div>
-                                        <div>
-                                            <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
-                                                for="barudatang"></label>
-                                            <div class="flex items-center mb-4">
-                                                <input id="default-checkbox" type="checkbox" value=1 name="barudatang"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                <label for="default-checkbox"
-                                                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Baru Datang</label>
-                                            </div>
+                                    </div>
+                                   </div>
+                                   <div>
+                                    <div>
+                                        <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
+                                            for="bestseller"></label>
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value=1 name="bestseller"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox"
+                                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Best Seller</label>
                                         </div>
-                                       </div>  --}}
+                                    </div>
+                                    <div>
+                                        <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
+                                            for="barudatang"></label>
+                                        <div class="flex items-center mb-4">
+                                            <input id="default-checkbox" type="checkbox" value=1 name="barudatang"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="default-checkbox"
+                                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Baru Datang</label>
+                                        </div>
+                                    </div>
+                                   </div>  --}}
                                     </div>
                                     <div>
                                         <label class="block mb-2 text-sm  font-medium text-gray-900 dark:text-white"
@@ -219,11 +212,47 @@
 
                                     </div>
                                     <div class="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-4">
+                                        {{--  @foreach ($produk as $gambar)
+                                        @foreach ($gambar->gambar as $item)  --}}
+
+
+
+                                        {{--  <div
+                                        class="w-48 h-48 justify-center items-center align-middle flex bg-grey-700 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 me-3">  --}}
                                         <div class="flex me-3">
+
                                             <div id="previewGambar" class="flex me-3 rounded-[20px] h-44 w-44 p-3">
                                         </div>
+
+
+                                        {{--  <a href="" class="-mt-44">
+                                            <img src="/frontend/img/icon-delete.svg" alt="" />
+
+                                        </a>  --}}
+                                    {{--  </div>  --}}
+
                                         </div>
+
+                                        {{--  @endforeach
+                                        @endforeach  --}}
+
                                     </div>
+
+
+
+
+                                    {{--  <div
+                                        class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
+                                        <button onclick="thisFileUpload()" type="button"
+                                            class="text-gray-900 text-center uppercase align-middle transition-all cursor-pointer bg-grey-300 border border-gray-300 focus:outline-none shadow-soft-md hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 w-full  dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 mb-3">
+                                            Add Image
+                                        </button>
+                                    </div>  --}}
+
+
+
+
+
 
 
                                     <div
@@ -242,4 +271,37 @@
             </div>
         </div>
     </div>
+    <script>
+        const produkkategori = document.getElementById('produkkategori');
+
+        produkkategori.addEventListener('change', function() {
+            var id = this.value;
+            if (id) {
+                fetch('/getsubkategori/' + id)
+                    .then(response => response.json())
+                    .then(data => {
+                        var subkategoriSelect = document.getElementById('subkategori');
+                        subkategoriSelect.innerHTML = '<option value="">--- Pilih Sub Kategori ---</option>';
+                        data.forEach(subkategori => {
+
+                            var option = document.createElement('option');
+                            option.value = subkategori.id;
+                            option.textContent = subkategori.subkategori;
+                            subkategoriSelect.appendChild(option);
+                        });
+                    });
+            } else {
+                var subkategoriSelect = document.getElementById('subkategori');
+                subkategoriSelect.innerHTML = '<option value="">--- Pilih Sub Kategori ---</option>';
+            }
+        });
+    </script>
+
+
+
+
+
+
+
+
 @endsection

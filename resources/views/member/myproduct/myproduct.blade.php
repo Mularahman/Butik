@@ -35,7 +35,7 @@
         <h6 class="mb-0 font-bold capitalize"></h6>
         <div class="container ">
             <div class="row flex-wrap flex">
-                <div class="relative flex-auto mx-3 flex-col min-w-0 mb-6 break-words">
+                <div class=" flex-auto mx-3 flex-col min-w-0 mb-6 break-words">
                     <div class="flex-auto p-4">
                         <div class="flex-wrap justify-center -mx-3 grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-4 ">
                             @foreach ($produk as $item)

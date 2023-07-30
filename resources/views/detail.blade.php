@@ -141,7 +141,7 @@
                             <table>
                                 <tr>
                                     <td colspan="2">Warna </td>
-                                    <td>: {{ $item->warnaproduk }} Gram</td>
+                                    <td>: {{ $item->warnaproduk }}</td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">Ukuran </td>

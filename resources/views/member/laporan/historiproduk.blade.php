@@ -12,7 +12,7 @@
             <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
                 aria-current="page">Laporan</li>
         </ol>
-        <h6 class="mb-0 font-bold capitalize">Laporan Produk</h6>
+        <h6 class="mb-0 font-bold capitalize">Laporan Produk Terjual</h6>
     </nav>
 @endsection
 @section('content')
@@ -34,9 +34,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-3">
                         <div>
                             <div class="font-bold flex ml-4 mb-4 mt-3">
-                                <h3 class="me-2">Laporan Produk</h3>
+                                <h3 class="me-2">Laporan Produk Terjual</h3>
                                 <span
-                                class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$data->count()}}</span>
+                                class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$jual->count()}}</span>
 
 
                             </div>

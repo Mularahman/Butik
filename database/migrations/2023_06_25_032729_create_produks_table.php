@@ -26,12 +26,12 @@ return new class extends Migration
             $table->string('hargaproduk');
             $table->string('deskripsishort');
             $table->string('deskripsiproduk');
-            $table->string('diskon');
+            $table->string('diskon')->nullable();
             $table->tinyInteger('promo')->nullable();
             $table->tinyInteger('produkbaru')->nullable();
             $table->tinyInteger('bestseller')->nullable();
             $table->tinyInteger('barudatang')->nullable();
-          
+
 
             $table->string('slug')->nullable();
             $table->tinyInteger('status')->nullable();

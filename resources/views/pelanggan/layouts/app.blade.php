@@ -46,7 +46,11 @@
           }
 
     </script>
-
+    <style>
+        .line-throughs {
+            text-decoration: line-through ;
+          }
+    </style>
     {{--  <link href="/assets/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />  --}}
     @stack('addon-style')
 

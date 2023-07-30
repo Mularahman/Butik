@@ -11,6 +11,7 @@ class WilayahController extends Controller
 {
     public function provinsi()
     {
+
         $provinsi = Provinsi::all();
         return view('admin.wilayah.provinsi.provinsi',[
             'provinsi' => $provinsi
@@ -49,7 +50,8 @@ class WilayahController extends Controller
     }
     public function kota()
     {
-        $kota = Kota::with('provinsi', 'kecamatans')->get();
+        $kota = Kota::with('provinsi', 'kecamatans')->limit(10)->get();
+
 
         $provinsi = Provinsi::with('kotas', 'kecamatans')->get();
         return view('admin.wilayah.kota.kota',[

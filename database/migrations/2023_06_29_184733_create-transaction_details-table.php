@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('qty');
             $table->string('status'); // PENDING/SHIPPING/SUCCESS
             $table->string('resi')->nullable();
+            $table->integer('ongkir')->nullable();
             $table->string('kurir')->nullable();
             $table->text('catatan')->nullable();
             $table->string('kode');

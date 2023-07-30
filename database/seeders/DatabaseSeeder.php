@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Database\Seeders\LocationsSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
+        $this->call(LocationsSeeder::class);
         DB::table('kategoris')->insert([
             'kategori' => 'pakaian',
             'slug' => 'pakaian',
@@ -42,6 +43,9 @@ class DatabaseSeeder extends Seeder
             'nama_toko' =>'',
             'kategori_id' =>0,
             'status_toko' =>0,
+            'provinsi_id' =>13,
+            'kota_id' =>5,
+            'kecamatan_id' =>179,
         ]);
 
         DB::table('users')->insert([
@@ -52,6 +56,9 @@ class DatabaseSeeder extends Seeder
             'nama_toko' =>'Sneker',
             'kategori_id' =>1,
             'status_toko' =>1,
+            'provinsi_id' =>13,
+            'kota_id' =>5,
+            'kecamatan_id' =>179,
         ]);
         DB::table('users')->insert([
             'name' => 'pelanggan',
@@ -61,29 +68,25 @@ class DatabaseSeeder extends Seeder
             'nama_toko' =>'',
             'kategori_id' =>0,
             'status_toko' =>0,
+            'provinsi_id' =>1,
+            'kota_id' =>1,
+            'kecamatan_id' =>4,
+            'negara' =>'Indonesia',
+            'alamat1' =>'Jl. Amandit',
+            'alamat2' =>'Rt.01 No.121 Desa Baroqah',
         ]);
 
-        DB::table('provinsis')->insert([
-            'provinsi' => 'Kalimantan Selatan',
 
-        ]);
-        DB::table('kotas')->insert([
-            'provinsi_id' => 1,
-            'kota' => 'Banjarmasin',
-
-        ]);
-        DB::table('kecamatans')->insert([
-            'provinsi_id' => 1,
-            'kota_id' => 1,
-            'kecamatan' => 'Banjarmasin Utara',
+        DB::table('kurirs')->insert([
+            'kurir' => 'tiki',
 
         ]);
         DB::table('kurirs')->insert([
-            'kurir' => 'J&T',
+            'kurir' => 'jne',
 
         ]);
         DB::table('kurirs')->insert([
-            'kurir' => 'JNE',
+            'kurir' => 'pos',
 
         ]);
 
@@ -95,6 +98,48 @@ class DatabaseSeeder extends Seeder
             'start_date' => '2023-06-01',
             'end_date' => '2023-08-31',
             'is_active' => true,
+        ]);
+        DB::table('kecamatans')->insert([
+            'provinsi_id' => 1,
+            'kota_id' => 4,
+            'kecamatan' => 'Denpasar Timur',
+
+        ]);
+        DB::table('kecamatans')->insert([
+            'provinsi_id' => 1,
+            'kota_id' => 4,
+            'kecamatan' => 'Denpasar Barat',
+
+        ]);
+        DB::table('kecamatans')->insert([
+            'provinsi_id' => 1,
+            'kota_id' => 4,
+            'kecamatan' => 'Denpasar Selatan',
+
+        ]);
+        DB::table('kecamatans')->insert([
+            'provinsi_id' => 1,
+            'kota_id' => 4,
+            'kecamatan' => 'Denpasar Utara',
+
+        ]);
+        DB::table('kecamatans')->insert([
+            'provinsi_id' => 13,
+            'kota_id' => 179,
+            'kecamatan' => 'Banjarbaru Utara',
+
+        ]);
+        DB::table('kecamatans')->insert([
+            'provinsi_id' => 13,
+            'kota_id' => 179,
+            'kecamatan' => 'Banjarbaru Barat',
+
+        ]);
+        DB::table('kecamatans')->insert([
+            'provinsi_id' => 13,
+            'kota_id' => 179,
+            'kecamatan' => 'Banjarbaru Timur',
+
         ]);
 
     }

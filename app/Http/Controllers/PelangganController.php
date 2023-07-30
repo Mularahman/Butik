@@ -29,7 +29,7 @@ class PelangganController extends Controller
         $transaction = Transaction::with('user')->where( 'user_id', Auth::user()->id)->get();
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('transaction', function($produk){
             $produk->where('user_id', Auth::user()->id);
-        })->where('status','PENDING')->get();
+        })->latest()->get();
         $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
 
         if(request('search')){
@@ -103,7 +103,7 @@ class PelangganController extends Controller
         $user = User::all();
         $transaction = Transaction::with('user')->where(['id' => $id , 'user_id'=> Auth::user()->id])->first();
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->where('transaction_id',$id)->get();
-      
+
 
         $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
 
@@ -139,6 +139,26 @@ class PelangganController extends Controller
         $transaksi->save();
         return redirect()->route('review.product', $request->id)->with('success', 'Pesanan Selesai !');
     }
+    public function belilagi(Request $request, $id){
+        $data = $request->all();
+
+        if(Auth::check()){
+
+            Keranjang::create([
+                'produk_id' => $id,
+                'user_id' => Auth::user()->id,
+                'jumlah' => 1
+            ]);
+            return redirect('/keranjang');
+        }
+        return redirect('/login');
+
+
+
+
+
+    }
+
 
     //myaccount
     public function myaccount(){

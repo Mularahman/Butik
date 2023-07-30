@@ -59,6 +59,7 @@ Route:: group(['middleware' => ['auth', 'admin']], function(){
     Route:: put('/produk-admin_edit_aksi/{id}', [ProdukController::class, 'editproduk']);
     Route:: post('/produk-admin/gallery', [ProdukController::class, 'myproductgallery']);
     Route:: get('/produk-admin/gallery/delete/{id}', [ProdukController::class, 'myproductgallerydelete'])->name('dashboard-product-galleri-delete');
+    Route:: get('/getsubkategori/{id}', [ProdukController::class, 'subkategori']);
 
     Route:: get('/slider-admin', [SliderController::class, 'slider']);
     Route:: Post('/tambah_slider', [SliderController::class, 'tambahslider']);
@@ -95,6 +96,19 @@ Route:: group(['middleware' => ['auth', 'admin']], function(){
     Route:: delete('/hapus_customer/{id}', [CustomerController::class, 'hapuscustomer']);
     Route:: put('/edit_customer/{id}', [CustomerController::class, 'editcustomer']);
 
+    Route:: get('/laporan-transaksi-admin', [LaporanController::class, 'transaksiadmin']);
+    Route:: get('/laporan-pelanggan-admin', [LaporanController::class, 'pelangganadmin']);
+    Route:: get('/laporan-toko-admin', [LaporanController::class, 'tokoadmin']);
+    Route:: get('/laporan-pembelian-admin', [LaporanController::class, 'pembelianadmin']);
+    Route:: get('/laporan-penjualan-admin', [LaporanController::class, 'penjualanadmin']);
+    Route:: get('/laporan-produk-admin', [LaporanController::class, 'produkadmin']);
+
+    Route:: get('/laporan-transaksi-admin-cetak', [LaporanController::class, 'transaksicetakadmin']);
+    Route:: get('/laporan-pelanggan-admin-cetak', [LaporanController::class, 'pelanggancetakadmin']);
+    Route:: get('/laporan-toko-admin-cetak', [LaporanController::class, 'tokocetakadmin']);
+    Route:: get('/laporan-pembelian-admin-cetak', [LaporanController::class, 'pembeliancetakadmin']);
+    Route:: get('/laporan-penjualan-admin-cetak', [LaporanController::class, 'penjualancetakadmin']);
+    Route:: get('/laporan-produk-admin-cetak', [LaporanController::class, 'produkcetakadmin']);
 });
 
 Route:: group(['middleware' => ['auth']], function(){
@@ -107,6 +121,7 @@ Route:: group(['middleware' => ['auth']], function(){
     Route:: put('/myproduct_edit_aksi/{id}', [MemberController::class, 'edit_product_aksi']);
     Route:: post('/myproduct/gallery', [MemberController::class, 'myproductgallery']);
     Route:: get('/myproduct/gallery/delete/{id}', [MemberController::class, 'myproductgallerydelete'])->name('dashboard-product-gallery-delete');
+    Route:: get('/subkategori/{id}', [MemberController::class, 'getsubkategori']);
 
 
     Route:: get('/transaction-member', [MemberController::class, 'transactionactive']);
@@ -135,6 +150,13 @@ Route:: group(['middleware' => ['auth']], function(){
     Route:: get('/laporan-produk', [LaporanController::class, 'produk']);
     Route:: get('/laporan-ulasan', [LaporanController::class, 'review']);
     Route:: get('/laporan-laba', [LaporanController::class, 'laba']);
+
+    Route:: get('/laporan-transaksi-cetak', [LaporanController::class, 'transaksicetak']);
+    Route:: get('/laporan-pelanggan-cetak', [LaporanController::class, 'pelanggancetak']);
+    Route:: get('/laporan-produk-cetak', [LaporanController::class, 'produkcetak']);
+    Route:: get('/laporan-ulasan-cetak', [LaporanController::class, 'reviewcetak']);
+    Route:: get('/laporan-laba-cetak', [LaporanController::class, 'labacetak']);
+
 });
 
 Route:: group(['middleware' => ['auth']], function(){
@@ -148,6 +170,7 @@ Route:: group(['middleware' => ['auth']], function(){
     Route:: get('/transaction_detail/{id}', [PelangganController::class, 'transaction_detail']);
     Route:: get('/transaction_detailss/{id}', [PelangganController::class, 'transaction_details']);
     Route:: post('/transaction_selesai_aksi/{id}', [PelangganController::class, 'transaction_selesai']);
+    Route:: post('/keranjang_aksi/{id}', [PelangganController::class, 'belilagi']);
 
     Route:: get('/review', [UlasanController::class, 'ulasan']);
     Route:: get('/review-product/{id}', [UlasanController::class, 'ulasanproduk'])->name('review.product');
@@ -169,6 +192,8 @@ Route:: group(['middleware' => ['auth']], function(){
 
 Route:: get('/home', [FrontendController::class, 'home']);
 Route:: get('/detail-produk/{id}', [FrontendController::class, 'detailproduk']);
+Route:: get('/setting-alamat', [FrontendController::class, 'settingalamat']);
+Route:: put('/setting-alamat/{id}', [FrontendController::class, 'settingalamataksi']);
 
 Route::group(['middleware' => 'auth'], function() {
     //
@@ -178,8 +203,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route:: get('/buka-toko', [FrontendController::class, 'bukatoko']);
     Route:: post('/buka-toko_aksi', [FrontendController::class, 'bukatokoaksi']);
     Route:: delete('/keranjang_delete/{id}', [FrontendController::class, 'deletekeranjang']);
+    Route:: get('/buatpesanan', [FrontendController::class, 'checkout'])->name('buatpesanan');
+
+
+    Route:: get('/kota/{id}', [FrontendController::class, 'getkota']);
+    Route:: get('/kecamatan/{id}', [FrontendController::class, 'getkecamatan']);
+    Route:: post('/diskon', [FrontendController::class, 'diskon']);
+
     Route:: post('/checkout', [TransaksiController::class, 'transaksi']);
-    Route:: get('/buatpesanan', [TransaksiController::class, 'checkout']);
+
+
 
 });
 

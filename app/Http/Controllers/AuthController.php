@@ -68,6 +68,12 @@ class AuthController extends Controller
 
         if(Auth::attempt($user)){
             $request->session()->regenerate();
+            if(Auth::user()->role == 'admin'){
+                return redirect()->intended('/dashboard-admin');
+            }
+            if(Auth::user()->role == 'member'){
+                return redirect()->intended('/setting-alamat');
+            }
             return redirect()->intended('/home');
         }
         return back()->with('error', 'Email Already In Use!');

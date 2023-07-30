@@ -138,12 +138,12 @@
 
                                     <div class="flex py-2.5">
 
-                                        <form action="/transaction_buy" method="get">
+                                        {{--  <form action="/transaction_buy" method="get">
                                             <input type="text" name="search" placeholder="Cari Invoice"
                                                 class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                                             <button type="submit"
                                                 class="p-2.5   w-20 text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-lg inline-block cursor-pointer border-0 bg-transparent">Cari</button>
-                                        </form>
+                                        </form>  --}}
                                     </div>
                                 </div>
                             </div>

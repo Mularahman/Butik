@@ -101,19 +101,19 @@
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 required>
                                         </div>
-                                        <div>
+                                        {{--  <div>
                                             <label for="diskon"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga
                                                 Diskon</label>
                                             <input type="number" value="{{$item->diskon}}" name="diskon" placeholder="Harga Diskon"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                                 required>
-                                        </div>
+                                        </div>  --}}
                                         <div>
-                                            <label for="kategori"
+                                            <label for="produkkategori"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih
                                                 Kategori</label>
-                                            <select id="kategori" name="kategori_id"
+                                            <select id="produkkategori" name="kategori_id"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 <option selected value="{{$item->kategori_id}}">{{$item->kategori->kategori}}</option>
                                                 @foreach ($kategori as $data)
@@ -129,10 +129,10 @@
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 <option selected value="{{$item->subkategori_id}}">{{$item->subkategori->subkategori}}</option>
 
-                                                    @foreach ($subkategori as $data)
-                                                        <option value="{{ $data->id }}">{{ $data->subkategori }}
+
+                                                        <option value="">
                                                         </option>
-                                                    @endforeach
+
 
 
                                             </select>
@@ -291,6 +291,31 @@
             </div>
         </div>
     </div>
+    <script>
+        const produkkategori = document.getElementById('produkkategori');
+
+        produkkategori.addEventListener('change', function() {
+            var id = this.value;
+            if (id) {
+                fetch('/getsubkategori/' + id)
+                    .then(response => response.json())
+                    .then(data => {
+                        var subkategoriSelect = document.getElementById('subkategori');
+                        subkategoriSelect.innerHTML = '<option value="">--- Pilih Sub Kategori ---</option>';
+                        data.forEach(subkategori => {
+
+                            var option = document.createElement('option');
+                            option.value = subkategori.id;
+                            option.textContent = subkategori.subkategori;
+                            subkategoriSelect.appendChild(option);
+                        });
+                    });
+            } else {
+                var subkategoriSelect = document.getElementById('subkategori');
+                subkategoriSelect.innerHTML = '<option value="">--- Pilih Sub Kategori ---</option>';
+            }
+        });
+    </script>
 @endsection
 @push('addon-script')
 

@@ -41,7 +41,8 @@
 
 
                                         <a href="#">
-                                            <img class="h-48 w-full p-2 rounded-[20px]" src="{{ asset('storage/' . $transactiondetail->produk->gambar->first()->thumbnail) }}"
+                                            <img class="h-48 w-full p-2 rounded-[20px]"
+                                                src="{{ asset('storage/' . $transactiondetail->produk->gambar->first()->thumbnail) }}"
                                                 alt="" />
                                         </a>
 
@@ -50,24 +51,28 @@
                                         <div class="lg:grid-rows-2">
                                             <div>
                                                 <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Nama Pembeli</label>
+                                                    class="block mb-2 text-muted text-sm font-medium ">Nama
+                                                    Pembeli</label>
                                                 <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{$transactiondetail->transaction->user->name}}</label>
+                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transactiondetail->transaction->user->name }}</label>
 
                                             </div>
                                             <div>
                                                 <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Tanggal Transaksi</label>
+                                                    class="block mb-2 text-muted text-sm font-medium ">Tanggal
+                                                    Transaksi</label>
                                                 <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{$transactiondetail->transaction->tanggal}}</label>
+                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transactiondetail->transaction->tanggal }}</label>
 
 
                                             </div>
                                             <div>
                                                 <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Total Harga</label>
+                                                    class="block mb-2 text-muted text-sm font-medium ">Total
+                                                    Harga</label>
                                                 <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Rp. {{number_format($transactiondetail->transaction->total_harga)}}</label>
+                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Rp.
+                                                    {{ number_format($transactiondetail->transaction->total_harga) }}</label>
 
 
                                             </div>
@@ -75,24 +80,27 @@
                                         <div class="lg:grid-rows-2">
                                             <div>
                                                 <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Nama Produk</label>
+                                                    class="block mb-2 text-muted text-sm font-medium ">Nama
+                                                    Produk</label>
                                                 <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{$transactiondetail->produk->namaproduk}}</label>
+                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transactiondetail->produk->namaproduk }}</label>
 
                                             </div>
+
                                             <div>
                                                 <label for="customer"
                                                     class="block mb-2 text-muted text-sm font-medium ">Qty</label>
                                                 <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{$transactiondetail->qty}}</label>
+                                                    class="block mb-2 text-md font-medium text-gray-900 ">{{ $transactiondetail->qty }}</label>
 
 
                                             </div>
                                             <div>
                                                 <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Status Pembayaran</label>
+                                                    class="block mb-2 text-muted text-sm font-medium ">Status
+                                                    Pembayaran</label>
                                                 <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-red-500 ">{{$transactiondetail->transaction->transaction_status}}</label>
+                                                    class="block mb-2 text-md font-medium text-red-500 ">{{ $transactiondetail->transaction->transaction_status }}</label>
 
 
                                             </div>
@@ -101,128 +109,163 @@
 
 
                                     </div>
-                                    <h6 class="mb-0 font-bold capitalize">Informasi Pengiriman</h6>
-                                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
+                                        <div>
+                                            <h6 class="mb-3 font-bold capitalize">Informasi Pengiriman</h6>
+                                            <div class="">
 
-                                        <div class="lg:grid-rows-2">
-                                            <div>
+
+                                                <span for="customer"
+                                                    class="block mb-2 text-md font-medium text-slate-400 dark:text-white">
+                                                    <span
+                                                        class="text-gray-700">{{ $transactiondetail->transaction->user->name }}
+                                                    </span>|
+                                                    {{ $transactiondetail->transaction->user->no_hp }} <br>
+                                                    {{ $transactiondetail->transaction->user->alamat1 }},
+                                                    {{ $transactiondetail->transaction->user->alamat2 }},
+                                                    {{ $transactiondetail->transaction->user->kecamatan->kecamatan }}, <br>
+                                                    {{ $transactiondetail->transaction->user->kota->kota }},
+                                                    {{ $transactiondetail->transaction->user->provinsi->provinsi }},
+                                                    {{ $transactiondetail->transaction->user->negara }},
+                                                    {{ $transactiondetail->transaction->user->kodepos }}</span>
+
+
+
                                                 <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Alamat I</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{$transactiondetail->transaction->user->alamat1}}</label>
+                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white ">Catatan
+                                                    : <span class="text-slate-400">{{ $transactiondetail->catatan }}
+                                                    </span></label>
+
+
+
+
 
                                             </div>
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Provinsi</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{$transactiondetail->transaction->user->provinsi_id}}</label>
+
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-3 font-bold capitalize">Status Pengiriman</h6>
+                                            <div class="">
 
 
-                                            </div>
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Kode Pos</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{$transactiondetail->transaction->user->kodepos}}</label>
+                                                <div class="">
+                                                    <div class="flex">
+                                                        <label for="customer"
+                                                            class="block mb-2 text-muted text-sm font-medium me-2">Status
+                                                            : </label>
+                                                        <label for="customer"
+                                                            class="block mb-2 text-md font-medium text-red-600 dark:text-white">{{ $transactiondetail->status }}</label>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="lg:grid-rows-2">
+                                                    <div class="flex">
+                                                        <label for="customer"
+                                                            class="block mb-2 text-muted me-2 text-sm font-medium ">Jenis
+                                                            Pengiriman :
+                                                        </label>
+                                                        <label for="customer"
+                                                            class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transactiondetail->kurir }}</label>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="lg:grid-rows-2">
+                                                    <div class="flex">
+                                                        <label for="customer"
+                                                            class="block mb-2 text-muted text-sm font-medium me-2">Resi
+                                                            : </label>
+                                                        <label for="customer"
+                                                            class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transactiondetail->resi }}</label>
+
+                                                    </div>
+
+                                                </div>
+
 
 
                                             </div>
                                         </div>
-                                        <div class="lg:grid-rows-2">
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Alamat II</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{$transactiondetail->transaction->user->alamat2}}</label>
-
-                                            </div>
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Kabupaten / Kota</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white ">{{$transactiondetail->transaction->user->kota_id}}</label>
-
-
-                                            </div>
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Kurir</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white ">{{$transactiondetail->kurir}}</label>
-
-
-                                            </div>
-
-
-                                        </div>
-                                        <div class="lg:grid-rows-2">
-
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Country</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{$transactiondetail->transaction->user->negara}}</label>
-
-
-                                            </div>
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Kecamatan</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white ">{{$transactiondetail->transaction->user->kecamatan_id}}</label>
-
-
-                                            </div>
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Catatan</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white ">{{$transactiondetail->catatan}}</label>
-
-
-                                            </div>
-                                        </div>
-
 
                                     </div>
-                                    <h6 class="mb-0 font-bold capitalize">Status Pengiriman</h6>
-                                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    <div class="">
+
+                                        <div>
+                                            <h6 class="mb-3 font-bold capitalize">Rincian Biaya</h6>
+                                            <div class="text-xs">
 
 
-                                        <div class="lg:grid-rows-2">
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Status </label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-red-600 dark:text-white">{{ $transactiondetail->status }}</label>
+                                                <div class="">
+                                                    <table
+                                                        class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+
+                                                        <thead class="align-bottom">
+
+                                                            <tr>
+                                                                <th
+                                                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                    Diskon</th>
+                                                                @if (empty($transactiondetail->transaction->diskon))
+                                                                <th id="diskonelement"
+                                                                class="px-6 py-3 pl-2 font-bold text-left  align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-red-400 opacity-70">
+                                                                : - Rp. 0</th>
+                                                                @else
+                                                                <th id="diskonelement"
+                                                                class="px-6 py-3 pl-2 font-bold text-left  align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-red-400 opacity-70">
+                                                                : - Rp. {{ number_format($transactiondetail->transaction->diskon) }}</th>
+                                                                @endif
+
+
+                                                            </tr>
+                                                            <tr>
+                                                                <th
+                                                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                    Ongkos Kirim</th>
+                                                                @if (empty($transactiondetail->ongkir))
+                                                                    <th id="hargaongkir"
+                                                                        class="px-6 py-3 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                        : Rp. 0
+                                                                    </th>
+                                                                @else
+                                                                    <th id="hargaongkir"
+                                                                        class="px-6 py-3 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                        : Rp. {{ number_format($transactiondetail->ongkir) }}
+                                                                    </th>
+                                                                @endif
+
+                                                            </tr>
+                                                            <tr>
+                                                                <th
+                                                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                    Sub Total</th>
+                                                                <th id="subtotal"
+                                                                    class="px-6 py-3 pl-2 font-bold text-left  align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                    : Rp. {{ number_format($transactiondetail->produk->hargaproduk) }}</th>
+
+
+                                                            </tr>
+                                                            <tr class="bg-gray-100">
+                                                                <th
+                                                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent shadow-none text-xxs  tracking-none whitespace-nowrap text-slate-400 ">
+                                                                    Total Bayar</th>
+                                                                <th id="totalharga"
+                                                                    class="px-6 py-3 pl-2 font-bold text-left align-middle bg-transparent shadow-none text-xxs tracking-none whitespace-nowrap text-slate-400 ">
+                                                                    : Rp. {{ number_format($transactiondetail->transaction->total_harga) }}
+                                                                </th>
+
+                                                            </tr>
+                                                        </thead>
+
+                                                    </table>
+
+                                                </div>
+
+
+
 
                                             </div>
-
                                         </div>
-                                        <div class="lg:grid-rows-2">
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Jenis Pengiriman
-                                                </label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transactiondetail->kurir }}</label>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="lg:grid-rows-2">
-                                            <div>
-                                                <label for="customer"
-                                                    class="block mb-2 text-muted text-sm font-medium ">Resi</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transactiondetail->resi }}</label>
-
-                                            </div>
-
-                                        </div>
-
-
 
                                     </div>
 

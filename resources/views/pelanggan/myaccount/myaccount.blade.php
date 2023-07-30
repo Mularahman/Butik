@@ -213,12 +213,13 @@
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Province</label>
 
 
-                                            <select id="Province" name="provinsi_id"
+                                            <select id="pilihprovince" name="provinsi_id"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
                                                 <option selected>--- Select Province ---</option>
                                                 @foreach ($provinsi as $data)
 
-                                                <option value="{{$data->provinsi}}">{{$data->provinsi}}</option>
+                                                <option value="{{$data->id}}">{{$data->provinsi}}</option>
                                                 @endforeach
 
                                             </select>
@@ -229,13 +230,13 @@
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
 
 
-                                            <select id="kota" name="kota_id"
+                                            <select id="pilihkota" name="kota_id"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 <option selected>--- Select City ---</option>
-                                                @foreach ($kota as $data)
 
-                                                <option value="{{$data->kota}}">{{$data->kota}}</option>
-                                                @endforeach
+
+                                                <option value=""></option>
+
 
                                             </select>
 
@@ -245,13 +246,13 @@
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">District</label>
 
 
-                                            <select id="kota" name="kecamatan_id"
+                                            <select id="kecamatan" name="kecamatan_id"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 <option selected>--- Select District ---</option>
-                                                @foreach ($kecamatan as $data)
 
-                                                <option value="{{$data->kecamatan}}">{{$data->kecamatan}}</option>
-                                                @endforeach
+
+                                                <option value=""></option>
+
 
                                             </select>
 
@@ -294,4 +295,49 @@
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('pilihprovince').addEventListener('change', function() {
+            var provinsi = this.value;
+            if (provinsi) {
+
+                fetch('/kota/' + provinsi)
+                .then(response => response.json())
+                .then(data => {
+                    var kotaSelect = document.getElementById('pilihkota');
+                    kotaSelect.innerHTML = '<option value="">--- Pilih Kabupaten / Kota ---</option>';
+                    console.log(data);
+                    data.forEach(kota => {
+                            var option = document.createElement('option');
+                            option.value = kota.id;
+                            option.textContent = kota.kota;
+                            kotaSelect.appendChild(option);
+                        });
+                    });
+            } else {
+                var kotaSelect = document.getElementById('kota');
+                kotaSelect.innerHTML = '<option value="">--- Pilih Kabupaten / Kota ---</option>';
+            }
+        });
+        document.getElementById('pilihkota').addEventListener('change', function() {
+            var kota = this.value;
+            if (kota) {
+                fetch('/kecamatan/' + kota)
+                    .then(response => response.json())
+                    .then(data => {
+                        var kecamatanSelect = document.getElementById('kecamatan');
+                        kecamatanSelect.innerHTML = '<option value="">--- Pilih Kecamatan ---</option>';
+                        data.forEach(kecamatan => {
+
+                            var option = document.createElement('option');
+                            option.value = kecamatan.id;
+                            option.textContent = kecamatan.kecamatan;
+                            kecamatanSelect.appendChild(option);
+                        });
+                    });
+            } else {
+                var kecamatanSelect = document.getElementById('kecamatan');
+                kecamatanSelect.innerHTML = '<option value="">--- Pilih Kecamatan ---</option>';
+            }
+        });
+    </script>
 @endsection

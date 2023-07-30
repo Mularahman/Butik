@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class ProdukController extends Controller
 {
     public function produk(){
-        $produk = Produk::with('gambar')->get();
+        $produk = Produk::with('gambar','users')->get();
 
         return view('admin.produk.produk',[
             'produk' => $produk
@@ -53,7 +53,7 @@ class ProdukController extends Controller
             'hargaproduk' => $data['hargaproduk'],
             'deskripsishort' => $data['deskripsishort'],
             'deskripsiproduk' => $data['deskripsiproduk'],
-            'diskon' => $data['diskon'],
+            // 'diskon' => $data['diskon'],
             // 'promo' => $data['promo'],
             // 'produkbaru' => $data['produkbaru'],
             // 'barudatang' => $data['barudatang'],
@@ -96,13 +96,13 @@ class ProdukController extends Controller
         $produk = Produk::with('kategori', 'subkategori')->where('id', $id)->get();
         $user = User::all();
         $kategori = Kategori::with('subkategori')->get();
-        $subkategori = Subkategori::with('kategori')->get();
+
 
         return view('admin.produk.editproduk',[
             'produk' => $produk,
             'user' => $user,
             'kategori' => $kategori,
-            'subkategori' => $subkategori,
+
             'id' => $id
 
         ]);
@@ -116,7 +116,7 @@ class ProdukController extends Controller
             'ukuranproduk' => 'required',
             'stokproduk' => 'required',
             'hargaproduk' => 'required',
-            'diskon' => 'required',
+            // 'diskon' => 'required',
             'user_id' => 'required',
             'kategori_id' => 'required',
             'subkategori_id' => 'required',
@@ -136,6 +136,11 @@ class ProdukController extends Controller
         $update->update($data);
 
         return redirect('/produk-admin')->with('success', 'Berhasil Mengedit Produk!');
+    }
+    public function subkategori(Request $request, $id)
+    {
+        $subkategori = Subkategori::where('kategori_id', $id)->get();
+        return response()->json($subkategori);
     }
     public function myproductgallery(Request $request){
 

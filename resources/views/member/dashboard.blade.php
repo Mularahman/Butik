@@ -195,7 +195,7 @@
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
 
-                                    <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                    <a type="button" href="/transaction_details/{{$transaksi->id}}" 
                                         data-tooltip-target="detail"
                                         class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 
@@ -205,7 +205,7 @@
                                             <path
                                                 d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                         </svg>
-                                    </button>
+                                    </a>
                                     <div id="popup-modal" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
 

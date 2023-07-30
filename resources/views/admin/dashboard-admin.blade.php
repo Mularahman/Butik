@@ -33,7 +33,7 @@ Dashboard
                             <div>
                                 <p class="mb-0 font-sans font-semibold leading-normal text-sm">Transaksi</p>
                                 <h5 class="mb-0 font-bold">
-                                    500
+                                    {{$transaksi->count()}}
                                     {{--  <span
                                         class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>  --}}
                                 </h5>
@@ -68,7 +68,7 @@ Dashboard
                             <div>
                                 <p class="mb-0 font-sans font-semibold leading-normal text-sm">Toko</p>
                                 <h5 class="mb-0 font-bold">
-                                   200
+                                   {{$toko->count()}}
                                     {{--  <span
                                         class="leading-normal text-sm font-weight-bolder text-lime-500">+3%</span>  --}}
                                 </h5>
@@ -97,7 +97,7 @@ Dashboard
                                 <p class="mb-0 font-sans font-semibold leading-normal text-sm">Pelanggan
                                 </p>
                                 <h5 class="mb-0 font-bold">
-                                   500
+                                   {{$pelanggan->count()}}
                                     {{--  <span
                                         class="leading-normal text-red-600 text-sm font-weight-bolder">-2%</span>  --}}
                                 </h5>
@@ -129,7 +129,7 @@ Dashboard
                             <div>
                                 <p class="mb-0 font-sans font-semibold leading-normal text-sm">Total Transaksi</p>
                                 <h5 class="mb-0 font-bold">
-                                   Rp. 500.000
+                                   Rp. {{number_format($total)}}
                                     {{--  <span
                                         class="leading-normal text-sm font-weight-bolder text-lime-500">+5%</span>  --}}
                                 </h5>
@@ -369,7 +369,7 @@ Dashboard
                                 this month
                             </p>  --}}
                         </div>
-                        <div
+                        {{--  <div
                             class="flex-none w-5/12 max-w-full px-3 my-auto text-right lg:w-1/2 lg:flex-none">
                             <div class="relative pr-6 lg:float-right">
                                 <a dropdown-trigger class="cursor-pointer" aria-expanded="false">
@@ -393,7 +393,7 @@ Dashboard
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>  --}}
                     </div>
                 </div>
                 <div class="flex-auto p-6 px-0 pb-2">
@@ -416,6 +416,8 @@ Dashboard
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($toko as $item)
+
                                 <tr>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="flex px-2 py-1">
@@ -425,7 +427,7 @@ Dashboard
                                                     alt="xd" />
                                             </div>  --}}
                                             <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">7 Seconds
+                                                <h6 class="mb-0 leading-normal text-sm">{{$item->nama_toko}}
                                                 </h6>
                                             </div>
                                         </div>
@@ -438,7 +440,7 @@ Dashboard
                                                     alt="xd" />
                                             </div>
                                             <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Member1
+                                                <h6 class="mb-0 leading-normal text-sm">{{$item->name}}
                                                 </h6>
                                             </div>
                                         </div>
@@ -450,128 +452,17 @@ Dashboard
                                     </td>
                                     <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                                         <div class="w-3/4 mx-auto">
+                                            @if ($item->status_toko == 1)
+                                            <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-green-600 to-lime-400">Aktif</span>
+                                            @else
 
                                             <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-red-600 to-rose-400">Tidak Aktif</span>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            {{--  <div>
-                                                <img src="/assets/img/small-logos/logo-atlassian.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                    alt="atlassian" />
-                                            </div>  --}}
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Eriga
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="/assets/img/team-1.jpg"
-                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-8 w-8 rounded-xl"
-                                                    alt="xd" />
-                                            </div>
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Member2
-                                                </h6>
-                                            </div>
-                                        </div>
+                                @endforeach
 
-                                    </td>
-                                    <td
-                                        class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> Rp. 5.400.000 </span>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-
-                                            <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-green-600 to-lime-400">Aktif</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            {{--  <div>
-                                                <img src="/assets/img/small-logos/logo-xd.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                    alt="xd" />
-                                            </div>  --}}
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Dress Kita
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="/assets/img/team-3.jpg"
-                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-8 w-8 rounded-xl"
-                                                    alt="xd" />
-                                            </div>
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Member3
-                                                </h6>
-                                            </div>
-                                        </div>
-
-                                    </td>
-                                    <td
-                                        class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> Rp. 3.400.000 </span>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-
-                                            <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-red-600 to-rose-400">Tidak Aktif</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            {{--  <div>
-                                                <img src="/assets/img/small-logos/logo-atlassian.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                    alt="atlassian" />
-                                            </div>  --}}
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">KitaBelanja
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="/assets/img/team-4.jpg"
-                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-8 w-8 rounded-xl"
-                                                    alt="xd" />
-                                            </div>
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">Member4
-                                                </h6>
-                                            </div>
-                                        </div>
-
-                                    </td>
-                                    <td
-                                        class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> Rp. 7.400.000 </span>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-
-                                            <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-green-600 to-lime-400">Aktif</span>
-                                        </div>
-                                    </td>
-                                </tr>
 
                             </tbody>
                         </table>

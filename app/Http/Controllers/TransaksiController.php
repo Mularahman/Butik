@@ -6,6 +6,7 @@ use Midtrans\Snap;
 use App\Models\Kota;
 use App\Models\User;
 use Midtrans\Config;
+use App\Models\Kupon;
 use App\Models\Kurir;
 use App\Models\Provinsi;
 use App\Models\Kecamatan;
@@ -19,51 +20,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
-    public function checkout(Request $request ){
-        $keranjang = Keranjang::with('produk', 'user', 'produk.gambar')->where('user_id', Auth::user()->id)->get();
-        $id = Auth::user()->id;
-        $user = User::where('id', $id)->first();
-        $provinsi = Provinsi::with('kecamatans','kotas')->get();
-        $kota = Kota::all();
-        $kecamatan = Kecamatan::all();
-        $kurir = Kurir::all();
-        return view('buatpesanan',[
-            'keranjang' => $keranjang,
-            'user' => $user,
-            'kurir' => $kurir,
-            'id' => $id,
-            'provinsi' => $provinsi,
-            'kota' => $kota,
-            'kecamatan' => $kecamatan,
-        ]);
-    }
-    public function diskon(Request $request){
-        $request->validate([
-            'diskon_kode' => 'required|string|max:10',
-        ]);
 
-        $inputData = $request->all();
-        $totalbayar = $request->total;
-
-        $diskon = Kupon::where('code', $inputData['diskon_kode'])->first();
-
-        if ($diskon && $diskon->is_active && now()->between($diskon->start_date, $diskon->end_date)) {
-
-            $hargadiskon = $diskon->percentage / 100 * $totalbayar;
-
-
-            $totalbayar -= $hargadiskon;
-        }
-        if (!$diskon) {
-
-            return redirect()->back()->with('error', 'Kode diskon tidak valid.');
-        }
-
-        if (!$diskon->is_active || now()->lt($diskon->start_date) || now()->gt($diskon->end_date)) {
-
-            return redirect()->back()->with('error', 'Diskon tidak berlaku saat ini.');
-        }
-    }
     public function transaksi(Request $request)
     {
         $user = Auth::user();
@@ -91,10 +48,12 @@ class TransaksiController extends Controller
                 'resi' => '',
                 'kode' => $trx,
                 'qty' => $cart->jumlah,
+                'ongkir' => $request->ongkir,
                 'kurir' => $request->kurir,
                 'catatan' => $request->catatan
             ]);
         }
+            
 
         Keranjang::with('produk', 'user', 'produk.gambar')->where('user_id', Auth::user()->id)->delete();
 

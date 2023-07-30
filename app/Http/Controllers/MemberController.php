@@ -38,10 +38,12 @@ class MemberController extends Controller
         })->latest()->take(3)->get();
         $data = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
             $produk->where('user_id', Auth::user()->id);
-        })->get();
+        })->where('status','SELESAI')->get();
 
-        foreach($data as $total){
-            $pendapatan = $total->transaction->sum('total_harga');
+        $pendapatan = 0;
+        foreach ($data as $item) {
+            $pendapatan += $item->transaction->total_harga;
+
         }
         return view('member.dashboard',[
             'user' => $user,
@@ -63,7 +65,7 @@ class MemberController extends Controller
     }
     public function add_product(){
         $kategori = Kategori::with('subkategori')->get();
-        $subkategori = Subkategori::with('kategori')->get();
+
         $user = User::all();
         $id = Auth::user()->id;
         $produk = Produk::with('gambar', 'users')->where('user_id', $id)->get();
@@ -71,8 +73,14 @@ class MemberController extends Controller
             'user' => $user,
             'kategori' => $kategori,
             'produk' => $produk,
-            'subkategori' => $subkategori,
+
         ]);
+    }
+
+    public function getsubkategori(Request $request, $id)
+    {
+        $subkategori = Subkategori::where('kategori_id', $id)->get();
+        return response()->json($subkategori);
     }
 
     public function add_product_aksi(Request $request){
@@ -93,7 +101,7 @@ class MemberController extends Controller
             'hargaproduk' => $data['hargaproduk'],
             'deskripsishort' => $data['deskripsishort'],
             'deskripsiproduk' => $data['deskripsiproduk'],
-            'diskon' => $data['diskon'],
+            // 'diskon' => $data['diskon'],
             // 'promo' => $data['promo'],
             // 'produkbaru' => $data['produkbaru'],
             // 'barudatang' => $data['barudatang'],
@@ -144,7 +152,7 @@ class MemberController extends Controller
             'ukuranproduk' => 'required',
             'stokproduk' => 'required',
             'hargaproduk' => 'required',
-            'diskon' => 'required',
+            // 'diskon' => 'required',
             'user_id' => 'required',
             'kategori_id' => 'required',
             'subkategori_id' => 'required',

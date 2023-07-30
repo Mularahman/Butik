@@ -41,7 +41,7 @@
 
                                     <div class="flex-auto p-6 px-0 pb-2">
                                         <div class="overflow-x-auto mb-5">
-                                            <div class="px-4">
+                                            <div class="px-4 mb-6">
 
                                                 <h5 class="mb-0 font-bold dark:text-white">Keranjang</h5>
                                                 <p class="mb-0 leading-normal text-sm">Informasi Keranjang</p>
@@ -151,14 +151,19 @@
                                                             </td>
 
                                                         </tr>
-                                                        @php
-                                                        $total += $subtotal; @endphp
+
                                                     @endforeach
 
                                                 </tbody>
 
                                             </table>
-
+                                            <div
+                                            class="flex flex-wrap items-center justify-end border-t border-solid shrink-0 px-3 pt-4 border-slate-100 rounded-b-xl">
+                                            <a type="button" href="/buatpesanan"
+                                                class="p-2.5  mt-5 w-full text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-lg inline-block cursor-pointer border-0 bg-transparent">
+                                                Checkout
+                                            </a>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -169,234 +174,7 @@
                 </div>
             </div>
         </div>
-        <div class="container p-4 px-4 ">
-            <div class="px-8">
-                <div class="grid grid-cols-1 gap-4 lg:grid-cols-1 md:grid-cols-1">
-                    <div class="lg:col-span-2 ">
-                        <div class="flex-wrap flex">
 
-                            <div
-                                class="relative flex-auto mx-2 flex-col min-w-0 mb-6 break-words bg-white  rounded-2xl bg-clip-border">
-                                <div
-                                    class="border-black/12.5  relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border ">
-
-                                    <div class="flex-auto p-6 px-0 pb-2">
-                                        <div class="overflow-x-auto mb-5">
-                                            <div class="px-4">
-
-                                                <h5 class="mb-0 font-bold dark:text-white">Alamat Pengiriman</h5>
-                                                <p class="mb-0 leading-normal text-sm">Informasi Pengiriman</p>
-                                            </div>
-                                            <form class="space-y-6  px-6" action="/checkout" method="POST">
-                                                @csrf
-
-                                                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
-
-                                                    <div>
-                                                        <label for="address"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address
-                                                            1</label>
-                                                        <input type="text" value="{{ $user->alamat1 }}" name="alamat1"
-                                                            id="address" placeholder=""
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                            required>
-                                                    </div>
-                                                    <div>
-                                                        <label for="address2"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address
-                                                            2</label>
-                                                        <input type="text" value="{{ $user->alamat2 }}" name="alamat2"
-                                                            id="address2" placeholder=""
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                            required>
-                                                    </div>
-
-
-                                                </div>
-                                                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-                                                    <div>
-                                                        <label for="country"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Negara</label>
-                                                        <input type="text" value="{{ $user->negara }}" name="negara"
-                                                            id="country" placeholder=""
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                            required>
-                                                    </div>
-
-
-                                                    <div>
-                                                        <label for="Province"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
-
-
-                                                        <select id="Province" name="provinsi_id"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                            <option selected>--- Pilih Provinsi ---</option>
-                                                            @foreach ($provinsi as $data)
-                                                                <option value="{{ $data->provinsi }}">
-                                                                    {{ $data->provinsi }}</option>
-                                                            @endforeach
-
-                                                        </select>
-
-                                                    </div>
-                                                    <div>
-                                                        <label for="kategori"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kabupaten / Kota</label>
-
-
-                                                        <select id="kota" name="kota_id"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                            <option selected>--- Pilih Kota ---</option>
-                                                            @foreach ($kota as $data)
-                                                                <option value="{{ $data->kota }}">{{ $data->kota }}
-                                                                </option>
-                                                            @endforeach
-
-                                                        </select>
-
-                                                    </div>
-                                                    </div>
-                                                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                                    <div>
-                                                        <label for="kategori"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
-
-
-                                                        <select id="kota" name="kecamatan_id"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                            <option selected>--- Pilih Kecamatan ---</option>
-                                                            @foreach ($kecamatan as $data)
-                                                                <option value="{{ $data->kecamatan }}">
-                                                                    {{ $data->kecamatan }}</option>
-                                                            @endforeach
-
-                                                        </select>
-
-                                                    </div>
-
-
-                                                    <div>
-                                                        <label for="postalcode"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Pos</label>
-                                                        <input type="number" value="{{ $user->kodepos }}"
-                                                            name="kodepos" id="postalcode" placeholder=""
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                            required>
-                                                    </div>
-                                                    <div>
-                                                        <label for="mobile"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No WA / Telepon</label>
-                                                        <input type="number" value="{{ $user->no_hp }}" name="no_hp"
-                                                            id="mobile" placeholder=""
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                                            required>
-                                                    </div>
-                                                    <div>
-                                                        <label for="kurir"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jasa Kurir</label>
-
-
-                                                        <select id="kurir" name="kurir"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                            <option selected>--- Pilih Kurir ---</option>
-                                                            @foreach ($kurir as $data)
-                                                                <option value="{{ $data->kurir }}">
-                                                                    {{ $data->kurir }}</option>
-                                                            @endforeach
-
-                                                        </select>
-
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div>
-                                                    <label for="mobile"
-                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Catatan</label>
-
-
-                                                    <textarea id="message" name="catatan" rows="4"
-                                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                        placeholder="Write your thoughts here..."></textarea>
-
-                                                </div>
-
-
-                                                <h5 class="pt-8">Informasi Pembayaran</h5>
-
-                                                <div class="grid  pb-4 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                                    <div class="flex py-2.5">
-
-
-                                                        <input type="text" placeholder="Masukkan Kupon"
-                                                            class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-36 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                                                        <button type="button"
-                                                            class="p-2.5   w-14 text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-lg inline-block cursor-pointer border-0 bg-transparent">Use</button>
-
-                                                    </div>
-                                                    <div>
-                                                        <label for="total"
-                                                            class="block mb-2  tracking-normal text-start uppercase align-middle bg-transparent text-sm whitespace-nowrap border-b-gray-200 text-slate-400 ">Diskon</label>
-                                                        <input hidden type="text" value="{{ $diskon }}"
-                                                            name="diskon">
-
-                                                        <span
-                                                            class="font-bold tracking-normal text-end uppercase align-middle bg-transparent border-b letter border-b-solid text-sm whitespace-nowrap border-b-gray-200 text-red-400 ">
-                                                            - Rp. {{ number_format($diskon) }}</span>
-                                                    </div>
-                                                    <div>
-                                                        <label for="total"
-                                                            class="block mb-2 tracking-normal text-start uppercase align-middle bg-transparent text-sm whitespace-nowrap border-b-gray-200 text-slate-400 ">Sub
-                                                            Total</label>
-                                                        <input hidden type="text" name="subtotal" id=""
-                                                            value="{{ $total }}">
-                                                        <span
-                                                            class="font-bold tracking-normal text-end uppercase align-middle bg-transparent border-b letter border-b-solid text-sm whitespace-nowrap border-b-gray-200 text-slate-400">
-                                                            Rp. {{ number_format($total) }}</span>
-                                                    </div>
-                                                    @php
-                                                        $totalbayar = $total - $diskon;
-                                                    @endphp
-                                                    <div>
-                                                        <label for="total"
-                                                            class="block mb-2 font-bold tracking-normal text-start uppercase align-middle bg-transparent text-sm whitespace-nowrap border-b-gray-200 text-slate-400 ">Total
-                                                            Bayar</label>
-                                                        <input hidden type="text" value="{{ $totalbayar }}"
-                                                            name="total">
-                                                        <span
-                                                            class="font-bold tracking-normal text-end uppercase align-middle bg-transparent border-b letter border-b-solid text-sm whitespace-nowrap border-b-gray-200 text-slate-400">
-                                                            Rp. {{ number_format($totalbayar) }}</span>
-                                                    </div>
-
-
-
-                                                </div>
-
-
-
-
-                                                <div
-                                                    class="flex flex-wrap items-center justify-end border-t border-solid shrink-0 px-3 border-slate-100 rounded-b-xl">
-                                                    <button type="submit"
-                                                        class="p-2.5  mt-5 w-full text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-lg inline-block cursor-pointer border-0 bg-transparent">
-                                                        Buat Pesanan
-                                                    </button>
-                                                </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
 
 
 
