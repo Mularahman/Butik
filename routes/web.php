@@ -191,6 +191,7 @@ Route:: group(['middleware' => ['auth']], function(){
 });
 
 Route:: get('/home', [FrontendController::class, 'home']);
+Route:: get('/kategori/{id}', [FrontendController::class, 'kategori']);
 Route:: get('/detail-produk/{id}', [FrontendController::class, 'detailproduk']);
 Route:: get('/setting-alamat', [FrontendController::class, 'settingalamat']);
 Route:: put('/setting-alamat/{id}', [FrontendController::class, 'settingalamataksi']);

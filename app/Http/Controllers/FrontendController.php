@@ -30,13 +30,32 @@ class FrontendController extends Controller
 
 
         $produk = Produk::with('kategori','users','gambar')->where('status', 1)->take(8)->get();
-
+        $best = Produk::with('kategori','users','gambar')->where('status', 1)->OrderBy('stokproduk','desc')->take(4)->get();
         return view('home',[
             'produk' => $produk,
             'keranjang' => $keranjang,
             'kategori' => $kategori,
+            'best' => $best,
         ]);
 
+    }
+
+    public function kategori(Request $request, $id){
+        $kategori = Kategori::where('id', $id)->get();
+        $keranjang = Keranjang::all();
+        if(Auth::check()){
+
+            $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
+        }
+
+
+        $produk = Produk::with('kategori','users','gambar')->where('kategori_id', $id)->where('status', 1)->get();
+
+        return view('kategori', [
+            'produk' => $produk,
+            'keranjang' => $keranjang,
+            'kategori' => $kategori,
+        ]);
     }
 
     public function detailproduk($id){
