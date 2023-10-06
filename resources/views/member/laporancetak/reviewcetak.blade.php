@@ -76,7 +76,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>No</th>
+
                     <th>Review</th>
                     <th>Tanggal</th>
                     <th>Produk</th>
@@ -87,7 +87,7 @@
                 @foreach ( $produk->ulasan as $ulasan)
 
                <tr>
-                <td>{{$loop->iteration}}</td>
+
                 <td>{{$ulasan->ulasan}}</td>
                 <td>{{$ulasan->tanggal}}</td>
                 <td>{{$produk->namaproduk}}</td>
@@ -97,10 +97,10 @@
 
             </tbody>
             <tfoot>
-            <tr>
-                <td colspan="3" style="text-align: right;">Total Ulasan</td>
+            {{--  <tr>
+                <td colspan="2" style="text-align: right;">Total Ulasan</td>
                 <td>{{ $ulasan->count() }}</td>
-            </tr>
+            </tr>  --}}
             </tfoot>
         </table>
     </main>

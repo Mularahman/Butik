@@ -57,6 +57,9 @@
             padding: 20px;
             background-color: #FFE5CC; /* Warna oranye muda untuk footer */
         }
+        .uppercase-text {
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
@@ -72,14 +75,16 @@
     </header>
 
     <main>
-        <h2 class="title">Laporan Customer</h2>
+        <h2 class="title">Laporan Metode Pembayaran</h2>
         <table class="table">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama Customer</th>
                     <th>Tanggal Transaksi</th>
+                    <th>Invoice</th>
                     <th>Total</th>
+                    <th>Status</th>
+                    <th>Metode Pembayaran</th>
                 </tr>
             </thead>
             <tbody>
@@ -87,17 +92,27 @@
 
                <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{$item->transaction->user->name}}</td>
                 <td>{{$item->transaction->tanggal}}</td>
-                <td>Rp. {{number_format($item->transaction->total_harga)}}</td>
+                <td>{{$item->kode}}</td>
+                <td>Rp. {{number_format($item->transaction->total_harga - $item->transaction->diskon + $item->first()->ongkir)}}</td>
+                <td>{{$item->transaction->transaction_status}}</td>
+                <td class="uppercase-text">{{$item->transaction->pembayaran}}</td>
                 </tr>
                 @endforeach
 
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" style="text-align: right;">Total :</td>
+                    <td colspan="5" style="text-align: right;">Total :</td>
                     <td>Rp. {{number_format($total)}}</td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="text-align: right;">Total Transaksi Success:</td>
+                    <td>{{$success->count()}}</td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="text-align: right;">Total Transaksi Pending:</td>
+                    <td>{{$pending->count()}}</td>
                 </tr>
             </tfoot>
         </table>
@@ -106,7 +121,7 @@
     <footer>
         <p>{{Auth::user()->kota->kota}}, <?php echo date('d F Y'); ?></p>
         <p>Hormat Kami,</p>
-        <p>{{Auth::user()->name}}</p>
+        <p>Admin Toko</p>
     </footer>
 </body>
 </html>

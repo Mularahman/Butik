@@ -98,14 +98,14 @@
                                 <h6
                                     class="pt-3 font-bold tracking-normal text-left uppercase align-middle bg-transparent  text-xxs whitespace-nowrap text-slate-400 opacity-70">
                                     Data Customer <span
-                                        class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$customer->count()}}</span>
+                                        class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$data->count()}}</span>
                                 </h6>
 
                             </div>
                             <div class="flex-none w-5/12 max-w-full px-3 my-auto text-right lg:w-1/2 lg:flex-none">
 
 
-                                <form class="flex items-center">
+                                <form class="flex items-center" action="/customer-admin" method="GET">
                                     <label for="simple-search" class="sr-only leading-normal text-sm">Search </label>
                                     <div class="relative w-full">
                                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -116,7 +116,7 @@
                                                     clip-rule="evenodd"></path>
                                             </svg>
                                         </div>
-                                        <input type="text" id="simple-search"
+                                        <input type="text" id="simple-search"  name="search"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Search" required>
                                     </div>
@@ -165,7 +165,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($customer as $item => $value)
+                                    @foreach ($data as $item => $value)
                                     <tr>
 
 

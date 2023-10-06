@@ -89,7 +89,7 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->transaction->tanggal}}</td>
                 <td>{{$item->kode}}</td>
-                <td>Rp. {{number_format($item->transaction->total_harga)}}</td>
+                <td>Rp. {{number_format($item->transaction->total_harga - $item->transaction->diskon + $item->first()->ongkir)}}</td>
                 </tr>
                 @endforeach
 

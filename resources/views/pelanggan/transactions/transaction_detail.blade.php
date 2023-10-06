@@ -47,8 +47,8 @@
                                     <h6 class="mb-0 font-bold capitalize">{{ $transaction->kode }}</h6>
 
 
-                                    <form class="space-y-6" action="/transaction_selesai_aksi/{{$transaksi->id}}" method="POST" enctype="multipart/form-data">
-                                        @csrf
+                                    <div class="space-y-6">
+
 
                                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
 
@@ -86,7 +86,7 @@
                                                         Harga</label>
                                                     <label for="customer"
                                                         class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Rp.
-                                                        {{ number_format($transaksi->transaction->total_harga) }}</label>
+                                                        {{ number_format($transaksi->transaction->total_harga - $transaksi->transaction->diskon + $transaksi->ongkir) }}</label>
 
 
                                                 </div>
@@ -113,8 +113,14 @@
                                                     <label for="customer"
                                                         class="block mb-2 text-muted text-sm font-medium ">Status
                                                         Pembayaran</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-red-500 ">{{ $transaksi->transaction->transaction_status }}</label>
+                                                        @if ($transaksi->transaction->transaction_status == 'SUCCESS')
+                                                        <label for="customer"
+                                                            class="block mb-2 text-md font-medium text-green-500 ">{{ $transaksi->transaction->transaction_status }}</label>
+                                                        @else
+
+                                                        <label for="customer"
+                                                            class="block mb-2 text-md font-medium text-red-500 ">{{ $transaksi->transaction->transaction_status }}</label>
+                                                        @endif
 
 
                                                 </div>
@@ -123,172 +129,188 @@
 
 
                                         </div>
-                                        <h6 class="mb-0 font-bold capitalize">Informasi Pengiriman</h6>
-                                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-4">
+                                            <div>
+                                                <h6 class="mb-3 font-bold capitalize">Informasi Pengiriman</h6>
+                                                <div class="">
 
-                                            <div class="lg:grid-rows-2">
-                                                <div>
+
+                                                    <span for="customer"
+                                                        class="block mb-2 text-md font-medium text-slate-400 dark:text-white">
+                                                        <span
+                                                            class="text-gray-700">{{ $transaksi->transaction->user->name }}
+                                                        </span>|
+                                                        {{ $transaksi->transaction->user->no_hp }} <br>
+                                                        {{ $transaksi->transaction->user->alamat1 }},
+                                                        {{ $transaksi->transaction->user->alamat2 }},
+                                                        {{ $transaksi->transaction->user->kecamatan->kecamatan }}, <br>
+                                                        {{ $transaksi->transaction->user->kota->kota }},
+                                                        {{ $transaksi->transaction->user->provinsi->provinsi }},
+                                                        {{ $transaksi->transaction->user->negara }},
+                                                        {{ $transaksi->transaction->user->kodepos }}</span>
+
+
+
                                                     <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Alamat I</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transaksi->transaction->user->alamat1 }}</label>
+                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white ">Catatan
+                                                        : <span class="text-slate-400">{{ $transaksi->catatan }}
+                                                        </span></label>
+
+
+
+
 
                                                 </div>
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Provinsi</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transaksi->transaction->user->provinsi_id }}</label>
+
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-3 font-bold capitalize">Status Pengiriman</h6>
+                                                <div class="">
 
 
-                                                </div>
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Kode Pos</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transaksi->transaction->user->kodepos }}</label>
+                                                    <div class="">
+                                                        <div class="flex">
+                                                            <label for="customer"
+                                                                class="block mb-2 text-muted text-sm font-medium me-2">Status
+                                                                : </label>
+                                                                @if ($transaksi->status == 'SELESAI')
+                                                                <label for="customer"
+                                                                    class="block mb-2 text-md font-medium text-green-500 ">{{ $transaksi->status }}</label>
+                                                                @else
+
+                                                                <label for="customer"
+                                                                    class="block mb-2 text-md font-medium text-red-500 ">{{ $transaksi->status }}</label>
+                                                                @endif
+
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="lg:grid-rows-2">
+                                                        <div class="flex">
+                                                            <label for="customer"
+                                                                class="block mb-2 text-muted me-2 text-sm font-medium ">Jenis
+                                                                Pengiriman :
+                                                            </label>
+                                                            <label for="customer"
+                                                                class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transaksi->kurir }}</label>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="lg:grid-rows-2">
+                                                        <div class="flex">
+                                                            <label for="customer"
+                                                                class="block mb-2 text-muted text-sm font-medium me-2">Resi
+                                                                : </label>
+                                                            <label for="customer"
+                                                                class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transaksi->resi }}</label>
+
+                                                        </div>
+
+                                                    </div>
+
 
 
                                                 </div>
                                             </div>
-                                            <div class="lg:grid-rows-2">
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Alamat II</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transaksi->transaction->user->alamat2 }}</label>
-
-                                                </div>
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Kabupaten /
-                                                        Kota</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white ">{{ $transaksi->transaction->user->kota_id }}</label>
-
-
-                                                </div>
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">No
-                                                        Wa/Telepon</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transaksi->transaction->user->no_hp }}</label>
-
-
-                                                </div>
-
-
-                                            </div>
-                                            <div class="lg:grid-rows-2">
-
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Country</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transaksi->transaction->user->negara }}</label>
-
-
-                                                </div>
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Kecamatan</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white ">{{ $transaksi->transaction->user->kecamatan_id }}</label>
-
-
-                                                </div>
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Catatan</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white ">{{ $transaksi->catatan }}</label>
-
-
-                                                </div>
-                                            </div>
-
-
 
                                         </div>
-                                        <h6 class="mb-0 font-bold capitalize">Status Pengiriman</h6>
-                                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        <div class="">
+
+                                            <div>
+                                                <h6 class="mb-3 font-bold capitalize">Rincian Biaya</h6>
+                                                <div class="text-xs">
 
 
-                                            <div class="lg:grid-rows-2">
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Status </label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-red-600 dark:text-white">{{ $transaksi->status }}</label>
+                                                    <div class="">
+                                                        <table
+                                                            class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+
+                                                            <thead class="align-bottom">
+
+                                                                <tr>
+                                                                    <th
+                                                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                        Diskon</th>
+                                                                    @if (empty($transaksi->transaction->diskon))
+                                                                    <th id="diskonelement"
+                                                                    class="px-6 py-3 pl-2 font-bold text-left  align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-red-400 opacity-70">
+                                                                    : - Rp. 0</th>
+                                                                    @else
+                                                                    <th id="diskonelement"
+                                                                    class="px-6 py-3 pl-2 font-bold text-left  align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-red-400 opacity-70">
+                                                                    : - Rp. {{ number_format($transaksi->transaction->diskon) }}</th>
+                                                                    @endif
+
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th
+                                                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                        Ongkos Kirim</th>
+                                                                    @if (empty($transaksi->ongkir))
+                                                                        <th id="hargaongkir"
+                                                                            class="px-6 py-3 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                            : Rp. 0
+                                                                        </th>
+                                                                    @else
+                                                                        <th id="hargaongkir"
+                                                                            class="px-6 py-3 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                            : Rp. {{ number_format($transaksi->ongkir) }}
+                                                                        </th>
+                                                                    @endif
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th
+                                                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                        Sub Total</th>
+                                                                    <th id="subtotal"
+                                                                        class="px-6 py-3 pl-2 font-bold text-left  align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                        : Rp. {{ number_format($transaksi->produk->hargaproduk) }}</th>
+
+
+                                                                </tr>
+                                                                <tr class="bg-gray-100">
+                                                                    <th
+                                                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent shadow-none text-xxs  tracking-none whitespace-nowrap text-slate-400 ">
+                                                                        Total Bayar</th>
+                                                                    <th id="totalharga"
+                                                                        class="px-6 py-3 pl-2 font-bold text-left align-middle bg-transparent shadow-none text-xxs tracking-none whitespace-nowrap text-slate-400 ">
+                                                                        : Rp. {{ number_format($transaksi->transaction->total_harga - $transaksi->transaction->diskon + $transaksi->ongkir) }}
+                                                                    </th>
+
+                                                                </tr>
+                                                                <tr class="bg-gray-300">
+                                                                    <th
+                                                                        class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent shadow-none text-xxs  tracking-none whitespace-nowrap text-white ">
+                                                                        Metode Bayar</th>
+                                                                    <th id="totalharga"
+                                                                        class="px-6 py-3 pl-2 uppercase font-bold text-left align-middle bg-transparent shadow-none text-xxs tracking-none whitespace-nowrap text-white ">
+                                                                        : {{$transaksi->transaction->pembayaran }}
+                                                                    </th>
+
+                                                                </tr>
+                                                            </thead>
+
+                                                        </table>
+
+                                                    </div>
+
+
+
 
                                                 </div>
-
-                                            </div>
-                                            <div class="lg:grid-rows-2">
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Jenis Pengiriman
-                                                    </label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transaksi->kurir }}</label>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="lg:grid-rows-2">
-                                                <div>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-muted text-sm font-medium ">Resi</label>
-                                                    <label for="customer"
-                                                        class="block mb-2 text-md font-medium text-gray-900 dark:text-white">{{ $transaksi->resi }}</label>
-
-                                                </div>
-
                                             </div>
 
-
-
                                         </div>
 
 
-                                        <div
-                                            class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
-                                            <button type="submit"
-                                                class="inline-block w-full px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs mb-3">
-                                                Pesanan Diterima
-                                            </button>
-                                        </div>
-                                    </form>
-                                    @if ($transaksi->status == 'PENDING')
-                                    <form action="" method="post">
 
-                                        <div
-                                            class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
-                                            <button type="submit"
-                                                class="inline-block w-full px-6 py-3 font-bold text-center  uppercase align-middle transition-all rounded-lg cursor-pointer text-gray-700 opacity-70 bg-white border border-gray-300 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs mb-3">
-                                                Batalkan Pesanan
-                                            </button>
-                                        </div>
-                                    </form>
-                                    @else
-
-                                    <form action="" method="post">
-
-                                        <div
-                                            class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">
-                                            <button type="submit"
-                                                class="inline-block w-full px-6 py-3 font-bold text-center  uppercase align-middle transition-all rounded-lg cursor-pointer text-gray-700 opacity-70 bg-white border border-gray-300 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs mb-3">
-                                                Ajukan Pengembalian
-                                            </button>
-                                        </div>
-                                    </form>
-                                    @endif
+                                    </div>
                                 </div>
-
                             </div>
-                        </div>
-                    </div>
                 @endforeach
             </div>
         </div>

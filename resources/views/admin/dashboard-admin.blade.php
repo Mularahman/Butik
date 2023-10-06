@@ -361,111 +361,12 @@ Dashboard
                 <div
                     class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
                     <div class="flex flex-wrap mt-0 -mx-3">
-                        <div class="flex-none w-7/12 max-w-full px-3 mt-0 lg:w-1/2 lg:flex-none">
-                            <h6>Member</h6>
-                            {{--  <p class="mb-0 leading-normal text-sm">
-                                <i class="fa fa-check text-cyan-500"></i>
-                                <span class="ml-1 font-semibold">30 done</span>
-                                this month
-                            </p>  --}}
-                        </div>
-                        {{--  <div
-                            class="flex-none w-5/12 max-w-full px-3 my-auto text-right lg:w-1/2 lg:flex-none">
-                            <div class="relative pr-6 lg:float-right">
-                                <a dropdown-trigger class="cursor-pointer" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v text-slate-400"></i>
-                                </a>
-                                <p class="hidden transform-dropdown-show"></p>
 
-                                <ul dropdown-menu
-                                    class="z-100 text-sm transform-dropdown shadow-soft-3xl duration-250 before:duration-350 before:font-awesome before:ease-soft min-w-44 -ml-34 before:text-5.5 pointer-events-none absolute top-0 m-0 mt-2 list-none rounded-lg border-0 border-solid border-transparent bg-white bg-clip-padding px-2 py-4 text-left text-slate-500 opacity-0 transition-all before:absolute before:top-0 before:right-7 before:left-auto before:z-40 before:text-white before:transition-all before:content-['\f0d8']">
-                                    <li class="relative">
-                                        <a class="py-1.2 lg:ease-soft clear-both block w-full whitespace-nowrap rounded-lg border-0 bg-transparent px-4 text-left font-normal text-slate-500 lg:transition-colors lg:duration-300"
-                                            href="javascript:;">Action</a>
-                                    </li>
-                                    <li class="relative">
-                                        <a class="py-1.2 lg:ease-soft clear-both block w-full whitespace-nowrap rounded-lg border-0 bg-transparent px-4 text-left font-normal text-slate-500 lg:transition-colors lg:duration-300"
-                                            href="javascript:;">Another action</a>
-                                    </li>
-                                    <li class="relative">
-                                        <a class="py-1.2 lg:ease-soft clear-both block w-full whitespace-nowrap rounded-lg border-0 bg-transparent px-4 text-left font-normal text-slate-500 lg:transition-colors lg:duration-300"
-                                            href="javascript:;">Something else here</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>  --}}
                     </div>
                 </div>
                 <div class="flex-auto p-6 px-0 pb-2">
-                    <div class="overflow-x-auto">
-                        <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
-                            <thead class="align-bottom">
-                                <tr>
-                                    <th
-                                        class="px-6 py-3 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        Nama Toko</th>
-                                    <th
-                                        class="px-6 py-3 pl-2 font-bold tracking-normal text-left uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        Nama Pemilik</th>
-                                    <th
-                                        class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        Pendapatan</th>
-                                    <th
-                                        class="px-6 py-3 font-bold tracking-normal text-center uppercase align-middle bg-transparent border-b letter border-b-solid text-xxs whitespace-nowrap border-b-gray-200 text-slate-400 opacity-70">
-                                        Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($toko as $item)
+                    <div class="overflow-x-auto" id="container">
 
-                                <tr>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            {{--  <div>
-                                                <img src="/assets/img/small-logos/logo-xd.svg"
-                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                    alt="xd" />
-                                            </div>  --}}
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">{{$item->nama_toko}}
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="flex px-2 py-1">
-                                            <div>
-                                                <img src="/assets/img/team-2.jpg"
-                                                    class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-8 w-8 rounded-xl"
-                                                    alt="xd" />
-                                            </div>
-                                            <div class="flex flex-col justify-center">
-                                                <h6 class="mb-0 leading-normal text-sm">{{$item->name}}
-                                                </h6>
-                                            </div>
-                                        </div>
-
-                                    </td>
-                                    <td
-                                        class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs"> Rp. 1.400.000 </span>
-                                    </td>
-                                    <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
-                                        <div class="w-3/4 mx-auto">
-                                            @if ($item->status_toko == 1)
-                                            <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-green-600 to-lime-400">Aktif</span>
-                                            @else
-
-                                            <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-red-600 to-rose-400">Tidak Aktif</span>
-                                            @endif
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-
-
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -473,7 +374,29 @@ Dashboard
 
 
     </div>
+    <div class="flex flex-wrap my-6 -mx-3">
+        <!-- card 1 -->
 
+        <div class="w-full max-w-full px-3 mt-0 mb-6 md:mb-0 md:flex-none lg:flex-none">
+            <div
+                class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+                <div
+                    class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
+                    <div class="flex flex-wrap mt-0 -mx-3">
+
+                    </div>
+                </div>
+                <div class="flex-auto p-6 px-0 pb-2">
+                    <div class="overflow-x-auto" id="containers">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{{--
     <footer class="pt-4">
         <div class="w-full px-6 mx-auto">
             <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
@@ -515,8 +438,82 @@ Dashboard
                 </div>
             </div>
         </div>
-    </footer>
+    </footer>  --}}
 </div>
 <!-- end cards -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
 
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Pendapatan Toko',
+            align: 'center'
+        },
+
+        xAxis: {
+            categories: {!!json_encode($namaToko)!!},
+            crosshair: true,
+            accessibility: {
+                description: 'Countries'
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Pendapatan Toko'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' Rupiah'
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [
+            {
+                name: 'Pendapatan Toko',
+                data: {!! json_encode($pendapatantoko)!!}
+            },
+
+        ]
+    });
+
+
+</script>
+<script>
+
+    var data = {!! json_encode($chartData) !!};
+
+    // Konfigurasi Highcharts
+    var options = {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Grafik Penjualan Produk Teratas'
+        },
+        xAxis: {
+            categories: data.categories
+        },
+        yAxis: {
+            title: {
+                text: 'Total Penjualan'
+            }
+        },
+        series: [{
+            name: 'Penjualan',
+            data: data.values
+        }]
+    };
+
+    // Buat grafik dengan Highcharts
+    Highcharts.chart('containers', options);
+
+</script>
 @endsection

@@ -9,10 +9,18 @@ use Illuminate\Support\Facades\Hash;
 class CustomerController extends Controller
 {
     public function customer(){
-        $customer = User::where('role', 'pelanggan')->orWhere('role', 'member')->get();
+        $data = User::where('role', 'member')->orWhere('role', 'pelanggan')->get();
+        if(request('search')){
+            $data = User::where(function ($query) {
+                $query->where('role', 'pelanggan')
+                      ->orWhere('role', 'member');
+            })
+            ->where('name', 'LIKE', '%' . request('search') . '%')
+            ->get();
+        }
 
         return view('admin.Pelanggan.pelanggan',[
-            'customer' => $customer
+            'data' => $data
         ]);
     }
 

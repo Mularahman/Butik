@@ -32,7 +32,7 @@ class MemberController extends Controller
         })->get();
         $customer = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
             $produk->where('user_id', Auth::user()->id);
-        })->latest()->take(5)->get();
+        })->get();
         $recent = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('produk', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->latest()->take(3)->get();
@@ -45,6 +45,48 @@ class MemberController extends Controller
             $pendapatan += $item->transaction->total_harga;
 
         }
+
+        $bulanAngka = [];
+        $terjual = [];
+
+        $currentYear = date('Y');
+
+        $produkterjual = TransactionDetail::with('transaction', 'produk', 'produk.users', 'produk.gambar')
+            ->whereHas('produk', function ($produk) {
+                $produk->where('user_id', Auth::user()->id);
+            })
+            ->where('status', 'SELESAI')
+            ->whereYear('created_at', $currentYear)
+            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->selectRaw('MONTH(created_at) as month, sum(qty) as total_sold')
+            ->orderBy('month')
+            ->get();
+
+
+            $bulanNama = [
+                1 => 'Januari',
+                2 => 'Februari',
+                3 => 'Maret',
+                4 => 'April',
+                5 => 'Mei',
+                6 => 'Juni',
+                7 => 'Juli',
+                8 => 'Agustus',
+                9 => 'September',
+                10 => 'Oktober',
+                11 => 'November',
+                12 => 'Desember',
+            ];
+        foreach($produkterjual as $jual){
+            $bulanAngka[] = $jual->month;
+
+            $terjual[] = (int)$jual->total_sold;
+        }
+        $bulanNamaIndonesia = array_map(function ($bulan) use ($bulanNama) {
+            return $bulanNama[$bulan];
+        }, $bulanAngka);
+
+
         return view('member.dashboard',[
             'user' => $user,
             'produk' => $produk,
@@ -52,6 +94,8 @@ class MemberController extends Controller
             'customer' => $customer,
             'pendapatan' => $pendapatan,
             'recent' => $recent,
+            'terjual' => $terjual,
+            'bulan' => $bulanNamaIndonesia,
         ]);
     }
      //myproduct
@@ -193,7 +237,12 @@ class MemberController extends Controller
 
     }
 
+    public function deleteproduk(Request $request, $id){
+       $data = Produk::findOrFail($id);
+       $data->delete();
+       return redirect('/myproduct-member')->with('success', 'Berhasil Menghapus Data Produk!');
 
+    }
     //transaction
 
 
@@ -320,6 +369,7 @@ class MemberController extends Controller
         return view('member.review.review',[
             'ulasan' => $produk,
             'review' => $ulasan,
+
         ]);
     }
 

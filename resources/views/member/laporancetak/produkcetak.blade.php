@@ -89,7 +89,6 @@
 
                <tr>
                 <td>{{$loop->iteration}}</td>
-
                 <td>{{$item->produk->namaproduk}}</td>
                 <td>Rp. {{number_format($item->produk->hargaproduk)}}</td>
                 <td>{{$item->produk->stokproduk}}</td>
@@ -98,12 +97,12 @@
                 @endforeach
 
             </tbody>
-            <tfoot>
+            {{--  <tfoot>
                 <tr>
                     <td colspan="4" style="text-align: right;">Total :</td>
                     <td>{{$total}}</td>
                 </tr>
-            </tfoot>
+            </tfoot>  --}}
         </table>
     </main>
 

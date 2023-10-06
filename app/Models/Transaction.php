@@ -14,7 +14,8 @@ class Transaction extends Model
         'diskon',
         'total_harga',
         'transaction_status',
-        'kode'
+        'kode',
+        'pembayaran'
     ];
 
     protected $hidden = [

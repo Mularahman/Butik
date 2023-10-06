@@ -1,6 +1,6 @@
 @extends('member.layouts.app')
 @section('title')
-    Laporan Produk
+    Laporan Metode Bayar
 @endsection
 @section('breadcrum')
     <nav>
@@ -12,7 +12,7 @@
             <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
                 aria-current="page">Laporan</li>
         </ol>
-        <h6 class="mb-0 font-bold capitalize">Laporan Produk Terjual</h6>
+        <h6 class="mb-0 font-bold capitalize">Laporan Metode Bayar</h6>
     </nav>
 @endsection
 @section('content')
@@ -34,16 +34,16 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-3">
                         <div>
                             <div class="font-bold flex ml-4 mb-4 mt-3">
-                                <h3 class="me-2">Laporan Produk Terjual</h3>
+                                <h3 class="me-2">Laporan Metode Bayar</h3>
                                 <span
-                                class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$jual->count()}}</span>
+                                class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$data->count()}}</span>
 
 
                             </div>
                             <div class="px-4 ">
-                                <form action="/laporan-produk-cetak" method="get">
+                                <form action="/laporan-pembayaran-cetak" method="get">
                                     <div class="flex">
-                                    {{--  <div>
+                                    <div>
                                         <label class="me-2" for="">Mulai</label>
                                         <input type="date" name="start" placeholder="Mulai"
                                         class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
@@ -52,11 +52,11 @@
                                         <label class="me-2" for="">Sampai</label>
                                         <input type="date" name="end" placeholder="Mulai"
                                     class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                                    </div>  --}}
-                                    <div class="">
+                                    </div>
+                                    <div class="pt-3">
 
                                         <button type="submit"
-                                        class="p-2.5   w-24 text-sm font-medium text-center text-white bg-gradient-to-tl from-green-600 to-lime-400  hover:scale-105   rounded-lg inline-block cursor-pointer border-0 bg-transparent">Download</button>
+                                        class="p-2.5 mt-3  w-24 text-sm font-medium text-center text-white bg-gradient-to-tl from-green-600 to-lime-400  hover:scale-105   rounded-lg inline-block cursor-pointer border-0 bg-transparent">Download</button>
                                     </div>
                                     </div>
 
@@ -69,8 +69,8 @@
 
                                 <div class="flex py-2.5">
 
-                                    <form action="/laporan-produk" method="get">
-                                    <input type="text" name="search" placeholder="Cari Nama Produk"
+                                    <form action="/laporan-pembayaran" method="get">
+                                    <input type="text" name="search" placeholder="Cari Invoice"
                                         class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                                     <button type="submit"
                                         class="p-2.5   w-20 text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-lg inline-block cursor-pointer border-0 bg-transparent">Cari</button>
@@ -87,29 +87,28 @@
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class=" leading-tight ">Gambar</span>
+                                    <span class=" leading-tight ">Tanggal Transaksi</span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class=" leading-tight ">Nama Produk</span>
+                                    <span class=" leading-tight ">Invoice</span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class=" leading-tight ">Harga </span>
+                                    <span class=" leading-tight ">Total </span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class=" leading-tight ">Stok Produk </span>
+                                    <span class=" leading-tight ">Status </span>
                                 </td>
-
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class=" leading-tight ">Jumlah Terjual </span>
+                                    <span class=" leading-tight ">Metode Pembayaran </span>
                                 </td>
 
 
                             </tr>
-                            @foreach ($jual as $item)
+                            @foreach ($data as $item)
 
                             <tr class="border-b-2">
 
@@ -119,34 +118,29 @@
                             </td>
 
 
-                            <td class="p-2 align-middle text-center bg-transparent  whitespace-nowrap">
-                                <div class="mt-2 avatar-group">
-                                    <div>
-
-                                        <img src="{{ asset('storage/' . $item->produk->gambar->first()->thumbnail) }}"
-                                            class="inline-flex items-center justify-center  text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                            alt="atlassian" />
-                                    </div>
-
-                                </div>
+                            <td
+                                class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                <span class="font-semibold leading-tight text-xs">{{$item->transaction->tanggal}}</span>
                             </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs"> {{$item->produk->namaproduk}} </span>
+                                    <span class="font-semibold leading-tight text-xs"> {{$item->kode}} </span>
                                 </td>
+
+
 
 
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">Rp. {{number_format($item->produk->hargaproduk)}}</span>
+                                    <span class="font-semibold leading-tight text-xs">Rp. {{number_format($item->transaction->total_harga - $item->transaction->diskon + $item->first()->ongkir)}}</span>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">{{$item->produk->stokproduk}}</span>
+                                    <span class="font-semibold leading-tight text-xs">{{$item->transaction->transaction_status}}</span>
                                 </td>
                                 <td
-                                    class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                    <span class="font-semibold leading-tight text-xs">{{$item->total_sold}}</span>
+                                    class="p-2 leading-normal uppercase text-center align-middle bg-transparent  text-sm whitespace-nowrap">
+                                    <span class="font-semibold leading-tight text-xs">{{$item->transaction->pembayaran}}</span>
                                 </td>
 
 

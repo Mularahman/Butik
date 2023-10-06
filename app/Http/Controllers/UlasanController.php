@@ -49,7 +49,7 @@ class UlasanController extends Controller
         $keranjang = Keranjang::where('user_id', Auth::user()->id)->with('produk', 'user', 'produk.gambar')->get();
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('transaction', function($produk){
             $produk->where('user_id', Auth::user()->id);
-        })->where('status','SELESAI')->where('transaction_id',$id)->first();
+        })->where('status','SELESAI')->find($id);
 
 
         return view('pelanggan.ulasan.add_ulasan',[
@@ -66,7 +66,7 @@ class UlasanController extends Controller
         ]);
         $date = Carbon::now();
 
-
+      
         $ulasan = new Ulasan([
             'produk_id' => $id,
             'user_id' => auth()->user()->id,

@@ -44,7 +44,7 @@
         <ul class="space-y-2 font-medium">
             <li class="mt-0.5 w-full">
                 <a href="/dashboard-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group shadow-md drop-shadow hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('dashboard-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg aria-hidden="true"
@@ -54,7 +54,7 @@
                             <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                         </svg>
                     </div>
-                    <span class="ml-1">Dashboard</span>
+                    <span class="flex-1 ml-1 text-left whitespace-nowrap  opacity-60">Dashboard</span>
                 </a>
             </li>
 
@@ -63,7 +63,7 @@
             </li>
             <li>
                 <button type="button"
-                    class="btns flex items-center  w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    class="btns flex items-center  w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('kategori*') ? 'shadow-md' : ''}} {{Request::is('sub_kategori*') ? 'shadow-md' : ''}}"
                     aria-controls="kategori" data-collapse-toggle="kategori">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
@@ -84,7 +84,7 @@
                 <ul id="kategori" class="hidden py-2 space-y-2">
                     <li>
                         <a href="/kategori-admin"
-                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60">
+                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60 {{Request::is('kategori-admin*') ? 'border-b-2' : ''}}">
                             <div
                                 class=" mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg p-2.5 text-center text-gray-900">
 
@@ -99,7 +99,7 @@
                     </li>
                     <li>
                         <a href="/sub_kategori-admin"
-                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60">
+                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60 {{Request::is('sub_kategori-admin*') ? 'border-b-2' : ''}}">
                             <div
                                 class="mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg p-2.5 text-center text-gray-900">
 
@@ -117,7 +117,7 @@
             </li>
             <li>
                 <button type="button"
-                    class="btns flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    class="btns flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('produk*') ? 'shadow-md' : ''}}"
                     aria-controls="produk" data-collapse-toggle="produk">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
@@ -144,7 +144,7 @@
                 <ul id="produk" class="hidden py-2 space-y-2">
                     <li>
                         <a href="/produk-admin"
-                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60">
+                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60 {{Request::is('produk-admin*') ? 'border-b-2' : ''}}">
                             <div
                                 class=" mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg p-2.5 text-center text-gray-900">
 
@@ -159,7 +159,7 @@
                     </li>
                     <li>
                         <a href="/produk-admin_tambah"
-                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60">
+                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60 {{Request::is('produk-admin_tambah*') ? 'border-b-2' : ''}}">
                             <div
                                 class=" mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg p-2.5 text-center text-gray-900">
 
@@ -177,7 +177,7 @@
             </li>
             <li class="mt-0.5 w-full">
                 <a href="/slider-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('slider-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-white" height="1em" viewBox="0 0 512 512"><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"/></svg>
@@ -187,7 +187,7 @@
             </li>
             <li class="mt-0.5 w-full">
                 <a href="/kupon-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('kupon-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-white" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9L381.7 53c-48 48-113.1 75-181 75H192 160 64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64l0 128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352l8.7 0c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.4c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7V240 371.3C357.2 317.8 280.5 288 200.7 288H192V192h8.7c79.8 0 156.5-29.8 215.3-83.3z"/></svg>
@@ -197,7 +197,7 @@
             </li>
             <li class="mt-0.5 w-full">
                 <a href="/kurir-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('kurir-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-white" height="1em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 208c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/></svg>
@@ -207,7 +207,7 @@
             </li>
             <li>
                 <button type="button"
-                    class="btns flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    class="btns flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('provinsi-admin*') ? 'shadow-md' : ''}} {{Request::is('kota-admin*') ? 'shadow-md' : ''}} {{Request::is('kecamatan-admin*') ? 'shadow-md' : ''}}"
                     aria-controls="wilayah" data-collapse-toggle="wilayah">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
@@ -228,7 +228,7 @@
                 <ul id="wilayah" class="hidden py-2 space-y-2">
                     <li>
                         <a href="/provinsi-admin"
-                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60">
+                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60 {{Request::is('provinsi-admin*') ? 'border-b-2' : ''}}">
                             <div
                                 class=" mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg p-2.5 text-center text-gray-900">
 
@@ -243,7 +243,7 @@
                     </li>
                     <li>
                         <a href="/kota-admin"
-                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60">
+                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60 {{Request::is('kota-admin*') ? 'border-b-2' : ''}}">
                             <div
                                 class=" mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg p-2.5 text-center text-gray-900">
 
@@ -258,7 +258,7 @@
                     </li>
                     <li>
                         <a href="/kecamatan-admin"
-                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60">
+                            class="mx-2 py-2.7 flex items-center   text-sm w-50 p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 opacity-60 {{Request::is('kecamatan-admin*') ? 'border-b-2' : ''}}">
                             <div
                                 class=" mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg p-2.5 text-center text-gray-900">
 
@@ -276,7 +276,7 @@
             </li>
             <li class="mt-0.5 w-full">
                 <a href="/customer-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('customer-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-white" height="1em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>
@@ -294,7 +294,7 @@
             </li>
             <li class="mt-0.5 w-full">
                 <a href="/laporan-transaksi-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('laporan-transaksi-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard-data-fill  flex-shrink-0 w-15 h-15 text-white transition duration-75 group-hover:text-gray-300 dark:text-gray-400 dark:group-hover:text-white" viewBox="0 0 16 16">
@@ -308,7 +308,7 @@
 
             <li class="mt-0.5 w-full">
                 <a href="/laporan-pelanggan-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('laporan-pelanggan-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard-data-fill  flex-shrink-0 w-15 h-15 text-white transition duration-75 group-hover:text-gray-300 dark:text-gray-400 dark:group-hover:text-white" viewBox="0 0 16 16">
@@ -321,7 +321,7 @@
             </li>
             <li class="mt-0.5 w-full">
                 <a href="/laporan-toko-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('laporan-toko-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard-data-fill  flex-shrink-0 w-15 h-15 text-white transition duration-75 group-hover:text-gray-300 dark:text-gray-400 dark:group-hover:text-white" viewBox="0 0 16 16">
@@ -334,7 +334,7 @@
             </li>
             <li class="mt-0.5 w-full">
                 <a href="/laporan-pembelian-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('laporan-pembelian-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard-data-fill  flex-shrink-0 w-15 h-15 text-white transition duration-75 group-hover:text-gray-300 dark:text-gray-400 dark:group-hover:text-white" viewBox="0 0 16 16">
@@ -347,7 +347,7 @@
             </li>
             <li class="mt-0.5 w-full">
                 <a href="/laporan-penjualan-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('laporan-penjualan-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard-data-fill  flex-shrink-0 w-15 h-15 text-white transition duration-75 group-hover:text-gray-300 dark:text-gray-400 dark:group-hover:text-white" viewBox="0 0 16 16">
@@ -360,7 +360,7 @@
             </li>
             <li class="mt-0.5 w-full">
                 <a href="/laporan-produk-admin"
-                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('laporan-produk-admin*') ? 'shadow-md' : ''}}">
                     <div
                         class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard-data-fill  flex-shrink-0 w-15 h-15 text-white transition duration-75 group-hover:text-gray-300 dark:text-gray-400 dark:group-hover:text-white" viewBox="0 0 16 16">

@@ -24,9 +24,30 @@
             <div class="w-full max-w-full px-3 mt-0 mb-6 ">
 
 
-<a href="/laporan-transaksi-admin-cetak" class="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-purple-700 to-pink-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs mb-3" type="button">
-    Download
-</a>
+
+<div class="px-4 py-4">
+    <form action="/laporan-transaksi-admin-cetak" method="get">
+        <div class="flex">
+        <div>
+            <label class="me-2" for="">Mulai</label>
+            <input type="date" name="start" placeholder="Mulai"
+            class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+        </div>
+        <div>
+            <label class="me-2" for="">Sampai</label>
+            <input type="date" name="end" placeholder="Mulai"
+        class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+        </div>
+        <div class="pt-3">
+
+            <button type="submit"
+            class="p-2.5 mt-3   inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-purple-700 to-pink-500 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs mb-3">Download</button>
+        </div>
+        </div>
+
+
+    </form>
+</div>
 
                 <div
                     class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
@@ -44,11 +65,12 @@
                                         class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$data->count()}}</span>
                                 </h6>
 
+
                             </div>
                             <div class="flex-none w-5/12 max-w-full px-3 my-auto text-right lg:w-1/2 lg:flex-none">
 
 
-                                <form class="flex items-center">
+                                <form class="flex items-center" action="/laporan-transaksi-admin" method="GET">
                                     <label for="simple-search" class="sr-only leading-normal text-sm">Search </label>
                                     <div class="relative w-full">
                                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -59,9 +81,9 @@
                                                     clip-rule="evenodd"></path>
                                             </svg>
                                         </div>
-                                        <input type="text" id="simple-search"
+                                        <input type="text" id="simple-search" name="search"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Search" required>
+                                            placeholder="Search Invoice" required>
                                     </div>
                                     <button type="submit"
                                         class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -151,11 +173,11 @@
                                         </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            <span class="font-semibold leading-tight text-xs">Rp. {{number_format($item->transaction->total_harga)}} </span>
+                                            <span class="font-semibold leading-tight text-xs">Rp. {{number_format($item->transaction->total_harga - $item->transaction->diskon + $item->first()->ongkir)}} </span>
                                         </td>
                                         <td
                                             class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap">
-                                            <span class="font-semibold leading-tight text-xs">{{$item->status}} </span>
+                                            <span class="font-semibold leading-tight text-xs">{{$item->transaction->transaction_status}} </span>
                                         </td>
 
 

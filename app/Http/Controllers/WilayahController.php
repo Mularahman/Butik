@@ -50,7 +50,7 @@ class WilayahController extends Controller
     }
     public function kota()
     {
-        $kota = Kota::with('provinsi', 'kecamatans')->limit(10)->get();
+        $kota = Kota::with('provinsi', 'kecamatans')->get();
 
 
         $provinsi = Provinsi::with('kotas', 'kecamatans')->get();

@@ -142,7 +142,7 @@
         <span>Recent Transaction</span>
 
         <div
-            class="lack/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border mt-3">
+            class="lack/12.5 shadow-soft-xl flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border mt-3">
 
             <div class="flex-auto px-0  py-2">
                 <div class="overflow-x-auto table-responsive">

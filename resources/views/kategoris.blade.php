@@ -37,14 +37,14 @@
                     <span class="mx-2 text-gray-400">/</span>
                     <li class=" font-bold">Kategori</li>
                     <span class="mx-2 text-gray-400">/</span>
-                    <li class=" font-bold">{{$kategori->first()->kategori}}</li>
+                    <li class=" font-bold">{{$cari}}</li>
                 </ol>
 
 
             </div>
 
             <div class="container">
-                <form class="flex items-center justify-end"  action="/kategori/{{$id}}" method="GET">
+                {{--  <form class="flex items-center justify-end"  action="/kategori/{{$id}}" method="GET">
                     <label for="simple-search" class="sr-only">Search</label>
                     <div class="relative w-60">
                         <div class=" inset-y-0 left-0 items-center grid justify-items-end pl-3 ">
@@ -67,14 +67,14 @@
                         </svg>
                         <span class="sr-only">Cari Produk</span>
                     </button>
-                </form>
+                </form>  --}}
 
 
 
         </div>
             <section class="mt-8 mb-8" id="produk">
 
-                <h4 class="text-center">Produk {{$kategori->first()->kategori}} <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-orange-400 to-yellow-300">
+                <h4 class="text-center">Produk {{$cari}} <span class="py-2 px-3 text-xs rounded-lg inline-block whitespace-nowrap text-center align-baseline font-semibold uppercase leading-tight text-white bg-gradient-to-tl from-orange-400 to-yellow-300">
                     {{$produk->count()}}</span></h4>
 
                 <hr

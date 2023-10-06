@@ -13,7 +13,7 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link href="/assets/css/soft-ui-dashboard-tailwind.css?v=1.0.4" rel="stylesheet" />
-   
+
 </head>
 
 <body class="m-0 font-sans antialiased font-normal bg-white text-start text-base leading-default text-slate-500">
@@ -46,6 +46,9 @@
                             class="items-center flex-grow overflow-hidden transition-all duration-500 ease-soft lg-max:max-h-0 basis-full lg:flex lg:basis-auto">
                             <ul class="flex flex-col pl-0 mx-auto mb-0 list-none lg:flex-row xl:ml-auto">
                                 <li>
+                                   @yield('search')
+                                </li>
+                                {{--  <li>
                                     <a class="flex items-center px-4 py-2 mr-2 font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
                                         aria-current="page" href="      /home">
                                         Home
@@ -62,7 +65,7 @@
                                         href="/contact">
                                         Contact
                                     </a>
-                                </li>
+                                </li>  --}}
                                 {{--  <li>
                                     <a class="block px-4 py-2 mr-2 font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-slate-700 lg:px-2"
                                         href="/galleries">
@@ -253,16 +256,13 @@
                                     Method</h2>
                                 <ul class="text-gray-600 dark:text-gray-400 font-medium">
                                     <li>
-                                        <a href="#" class="hover:underline leading-tight text-sm">Privacy
-                                            Policy</a>
+                                        <a href="#" class="hover:underline leading-tight text-sm">Bank Transfer</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="hover:underline leading-tight text-sm">Terms &amp;
-                                            Conditions</a>
+                                        <a href="#" class="hover:underline leading-tight text-sm">Go-Pay</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="hover:underline leading-tight text-sm">Terms &amp;
-                                            Conditions</a>
+                                        <a href="#" class="hover:underline leading-tight text-sm">Alfamart</a>
                                     </li>
                                 </ul>
                             </div>

@@ -16,12 +16,76 @@
             {{ $keranjang->count() }}</div>
     </a>
 @endsection
+@section('search')
+<form action="/kategori" method="post" >
+    @csrf
+    <div class="flex">
+    <input type="text" name="cari" placeholder="Cari Produk" style="width: 384px"
+        class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-72 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+    <button type="submit"
+        class="p-2.5   w-20 text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-full inline-block cursor-pointer border-0 bg-transparent">Cari</button>
+    </div>
+    </form>
+@endsection
 @section('content')
     <section class="mb-[40px]">
 
         <div id="animation-carousel" class="relative w-full h-24 min-h-screen" data-carousel="static">
             <!-- Carousel wrapper -->
             <div class="relative overflow-hidden rounded-lg md:h-96 h-24 min-h-full">
+                <!-- Item 2 -->
+                <div class="hidden duration-200 ease-linear" data-carousel-item>
+                    <div class="container">
+
+                        <div class="relative flex items-center p-0 overflow-hidden bg-center bg-cover min-h-75-screen">
+                            <div class="container z-10">
+                                <div class="relative" style="margin-top: 100px">
+                                    <div class="grid grid-cols-2  lg:grid-cols-4   gap-4">
+                                        <div class="col-span-2">
+                                            <div class="px-8 py-8">
+                                                <div class="flex flex-col w-full max-w-full px-3 mx-auto mt-8">
+
+                                                    <h2
+                                                        class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">
+                                                        Discover Your True Style
+                                                    </h2>
+                                                    <p class="py-3">
+                                                        Temukan Fashion yang Menginspirasi di Setiap Langkahmu.
+                                                    </p>
+
+                                                    <a href="#produk" type="button"
+                                                        class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-40 rounded-3.5xl mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-5 py-3 text-center align-middle font-bold uppercase transition-all text-white">Pesan
+                                                        Sekarang</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="hidden  lg:block">
+                                            <div class="px-8 py-8" style="padding-bottom: 20px">
+                                                <div class="relative top-0  w-44  rounded-bl-xl md:block"
+                                                    style="margin-left: 170px">
+                                                    <img class="w-44 h-60 rounded-lg absolute inset-x-0 top-0 z-0 -ml-20 bg-cover skew-x-10"
+                                                        src="/frontend/img/1.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="hidden  lg:block">
+                                            <div class="px-8 py-8" style="padding-top: 20px">
+                                                <div class="relative top-0  w-44  ml-[30px] rounded-bl-xl md:block">
+                                                    <img class="w-44 h-60 rounded-lg absolute inset-x-0 top-0 z-0 -ml-[190px] bg-cover skew-x-10"
+                                                        src="/frontend/img/2.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
                 <!-- Item 1 -->
                 <div class="hidden duration-200 ease-linear  " data-carousel-item>
                     <div class="relative flex items-center p-0 overflow-hidden bg-center bg-cover min-h-screen h-24">
@@ -58,56 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Item 2 -->
-                <div class="hidden duration-200 ease-linear" data-carousel-item>
-                    <div class="container">
 
-                        <div class="relative flex items-center p-0 overflow-hidden bg-center bg-cover min-h-75-screen">
-                            <div class="container z-10">
-                                <div class="relative" style="margin-top: 100px">
-                                    <div class="grid grid-cols-4 gap-4">
-                                        <div class="col-span-2">
-                                            <div class="px-8 py-8">
-                                            <div class="flex flex-col w-full max-w-full px-3 mx-auto mt-8">
-
-                                                <h2
-                                                    class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">
-                                                    Discover Your True Style
-                                                </h2>
-                                                <p class="py-3">
-                                                    Temukan Fashion yang Menginspirasi di Setiap Langkahmu.
-                                                </p>
-
-                                                <a href="#produk" type="button"
-                                                    class="leading-pro hover:scale-102 hover:shadow-soft-xs active:opacity-85 ease-soft-in text-xs tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-orange-400 to-yellow-300 w-40 rounded-3.5xl mb-0 mr-1 inline-block cursor-pointer border-0 bg-transparent px-5 py-3 text-center align-middle font-bold uppercase transition-all text-white">Pesan
-                                                    Sekarang</a>
-
-                                            </div>
-                                        </div>
-                                        </div>
-                                        <div class="">
-                                            <div class="px-8 py-8" style="padding-bottom: 20px">
-                                                <div class="relative top-0  w-44  rounded-bl-xl md:block" style="margin-left: 170px">
-                                                <img class="w-44 h-60 rounded-lg absolute inset-x-0 top-0 z-0 -ml-20 bg-cover skew-x-10" src="/frontend/img/1.jpg" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <div class="px-8 py-8" style="padding-top: 20px">
-                                                <div class="relative top-0  w-44  ml-[30px] rounded-bl-xl md:block">
-                                                    <img class="w-44 h-60 rounded-lg absolute inset-x-0 top-0 z-0 -ml-[190px] bg-cover skew-x-10" src="/frontend/img/2.jpg" alt="">
-                                                    </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
                 <!-- Slider controls -->
                 <button type="button"
                     class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
@@ -154,7 +169,8 @@
                                         class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-orange-300 to-yellow-400 shadow-soft-2xl">
 
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            fill="currentColor" class="text-white relative top-2.5" viewBox="0 0 640 512">
+                                            fill="currentColor" class="text-white relative top-2.5"
+                                            viewBox="0 0 640 512">
                                             <path
                                                 d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 208c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z" />
                                         </svg>
@@ -523,9 +539,9 @@
                                             <div
                                                 class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-orange-300 to-yellow-400 shadow-soft-2xl">
 
-                                                <img class="h-8 w-8 rounded-lg justify-center relative top-2.5 flex-shrink-0 content-center align-middle items-center" style="left: 8px"
-                                                src="{{ asset('storage/' . $item->icon) }}"
-                                                alt="">
+                                                <img class="h-8 w-8 rounded-lg justify-center relative top-2.5 flex-shrink-0 content-center align-middle items-center"
+                                                    style="left: 8px" src="{{ asset('storage/' . $item->icon) }}"
+                                                    alt="">
                                             </div>
                                             <h5 class="mb-0 text-sm font-bold">
                                                 {{ $item->kategori }}

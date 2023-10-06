@@ -116,8 +116,8 @@
                         <td>{{ $item->transaction->user->name }}</td>
                         <td>{{ $item->produk->namaproduk }}</td>
                         <td>{{ $item->qty }}</td>
-                        <td>{{ $item->produk->hargaproduk }}</td>
-                        <td>{{ $item->transaction->total_harga }}</td>
+                        <td>Rp. {{number_format($item->produk->hargaproduk) }}</td>
+                        <td>Rp. {{number_format($item->transaction->total_harga - $item->transaction->diskon + $item->first()->ongkir)}}</td>
                         <td>{{ $item->status }}</td>
 
                     </tr>

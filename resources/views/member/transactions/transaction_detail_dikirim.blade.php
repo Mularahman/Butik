@@ -67,7 +67,7 @@
                                                 <label for="customer"
                                                     class="block mb-2 text-muted text-sm font-medium ">Total Harga</label>
                                                 <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Rp. {{number_format($transactiondetail->transaction->total_harga)}}</label>
+                                                    class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Rp. {{ number_format($transactiondetail->transaction->total_harga - $transactiondetail->transaction->diskon + $transactiondetail->ongkir) }}</label>
 
 
                                             </div>
@@ -91,8 +91,14 @@
                                             <div>
                                                 <label for="customer"
                                                     class="block mb-2 text-muted text-sm font-medium ">Status Pembayaran</label>
-                                                <label for="customer"
-                                                    class="block mb-2 text-md font-medium text-red-500 ">{{$transactiondetail->transaction->transaction_status}}</label>
+                                                    @if ($transactiondetail->transaction->transaction_status = 'SUCCESS')
+                                                    <label for="customer"
+                                                        class="block mb-2 text-md font-medium text-green-500 ">{{ $transactiondetail->transaction->transaction_status }}</label>
+                                                    @else
+
+                                                    <label for="customer"
+                                                        class="block mb-2 text-md font-medium text-red-500 ">{{ $transactiondetail->transaction->transaction_status }}</label>
+                                                    @endif
 
 
                                             </div>
@@ -243,7 +249,17 @@
                                                                     Total Bayar</th>
                                                                 <th id="totalharga"
                                                                     class="px-6 py-3 pl-2 font-bold text-left align-middle bg-transparent shadow-none text-xxs tracking-none whitespace-nowrap text-slate-400 ">
-                                                                    : Rp. {{ number_format($transactiondetail->transaction->total_harga) }}
+                                                                    : Rp. {{ number_format($transactiondetail->transaction->total_harga - $transactiondetail->transaction->diskon + $transactiondetail->ongkir) }}
+                                                                </th>
+
+                                                            </tr>
+                                                            <tr class="bg-gray-300">
+                                                                <th
+                                                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent shadow-none text-xxs  tracking-none whitespace-nowrap text-white ">
+                                                                    Metode Bayar</th>
+                                                                <th id="totalharga"
+                                                                    class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent shadow-none text-xxs tracking-none whitespace-nowrap text-white ">
+                                                                    : {{$transactiondetail->transaction->pembayaran }}
                                                                 </th>
 
                                                             </tr>
@@ -260,7 +276,7 @@
                                         </div>
 
                                     </div>
-                                   
+
 
                                     <div
                                         class="flex flex-wrap items-center justify-end p-3 border-t border-solid shrink-0 border-slate-100 rounded-b-xl">

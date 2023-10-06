@@ -98,8 +98,8 @@
                         <td>{{ $item->produk->namaproduk }}</td>
                         <td>{{ $item->qty }}</td>
                         <td>Rp. {{ number_format($item->produk->hargaproduk) }}</td>
-                        <td>Rp. {{ number_format($item->transaction->total_harga) }}</td>
-                        <td>{{ $item->status }}</td>
+                        <td>Rp. {{number_format($item->transaction->total_harga - $item->transaction->diskon + $item->first()->ongkir)}}</td>
+                        <td>{{ $item->transaction->transaction_status }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -92,12 +92,12 @@
                 @foreach ($jual as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->produk->kode }}</td>
+                        <td>{{ $item->produk->kodeproduk }}</td>
                         <td>{{ $item->produk->namaproduk }}</td>
                         <td>{{ $item->produk->users->nama_toko }}</td>
                         <td>{{ $item->produk->kategori->kategori }}</td>
                         <td>{{ $item->produk->stokproduk }}</td>
-                        <td>{{ $item->produk->hargaproduk }}</td>
+                        <td>Rp. {{ number_format($item->produk->hargaproduk) }}</td>
                         <td>{{ $item->total_sold }}</td>
 
 

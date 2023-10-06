@@ -149,6 +149,29 @@
         </div>
     </section>
     <section class="px-10 py-2">
+        <span>Grafik Penjualan</span>
+
+        <div
+            class="lack/12.5 shadow-soft-xl  flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border mt-3">
+
+            <div class="flex-auto px-0  py-2">
+                <div class="overflow-x-auto table-responsive">
+
+                    <table id="dataTable" datatable id="datatable-search"
+                        class="table table-flush items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+
+                       <div class="" id="container"></div>
+
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <section class="px-10 py-2">
         <span>Recent Transaction</span>
         @foreach ($recent as $transaksi)
         <div
@@ -195,7 +218,7 @@
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
 
-                                    <a type="button" href="/transaction_details/{{$transaksi->id}}" 
+                                    <a type="button" href="/transaction_details/{{$transaksi->id}}"
                                         data-tooltip-target="detail"
                                         class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 
@@ -235,4 +258,48 @@
        @endforeach
 
     </section>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        
+        Highcharts.chart('container', {
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: 'Penjualan Produk Per Bulan',
+                align: 'center'
+            },
+            xAxis: {
+                categories: {!!json_encode($bulan)!!},
+                accessibility: {
+                    description: 'Months of the year'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Penjualan Produk Per Bulan',
+                    align: 'center'
+                },
+            },
+            tooltip: {
+                valueSuffix: ' Terjual'
+            },
+            plotOptions: {
+                spline: {
+                    marker: {
+                        radius: 4,
+                        lineColor: '#666666',
+                        lineWidth: 1
+                    }
+                }
+            },
+            series: [{
+                name: 'Produk Terjual',
+                data: {!!json_encode($terjual)!!}
+
+            }, ]
+        });
+
+
+    </script>
 @endsection

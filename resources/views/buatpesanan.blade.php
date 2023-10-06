@@ -16,6 +16,17 @@
             {{ $keranjang->count() }}</div>
     </a>
 @endsection
+@section('search')
+<form action="/kategori" method="post" >
+    @csrf
+    <div class="flex">
+    <input type="text" name="cari" placeholder="Cari Produk" style="width: 384px"
+        class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-72 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+    <button type="submit"
+        class="p-2.5   w-20 text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-full inline-block cursor-pointer border-0 bg-transparent">Cari</button>
+    </div>
+    </form>
+@endsection
 @section('content')
     <section class="mt-32">
         <div class="container">
@@ -74,6 +85,7 @@
                                                         $total = 0;
                                                         $diskon = 0;
                                                         $totalbayar = 0;
+
 
                                                     @endphp
                                                     @foreach ($keranjang as $item)
@@ -172,8 +184,8 @@
                                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Kurir</label>
 
 
-                                                    <select id="pilihKurir" name="kurir"
-                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                    <select id="pilihKurir" name="kurir" required
+                                                        class="bg-gray-50 required border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                                                         <option selected>--- Select Kurir ---</option>
                                                         @foreach ($kurir as $data)
@@ -297,10 +309,12 @@
                                                     $ongkir = 0;
                                                     $totalbayar = 0;
 
+
                                                 @endphp
                                                 @foreach ($keranjang as $item)
                                                     @php
-                                                        $subtotal = $item->produk->hargaproduk * $item->jumlah;
+                                                        $hargaproduk = $item->produk->hargaproduk * $item->jumlah;
+                                                        $subtotal += $hargaproduk;
                                                     @endphp
                                                 @endforeach
                                                 @php
@@ -366,6 +380,15 @@
                                                                             : Rp. {{number_format($ongkir)}}</th>
                                                                             <input type="hidden" id="valueongkir" name="ongkir" value="{{$ongkir}}">
                                                                     </tr>
+                                                                    {{--  <tr>
+                                                                        <th
+                                                                            class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                            Fee</th>
+                                                                        <th
+                                                                            class="px-6 py-3 pl-2 font-bold text-left  align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                                                            : Rp. {{number_format($fee * $subtotal)}}</th>
+                                                                            <input type="hidden"  name="fee" value="{{$fee * $subtotal}}">
+                                                                    </tr>  --}}
                                                                     <tr>
                                                                         <th
                                                                             class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">

@@ -199,7 +199,7 @@
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
-                                        <span class="font-semibold leading-tight text-xs">Rp. {{ number_format($refund->transaction->total_harga) }} </span>
+                                        <span class="font-semibold leading-tight text-xs">Rp. {{ number_format($refund->transaction->total_harga - $refund->transaction->diskon + $refund->transaction->transaction_details[0]->ongkir) }} </span>
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
@@ -222,7 +222,7 @@
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
 
-                                        <a type="button" href="/transaction_detailss/{{ $refund->transaction->id }}"
+                                        <a type="button" href="/transaction_detail/{{ $refund->transaction->id }}"
                                             data-tooltip-target="detail"
                                             class="text-white align-middle transition-all cursor-pointer bg-gradient-to-tl from-blue-600 to-cyan-400 ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-105 active:opacity-85 hover:shadow-soft-xs   focus:outline-none  font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center mr-2 ">
 

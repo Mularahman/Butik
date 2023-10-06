@@ -122,7 +122,7 @@ Route:: group(['middleware' => ['auth']], function(){
     Route:: post('/myproduct/gallery', [MemberController::class, 'myproductgallery']);
     Route:: get('/myproduct/gallery/delete/{id}', [MemberController::class, 'myproductgallerydelete'])->name('dashboard-product-gallery-delete');
     Route:: get('/subkategori/{id}', [MemberController::class, 'getsubkategori']);
-
+    Route:: delete('/delete-produk/{id}', [MemberController::class, 'deleteproduk']);
 
     Route:: get('/transaction-member', [MemberController::class, 'transactionactive']);
 
@@ -150,12 +150,14 @@ Route:: group(['middleware' => ['auth']], function(){
     Route:: get('/laporan-produk', [LaporanController::class, 'produk']);
     Route:: get('/laporan-ulasan', [LaporanController::class, 'review']);
     Route:: get('/laporan-laba', [LaporanController::class, 'laba']);
+    Route:: get('/laporan-pembayaran', [LaporanController::class, 'pembayaran']);
 
     Route:: get('/laporan-transaksi-cetak', [LaporanController::class, 'transaksicetak']);
     Route:: get('/laporan-pelanggan-cetak', [LaporanController::class, 'pelanggancetak']);
     Route:: get('/laporan-produk-cetak', [LaporanController::class, 'produkcetak']);
     Route:: get('/laporan-ulasan-cetak', [LaporanController::class, 'reviewcetak']);
     Route:: get('/laporan-laba-cetak', [LaporanController::class, 'labacetak']);
+    Route:: get('/laporan-pembayaran-cetak', [LaporanController::class, 'pembayarancetak']);
 
 });
 
@@ -192,9 +194,12 @@ Route:: group(['middleware' => ['auth']], function(){
 
 Route:: get('/home', [FrontendController::class, 'home']);
 Route:: get('/kategori/{id}', [FrontendController::class, 'kategori']);
+Route:: post('/kategori', [FrontendController::class, 'cari']);
 Route:: get('/detail-produk/{id}', [FrontendController::class, 'detailproduk']);
 Route:: get('/setting-alamat', [FrontendController::class, 'settingalamat']);
+Route:: get('/setting-alamats', [FrontendController::class, 'settingalamats']);
 Route:: put('/setting-alamat/{id}', [FrontendController::class, 'settingalamataksi']);
+Route:: put('/setting-alamats/{id}', [FrontendController::class, 'settingalamataksis']);
 
 Route::group(['middleware' => 'auth'], function() {
     //

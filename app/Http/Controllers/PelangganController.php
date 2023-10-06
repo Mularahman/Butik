@@ -26,7 +26,7 @@ class PelangganController extends Controller
     public function transactionbuy(){
 
         $user = User::all();
-        $transaction = Transaction::with('user')->where( 'user_id', Auth::user()->id)->get();
+        $transaction = Transaction::with('user','transaction_details')->where( 'user_id', Auth::user()->id)->latest()->get();
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('transaction', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->latest()->get();
@@ -45,7 +45,9 @@ class PelangganController extends Controller
     }
     public function transactionconfirmed(){
         $user = User::all();
-        $transaction = Transaction::with('user')->where(['transaction_status' => 'SUCCESS' , 'user_id'=> Auth::user()->id])->get();
+        $transaction = Transaction::with('user','transaction_details')->where(['transaction_status' => 'SUCCESS' , 'user_id'=> Auth::user()->id])->whereHas('transaction_details', function($produk){
+            $produk->where('status', 'DIKONFIRMASI');
+        })->latest()->get();
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('transaction', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->where('status','DIKONFIRMASI')->get();
@@ -59,7 +61,9 @@ class PelangganController extends Controller
     }
     public function transactionpacking(){
         $user = User::all();
-        $transaction = Transaction::with('user')->where(['transaction_status' => 'SUCCESS' , 'user_id'=> Auth::user()->id])->get();
+        $transaction = Transaction::with('user','transaction_details')->where(['transaction_status' => 'SUCCESS' , 'user_id'=> Auth::user()->id])->whereHas('transaction_details', function($produk){
+            $produk->where('status', 'DIKEMAS');
+        })->latest()->get();
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('transaction', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->where('status','DIKEMAS')->get();
@@ -73,7 +77,9 @@ class PelangganController extends Controller
     }
     public function transactiondelivered(){
         $user = User::all();
-        $transaction = Transaction::with('user')->where(['transaction_status' => 'SUCCESS' , 'user_id'=> Auth::user()->id])->get();
+        $transaction = Transaction::with('user','transaction_details')->where(['transaction_status' => 'SUCCESS' , 'user_id'=> Auth::user()->id])->whereHas('transaction_details', function($produk){
+            $produk->where('status', 'DALAM PERJALANAN');
+        })->latest()->get();
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('transaction', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->where('status','DALAM PERJALANAN')->get();
@@ -87,7 +93,9 @@ class PelangganController extends Controller
     }
     public function transactioncomplated(){
         $user = User::all();
-        $transaction = Transaction::with('user')->where(['transaction_status' => 'SUCCESS' , 'user_id'=> Auth::user()->id])->get();
+        $transaction = Transaction::with('user','transaction_details')->where(['transaction_status' => 'SUCCESS' , 'user_id'=> Auth::user()->id])->whereHas('transaction_details', function($produk){
+            $produk->where('status', 'SELESAI');
+        })->latest()->get();
         $transactiondetail = TransactionDetail::with('transaction', 'produk','produk.users', 'produk.gambar')->whereHas('transaction', function($produk){
             $produk->where('user_id', Auth::user()->id);
         })->where('status','SELESAI')->get();

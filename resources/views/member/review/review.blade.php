@@ -36,16 +36,16 @@
                         <thead>
                             <div class="font-bold ml-4 flex mb-4 mt-3">
                                 <h3 class="me-2">Review Pelanggan</h3>
-                                <span
-                                        class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$review->count()}}</span>
+                                {{--  <span
+                                        class="bg-blue-100 text-blue-800 text-sm tracking-normal uppercase opacity-70 font-bold mr-2 px-3 py-1 rounded-lg p-4 dark:bg-blue-900 dark:text-blue-300">{{$review->count()}}</span>  --}}
                             </div>
                         </thead>
                         <tbody>
                             <tr class="border-b-2 font-bold">
-                                <td
+                                {{--  <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                     <span class=" leading-tight ">No</span>
-                                </td>
+                                </td>  --}}
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                     <span class=" leading-tight ">Gambar</span>
@@ -63,19 +63,19 @@
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                     <span class=" leading-tight ">Review</span>
                                 </td>
-                                <td
+                                {{--  <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                     <span class=" leading-tight ">Action</span>
-                                </td>
+                                </td>  --}}
                             </tr>
                             @foreach ($ulasan as $produk)
                             @foreach ( $produk->ulasan as $ulasan)
                             <tr class="border-b-2">
 
-                                <td
+                                {{--  <td
                                 class="p-2 leading-normal text-center align-middle bg-transparent  text-sm whitespace-nowrap">
                                 <span class="font-semibold leading-tight text-xs">{{ $loop->iteration }}</span>
-                            </td>
+                            </td>  --}}
 
                                 <td class="p-2 align-middle text-center bg-transparent  whitespace-nowrap">
                                     <div class="mt-2 avatar-group">
@@ -106,7 +106,7 @@
                                 </td>
 
 
-                                <td
+                                {{--  <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent text-sm whitespace-nowrap">
 
                                     <a type="button" href="/transaction_details/{{$ulasan->id}}"
@@ -128,7 +128,7 @@
 
 
 
-                                </td>
+                                </td>  --}}
 
                             </tr>
 

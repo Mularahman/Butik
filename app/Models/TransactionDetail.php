@@ -28,6 +28,10 @@ class TransactionDetail extends Model
     public function produk(){
         return $this->hasOne( Produk::class, 'id', 'produk_id' );
     }
+    public function product()
+    {
+        return $this->belongsTo(Produk::class, 'produk_id');
+    }
 
     public function transaction(){
         return $this->hasOne( Transaction::class, 'id', 'transaction_id' );

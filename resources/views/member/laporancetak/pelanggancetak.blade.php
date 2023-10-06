@@ -78,6 +78,7 @@
                 <tr>
                     <th>No</th>
                     <th>Nama Customer</th>
+                    <th>Email</th>
                     <th>Tanggal Transaksi</th>
                     <th>Total</th>
                 </tr>
@@ -88,15 +89,16 @@
                <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->transaction->user->name}}</td>
+                <td>{{$item->transaction->user->email}}</td>
                 <td>{{$item->transaction->tanggal}}</td>
-                <td>Rp. {{number_format($item->transaction->total_harga)}}</td>
+                <td>Rp. {{number_format($item->transaction->total_harga - $item->transaction->diskon + $item->first()->ongkir)}}</td>
                 </tr>
                 @endforeach
 
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" style="text-align: right;">Total :</td>
+                    <td colspan="4" style="text-align: right;">Total :</td>
                     <td>Rp. {{number_format($total)}}</td>
                 </tr>
             </tfoot>

@@ -86,7 +86,7 @@
                             </div>
                             <div class="flex-none w-5/12 max-w-full px-3 my-auto text-right lg:w-1/2 lg:flex-none">
 
-
+{{--
                                 <form class="flex items-center">
                                     <label for="simple-search" class="sr-only leading-normal text-sm">Search </label>
                                     <div class="relative w-full">
@@ -111,7 +111,7 @@
                                         </svg>
                                         <span class="sr-only">Search</span>
                                     </button>
-                                </form>
+                                </form>  --}}
 
                             </div>
                         </div>

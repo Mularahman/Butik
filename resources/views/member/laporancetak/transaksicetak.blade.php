@@ -34,6 +34,7 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            font-size: 14px;
         }
         th, td {
             padding: 10px;
@@ -77,10 +78,11 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tanggal Transaksi</th>
+                    <th>Tanggal</th>
                     <th>Invoice</th>
                     <th>Total</th>
-                    <th>Status</th>
+                    <th>Status Pembayaran</th>
+                    <th>Status Transaksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -89,24 +91,25 @@
                <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->transaction->tanggal}}</td>
-                <td>{{$item->transaction->kode}}</td>
-                <td>Rp. {{number_format($item->transaction->total_harga)}}</td>
+                <td>{{$item->kode}}</td>
+                <td>Rp. {{number_format($item->transaction->total_harga - $item->transaction->diskon + $item->first()->ongkir)}}</td>
                 <td>{{$item->transaction->transaction_status}}</td>
+                <td>{{$item->status}}</td>
                 </tr>
                 @endforeach
 
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="4" style="text-align: right;">Total :</td>
+                    <td colspan="5" style="text-align: right;">Total :</td>
                     <td>Rp. {{number_format($total)}}</td>
                 </tr>
                 <tr>
-                    <td colspan="4" style="text-align: right;">Total Transaksi Success:</td>
+                    <td colspan="5" style="text-align: right;">Total Transaksi Success:</td>
                     <td>{{$success->count()}}</td>
                 </tr>
                 <tr>
-                    <td colspan="4" style="text-align: right;">Total Transaksi Pending:</td>
+                    <td colspan="5" style="text-align: right;">Total Transaksi Pending:</td>
                     <td>{{$pending->count()}}</td>
                 </tr>
             </tfoot>

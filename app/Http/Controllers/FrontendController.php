@@ -39,6 +39,22 @@ class FrontendController extends Controller
         ]);
 
     }
+    public function cari(Request $request){
+        $produk = Produk::with('kategori','users','gambar')->where('namaproduk', 'LIKE', '%' . request('cari') . '%')->get();
+        $keranjang = Keranjang::all();
+
+        if(Auth::check()){
+
+            $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
+        }
+        return view('kategoris', [
+            'produk' => $produk,
+            'keranjang' => $keranjang,
+            'cari' => $request->cari
+
+
+        ]);
+    }
 
     public function kategori(Request $request, $id){
         $kategori = Kategori::where('id', $id)->get();
@@ -47,16 +63,27 @@ class FrontendController extends Controller
 
             $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
         }
+        $idkategori = $id;
+        foreach ($kategori as $data){
+                $subkategori = $data->subkategori;
+        }
 
-
-        $produk = Produk::with('kategori','users','gambar')->where('kategori_id', $id)->where('status', 1)->get();
-
+        $produk = Produk::with('kategori','users','gambar')->where('kategori_id', $id)->where('status', 1);
+        if(request('search')){
+            $produk->whereHas('kategori', function ($query) {
+                $query->where('subkategori_id', 'LIKE', '%' . request('search') . '%');
+            });
+        }
+        $produk = $produk->get();
         return view('kategori', [
             'produk' => $produk,
             'keranjang' => $keranjang,
             'kategori' => $kategori,
+            'subkategori' => $subkategori,
+            'id' => $idkategori,
         ]);
     }
+
 
     public function detailproduk($id){
         $keranjang = Keranjang::all();
@@ -108,6 +135,43 @@ class FrontendController extends Controller
 
             return redirect('/dashboard-member');
     }
+    public function settingalamats(){
+        $id = Auth::user()->id;
+        $user = User::where('id', $id)->first();
+
+
+        $provinsi = Provinsi::with('kecamatans','kotas')->get();
+        $kota = Kota::all();
+        $kecamatan = Kecamatan::all();
+        return view('settingalamats',[
+            'user' => $user,
+            'id' => $id,
+            'provinsi' => $provinsi,
+            'kota' => $kota,
+            'kecamatan' => $kecamatan,
+        ]);
+    }
+    public function settingalamataksis(Request $request ,$id){
+
+        $data = $this->validate($request,[
+
+            'provinsi_id' => 'required',
+            'kota_id' => 'required',
+            'kecamatan_id' => 'required',
+            'alamat1' => 'required',
+            'alamat2' => 'required',
+            'negara' => 'required',
+            'kodepos' => 'required',
+            'no_hp' => 'required',
+
+        ]);
+
+
+        $user = User::find($id);
+        $user->update($data);
+
+            return redirect('/keranjang');
+    }
 
     public function produkaddkeranjangs(Request $request, $id){
         $data = $request->all();
@@ -130,6 +194,11 @@ class FrontendController extends Controller
     }
     public function produkaddkeranjang(Request $request, $id){
         $data = $request->all();
+
+        $product = Produk::findOrFail($id);
+        if ($product->stokproduk < $data['jumlah']) {
+            return back()->with('error', 'Stok tidak mencukupi');
+        }
 
         if(Auth::check()){
 
@@ -156,6 +225,8 @@ class FrontendController extends Controller
         $kota = Kota::all();
         $kecamatan = Kecamatan::all();
         $kurir = Kurir::all();
+        $best = Produk::with('kategori','users','gambar')->where('status', 1)->OrderBy('stokproduk','asc')->take(8)->get();
+
         return view('keranjang',[
             'keranjang' => $keranjang,
             'user' => $user,
@@ -164,6 +235,7 @@ class FrontendController extends Controller
             'provinsi' => $provinsi,
             'kota' => $kota,
             'kecamatan' => $kecamatan,
+            'best' => $best,
         ]);
     }
     public function deletekeranjang(Request $request, $id){
@@ -204,12 +276,15 @@ class FrontendController extends Controller
         $kota = Kota::all();
         $kecamatan = Kecamatan::all();
         $kurir = Kurir::all();
+        // $fee = 1 / 100 ;
         foreach ($keranjang as $item) {
            $city=$item->produk->users->kota_id;
            $berat=$item->produk->beratproduk;
 
         }
-
+        if (empty($user->kota->id)) {
+            return redirect('/setting-alamats')->with('alert', 'Silahkan Isi Alamat Terlebih dahulu');
+        }
 
         return view('buatpesanan',[
             'keranjang' => $keranjang,
@@ -221,6 +296,7 @@ class FrontendController extends Controller
             'kecamatan' => $kecamatan,
             'city' => $city,
             'berat' => $berat,
+            // 'fee' => $fee,
         ]);
     }
     public function diskon(Request $request){
