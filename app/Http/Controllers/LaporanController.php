@@ -80,6 +80,22 @@ public function tokocetakadmin(){
     $pdf = PDF::loadview('admin.laporan.Toko.tokocetak',['data'=>$data, 'total' => $total]);
     return $pdf->stream();
 }
+public function tokoberlanggananadmin(){
+    $data = User::where('role', 'member')->get();
+    if(request('search')){
+        $data = User::where('role', 'member')->where('nama_toko', 'LIKE', '%' . request('search') . '%')->get();
+    }
+    return view('admin.laporan.Tokoberlangganan.toko',[
+        'data' => $data
+    ]);
+}
+public function tokoberlangganancetakadmin(){
+    $data =  User::where('role', 'member')->get();
+    $total = $data->where('status_toko', 1)->count();
+
+    $pdf = PDF::loadview('admin.laporan.Tokoberlangganan.tokocetak',['data'=>$data, 'total' => $total]);
+    return $pdf->stream();
+}
 public function pembelianadmin(){
     $data = TransactionDetail::join('transactions', 'transaction_details.transaction_id', '=', 'transactions.id')
     ->with('transaction', 'produk', 'produk.users', 'produk.gambar')

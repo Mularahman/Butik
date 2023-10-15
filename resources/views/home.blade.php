@@ -17,14 +17,14 @@
     </a>
 @endsection
 @section('search')
-<form action="/kategori" method="post" >
-    @csrf
-    <div class="flex">
-    <input type="text" name="cari" placeholder="Cari Produk" style="width: 384px"
-        class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-72 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-    <button type="submit"
-        class="p-2.5   w-20 text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-full inline-block cursor-pointer border-0 bg-transparent">Cari</button>
-    </div>
+    <form action="/kategori" method="post">
+        @csrf
+        <div class="flex">
+            <input type="text" name="cari" placeholder="Cari Produk" style="width: 384px"
+                class="bg-gray-50 border me-2 border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-72 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+            <button type="submit"
+                class="p-2.5   w-20 text-sm font-medium text-center text-white bg-gradient-to-tl from-orange-400 hover:scale-102  to-yellow-300 rounded-full inline-block cursor-pointer border-0 bg-transparent">Cari</button>
+        </div>
     </form>
 @endsection
 @section('content')
@@ -302,11 +302,44 @@
                                         <img class="h-56 w-full rounded-lg justify-center align-middle items-center"
                                             src="{{ asset('storage/' . $item->gambar->first()->thumbnail) }}"
                                             alt="">
-                                        <div class=" mt-4 mb-4 ">
-                                            <span class="">{{ $item->namaproduk }}</span> <br>
-                                            <span
-                                                class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
-                                                {{ number_format($item->hargaproduk) }}</span>
+                                        <div class="grid grid-cols-2 gap-4 mt-4 mb-4 w-full">
+                                            <div class="flex justify-start">
+                                                <div>
+                                                    <span class="">{{ $item->namaproduk }}</span> <br>
+                                                </div>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <div class="text-start">
+                                                    <span
+                                                        class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
+                                                        {{ number_format($item->hargaproduk) }}</span>
+                                                </div>
+                                                <div>
+                                                    <div class="font-bold text-end ">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            @if ($i <= $rating)
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-star-fill text-orange-400"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                                </svg>
+                                                            @else
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-star-fill " viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                                </svg>
+                                                            @endif
+                                                        @endfor
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="flex mt-4 mb-4 space-x-3 md:mt-6">
                                             <a href="/detail-produk/{{ $item->id }}"
@@ -470,11 +503,44 @@
                                         <img class="h-56 w-full rounded-lg justify-center align-middle items-center"
                                             src="{{ asset('storage/' . $item->gambar->first()->thumbnail) }}"
                                             alt="">
-                                        <div class=" mt-4 mb-4 ">
-                                            <span class="">{{ $item->namaproduk }}</span> <br>
-                                            <span
-                                                class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
-                                                {{ number_format($item->hargaproduk) }}</span>
+                                        <div class="grid grid-cols-2 gap-4 mt-4 mb-4 w-full">
+                                            <div class="flex justify-start">
+                                                <div>
+                                                    <span class="">{{ $item->namaproduk }}</span> <br>
+                                                </div>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <div class="text-start">
+                                                    <span
+                                                        class="font-bold text-transparent bg-gradient-to-tl from-yellow-300 to-orange-400 bg-clip-text">Rp.
+                                                        {{ number_format($item->hargaproduk) }}</span>
+                                                </div>
+                                                <div>
+                                                    <div class="font-bold text-end ">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            @if ($i <= $rating)
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-star-fill text-orange-400"
+                                                                    viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                                </svg>
+                                                            @else
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="bi bi-star-fill " viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                                </svg>
+                                                            @endif
+                                                        @endfor
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="flex mt-4 mb-4 space-x-3 md:mt-6">
                                             <a href="/detail-produk/{{ $item->id }}"

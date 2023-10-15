@@ -7,15 +7,17 @@ use App\Models\User;
 use App\Models\Kupon;
 use App\Models\Kurir;
 use App\Models\Produk;
+use App\Models\Ulasan;
 use App\Models\Kategori;
 use App\Models\Provinsi;
 use App\Models\Kecamatan;
 use App\Models\Keranjang;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
+use DB;
 
 
 class FrontendController extends Controller
@@ -28,14 +30,26 @@ class FrontendController extends Controller
             $keranjang = Keranjang::where('user_id', Auth::user()->id)->get();
         }
 
-
         $produk = Produk::with('kategori','users','gambar')->where('status', 1)->take(8)->get();
+
+      $ulasan = Ulasan::select('produk_id', DB::raw('SUM(bintang) as total_bintang'), DB::raw('COUNT(user_id) as total_user'))
+    ->groupBy('produk_id')
+    ->get();
+
+    foreach($ulasan as $items) {
+        $rating = $items->total_bintang / $items->total_user;
+    }
+
+
+
         $best = Produk::with('kategori','users','gambar')->where('status', 1)->OrderBy('stokproduk','desc')->take(4)->get();
         return view('home',[
             'produk' => $produk,
             'keranjang' => $keranjang,
             'kategori' => $kategori,
             'best' => $best,
+            'ulasan' =>$ulasan,
+            'rating' => $rating
         ]);
 
     }

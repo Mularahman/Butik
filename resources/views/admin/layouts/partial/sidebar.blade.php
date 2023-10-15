@@ -371,6 +371,19 @@
                     <span class="flex-1 ml-1 text-left whitespace-nowrap  opacity-60">Produk</span>
                 </a>
             </li>
+            <li class="mt-0.5 w-full">
+                <a href="/laporan-tokoberlangganan-admin"
+                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg group  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{Request::is('laporan-tokoberlangganan-admin*') ? 'shadow-md' : ''}}">
+                    <div
+                        class="stroke-none shadow-soft-sm bg-gradient-to-tl from-purple-700 to-pink-500 mr-2 mx-4 py-2.7 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center fill-current p-2.5 text-center text-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard-data-fill  flex-shrink-0 w-15 h-15 text-white transition duration-75 group-hover:text-gray-300 dark:text-gray-400 dark:group-hover:text-white" viewBox="0 0 16 16">
+                            <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V8Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z"/>
+                          </svg>
+                    </div>
+                    <span class="flex-1 ml-1 text-left whitespace-nowrap  opacity-60">Toko Berlangganan</span>
+                </a>
+            </li>
 
 
 

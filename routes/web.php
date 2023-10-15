@@ -99,6 +99,7 @@ Route:: group(['middleware' => ['auth', 'admin']], function(){
     Route:: get('/laporan-transaksi-admin', [LaporanController::class, 'transaksiadmin']);
     Route:: get('/laporan-pelanggan-admin', [LaporanController::class, 'pelangganadmin']);
     Route:: get('/laporan-toko-admin', [LaporanController::class, 'tokoadmin']);
+    Route:: get('/laporan-tokoberlangganan-admin', [LaporanController::class, 'tokoberlanggananadmin']);
     Route:: get('/laporan-pembelian-admin', [LaporanController::class, 'pembelianadmin']);
     Route:: get('/laporan-penjualan-admin', [LaporanController::class, 'penjualanadmin']);
     Route:: get('/laporan-produk-admin', [LaporanController::class, 'produkadmin']);
@@ -106,6 +107,7 @@ Route:: group(['middleware' => ['auth', 'admin']], function(){
     Route:: get('/laporan-transaksi-admin-cetak', [LaporanController::class, 'transaksicetakadmin']);
     Route:: get('/laporan-pelanggan-admin-cetak', [LaporanController::class, 'pelanggancetakadmin']);
     Route:: get('/laporan-toko-admin-cetak', [LaporanController::class, 'tokocetakadmin']);
+    Route:: get('/laporan-tokoberlangganan-admin-cetak', [LaporanController::class, 'tokoberlangganancetakadmin']);
     Route:: get('/laporan-pembelian-admin-cetak', [LaporanController::class, 'pembeliancetakadmin']);
     Route:: get('/laporan-penjualan-admin-cetak', [LaporanController::class, 'penjualancetakadmin']);
     Route:: get('/laporan-produk-admin-cetak', [LaporanController::class, 'produkcetakadmin']);
